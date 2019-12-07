@@ -29,5 +29,9 @@ namespace TrotIS.Shared
             ClimbAngle = climbAngle;
         }
 
+        public Scooter()
+        {
+            ScooterId = Guid.NewGuid();
+        }
     }
 }

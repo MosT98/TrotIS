@@ -30,5 +30,10 @@ namespace TrotIS.Shared
             Floor = floor;
             Apartment = apartment;
         }
+
+        public Address()
+        {
+            AddressId = Guid.NewGuid();
+        }
     }
 }
