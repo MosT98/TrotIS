@@ -7,15 +7,15 @@ namespace TrotIS.Shared
 {
     public class Address
     {
-        public Guid AddressId { get; private set; }
-        public string Country { get; private set; }
-        public string County { get; private set; }
-        public string City { get; private set; }
-        public string Street { get; private set; }
-        public int Number { get; private set; }
-        public string Block { get; private set; }
-        public int Floor { get; private set; }
-        public string Apartment { get; private set; }
+        public Guid AddressId { get; set; }
+        public string Country { get; set; }
+        public string County { get; set; }
+        public string City { get; set; }
+        public string Street { get; set; }
+        public int Number { get; set; }
+        public string Block { get; set; }
+        public int Floor { get; set; }
+        public string Apartment { get; set; }
         //spublic virtual User User { get; set; }
 
         public Address(string country, string county, string city, string street, int number, string block, int floor, string apartment)

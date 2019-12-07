@@ -6,15 +6,15 @@ namespace TrotIS.Shared
 {
     public class Scooter
     {
-        public Guid ScooterId { get; private set; }
-        public string Brand { get; private set; }
-        public string Model { get; private set; }
-        public int BatteryLife { get; private set; } //km
-        public int AgeLimitMin { get; private set; }
-        public int AgeLimitMax { get; private set; }
-        public int WeightMax { get; private set; } //kg
-        public int SpeedLimit { get; private set; } //km/h
-        public int ClimbAngle { get; private set; } //degrees
+        public Guid ScooterId { get; set; }
+        public string Brand { get; set; }
+        public string Model { get; set; }
+        public int BatteryLife { get; set; } //km
+        public int AgeLimitMin { get; set; }
+        public int AgeLimitMax { get; set; }
+        public int WeightMax { get; set; } //kg
+        public int SpeedLimit { get; set; } //km/h
+        public int ClimbAngle { get; set; } //degrees
 
         public Scooter(string brand, string model, int batteryLife, int ageLimitMin, int ageLimitMax, int weightMax, int speedLimit, int climbAngle)
         {
