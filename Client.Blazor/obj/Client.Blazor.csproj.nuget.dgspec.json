@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ANUL III\\dotNET\\abc\\TrotIS\\Client.Blazor\\Client.Blazor.csproj": {}
+    "D:\\ANUL III\\dotNET\\TrotIS\\Client.Blazor\\Client.Blazor.csproj": {}
   },
   "projects": {
-    "D:\\ANUL III\\dotNET\\abc\\TrotIS\\Client.Blazor\\Client.Blazor.csproj": {
+    "D:\\ANUL III\\dotNET\\TrotIS\\Client.Blazor\\Client.Blazor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\Client.Blazor\\Client.Blazor.csproj",
+        "projectUniqueName": "D:\\ANUL III\\dotNET\\TrotIS\\Client.Blazor\\Client.Blazor.csproj",
         "projectName": "Client.Blazor",
-        "projectPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\Client.Blazor\\Client.Blazor.csproj",
+        "projectPath": "D:\\ANUL III\\dotNET\\TrotIS\\Client.Blazor\\Client.Blazor.csproj",
         "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-        "outputPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\Client.Blazor\\obj\\",
+        "outputPath": "D:\\ANUL III\\dotNET\\TrotIS\\Client.Blazor\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,11 +30,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
-                "projectPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\TrotIS.Shared.csproj"
+              "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
+                "projectPath": "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj"
               },
-              "D:\\ANUL III\\dotNET\\abc\\TrotIS\\UserAPI\\UserAPI.csproj": {
-                "projectPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\UserAPI\\UserAPI.csproj"
+              "D:\\ANUL III\\dotNET\\TrotIS\\UserAPI\\UserAPI.csproj": {
+                "projectPath": "D:\\ANUL III\\dotNET\\TrotIS\\UserAPI\\UserAPI.csproj"
               }
             }
           }
@@ -97,14 +97,14 @@
         }
       }
     },
-    "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
+    "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
+        "projectUniqueName": "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
         "projectName": "TrotIS.Shared",
-        "projectPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
+        "projectPath": "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
         "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-        "outputPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\obj\\",
+        "outputPath": "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -176,14 +176,14 @@
         }
       }
     },
-    "D:\\ANUL III\\dotNET\\abc\\TrotIS\\UserAPI\\UserAPI.csproj": {
+    "D:\\ANUL III\\dotNET\\TrotIS\\UserAPI\\UserAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\UserAPI\\UserAPI.csproj",
+        "projectUniqueName": "D:\\ANUL III\\dotNET\\TrotIS\\UserAPI\\UserAPI.csproj",
         "projectName": "UserAPI",
-        "projectPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\UserAPI\\UserAPI.csproj",
+        "projectPath": "D:\\ANUL III\\dotNET\\TrotIS\\UserAPI\\UserAPI.csproj",
         "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-        "outputPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\UserAPI\\obj\\",
+        "outputPath": "D:\\ANUL III\\dotNET\\TrotIS\\UserAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -202,8 +202,8 @@
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
-                "projectPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\TrotIS.Shared.csproj"
+              "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
+                "projectPath": "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj"
               }
             }
           }
@@ -226,6 +226,12 @@
               "version": "[7.0.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.0, )"
             },

@@ -81,10 +81,11 @@ D:\ANUL III\dotNET\TrotIS\UserAPI\bin\Debug\netcoreapp3.0\TrotIS.Shared.pdb
 D:\ANUL III\dotNET\TrotIS\UserAPI\obj\Debug\netcoreapp3.0\UserAPI.csprojAssemblyReference.cache
 D:\ANUL III\dotNET\TrotIS\UserAPI\obj\Debug\netcoreapp3.0\staticwebassets\UserAPI.StaticWebAssets.Manifest.cache
 D:\ANUL III\dotNET\TrotIS\UserAPI\obj\Debug\netcoreapp3.0\staticwebassets\UserAPI.StaticWebAssets.xml
-D:\ANUL III\dotNET\TrotIS\UserAPI\obj\Debug\netcoreapp3.0\UserAPI.MvcApplicationPartsAssemblyInfo.cache
 D:\ANUL III\dotNET\TrotIS\UserAPI\obj\Debug\netcoreapp3.0\UserAPI.AssemblyInfoInputs.cache
 D:\ANUL III\dotNET\TrotIS\UserAPI\obj\Debug\netcoreapp3.0\UserAPI.AssemblyInfo.cs
 D:\ANUL III\dotNET\TrotIS\UserAPI\obj\Debug\netcoreapp3.0\UserAPI.RazorTargetAssemblyInfo.cache
 D:\ANUL III\dotNET\TrotIS\UserAPI\obj\Debug\netcoreapp3.0\UserAPI.csproj.CopyComplete
 D:\ANUL III\dotNET\TrotIS\UserAPI\obj\Debug\netcoreapp3.0\UserAPI.dll
 D:\ANUL III\dotNET\TrotIS\UserAPI\obj\Debug\netcoreapp3.0\UserAPI.pdb
+D:\ANUL III\dotNET\TrotIS\UserAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\ANUL III\dotNET\TrotIS\UserAPI\obj\Debug\netcoreapp3.0\UserAPI.MvcApplicationPartsAssemblyInfo.cache

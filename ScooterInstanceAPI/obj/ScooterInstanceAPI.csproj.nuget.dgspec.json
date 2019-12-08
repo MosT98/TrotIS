@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ANUL III\\dotNET\\abc\\TrotIS\\ScooterInstanceAPI\\ScooterInstanceAPI.csproj": {}
+    "D:\\ANUL III\\dotNET\\TrotIS\\ScooterInstanceAPI\\ScooterInstanceAPI.csproj": {}
   },
   "projects": {
-    "D:\\ANUL III\\dotNET\\abc\\TrotIS\\ScooterInstanceAPI\\ScooterInstanceAPI.csproj": {
+    "D:\\ANUL III\\dotNET\\TrotIS\\ScooterInstanceAPI\\ScooterInstanceAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\ScooterInstanceAPI\\ScooterInstanceAPI.csproj",
+        "projectUniqueName": "D:\\ANUL III\\dotNET\\TrotIS\\ScooterInstanceAPI\\ScooterInstanceAPI.csproj",
         "projectName": "ScooterInstanceAPI",
-        "projectPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\ScooterInstanceAPI\\ScooterInstanceAPI.csproj",
+        "projectPath": "D:\\ANUL III\\dotNET\\TrotIS\\ScooterInstanceAPI\\ScooterInstanceAPI.csproj",
         "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-        "outputPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\ScooterInstanceAPI\\obj\\",
+        "outputPath": "D:\\ANUL III\\dotNET\\TrotIS\\ScooterInstanceAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
-                "projectPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\TrotIS.Shared.csproj"
+              "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
+                "projectPath": "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj"
               }
             }
           }
@@ -54,6 +54,12 @@
               "version": "[7.0.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.0, )"
             },
@@ -84,14 +90,14 @@
         }
       }
     },
-    "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
+    "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
+        "projectUniqueName": "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
         "projectName": "TrotIS.Shared",
-        "projectPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
+        "projectPath": "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
         "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-        "outputPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\obj\\",
+        "outputPath": "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

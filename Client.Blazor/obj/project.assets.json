@@ -8829,11 +8829,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\Client.Blazor\\Client.Blazor.csproj",
+      "projectUniqueName": "D:\\ANUL III\\dotNET\\TrotIS\\Client.Blazor\\Client.Blazor.csproj",
       "projectName": "Client.Blazor",
-      "projectPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\Client.Blazor\\Client.Blazor.csproj",
+      "projectPath": "D:\\ANUL III\\dotNET\\TrotIS\\Client.Blazor\\Client.Blazor.csproj",
       "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-      "outputPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\Client.Blazor\\obj\\",
+      "outputPath": "D:\\ANUL III\\dotNET\\TrotIS\\Client.Blazor\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -8852,11 +8852,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
-              "projectPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\TrotIS.Shared.csproj"
+            "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
+              "projectPath": "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj"
             },
-            "D:\\ANUL III\\dotNET\\abc\\TrotIS\\UserAPI\\UserAPI.csproj": {
-              "projectPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\UserAPI\\UserAPI.csproj"
+            "D:\\ANUL III\\dotNET\\TrotIS\\UserAPI\\UserAPI.csproj": {
+              "projectPath": "D:\\ANUL III\\dotNET\\TrotIS\\UserAPI\\UserAPI.csproj"
             }
           }
         }

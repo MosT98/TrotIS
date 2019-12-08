@@ -27,7 +27,6 @@ D:\ANUL III\dotNET\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInst
 D:\ANUL III\dotNET\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInstanceAPI.pdb
 D:\ANUL III\dotNET\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 D:\ANUL III\dotNET\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
-D:\ANUL III\dotNET\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInstanceAPI.MvcApplicationPartsAssemblyInfo.cache
 D:\ANUL III\dotNET\abc\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInstanceAPI.csprojAssemblyReference.cache
 D:\ANUL III\dotNET\abc\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInstanceAPI.dll
 D:\ANUL III\dotNET\abc\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInstanceAPI.pdb
@@ -58,3 +57,5 @@ D:\ANUL III\dotNET\abc\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\Scooter
 D:\ANUL III\dotNET\abc\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInstanceAPI.AssemblyInfo.cs
 D:\ANUL III\dotNET\abc\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInstanceAPI.RazorTargetAssemblyInfo.cache
 D:\ANUL III\dotNET\abc\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInstanceAPI.csproj.CopyComplete
+D:\ANUL III\dotNET\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+D:\ANUL III\dotNET\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInstanceAPI.MvcApplicationPartsAssemblyInfo.cache

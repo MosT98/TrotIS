@@ -734,11 +734,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
+      "projectUniqueName": "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
       "projectName": "TrotIS.Shared",
-      "projectPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
+      "projectPath": "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
       "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-      "outputPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\obj\\",
+      "outputPath": "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
