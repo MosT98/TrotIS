@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\NET\\TrotIS\\ScooterInstanceAPI\\ScooterInstanceAPI.csproj": {}
+    "D:\\ANUL III\\dotNET\\abc\\TrotIS\\ScooterInstanceAPI\\ScooterInstanceAPI.csproj": {}
   },
   "projects": {
-    "D:\\NET\\TrotIS\\ScooterInstanceAPI\\ScooterInstanceAPI.csproj": {
+    "D:\\ANUL III\\dotNET\\abc\\TrotIS\\ScooterInstanceAPI\\ScooterInstanceAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\NET\\TrotIS\\ScooterInstanceAPI\\ScooterInstanceAPI.csproj",
+        "projectUniqueName": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\ScooterInstanceAPI\\ScooterInstanceAPI.csproj",
         "projectName": "ScooterInstanceAPI",
-        "projectPath": "D:\\NET\\TrotIS\\ScooterInstanceAPI\\ScooterInstanceAPI.csproj",
-        "packagesPath": "C:\\Users\\cbelu\\.nuget\\packages\\",
-        "outputPath": "D:\\NET\\TrotIS\\ScooterInstanceAPI\\obj\\",
+        "projectPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\ScooterInstanceAPI\\ScooterInstanceAPI.csproj",
+        "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
+        "outputPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\ScooterInstanceAPI\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\cbelu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -27,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\NET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
-                "projectPath": "D:\\NET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj"
+              "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
+                "projectPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\TrotIS.Shared.csproj"
               }
             }
           }
@@ -81,17 +84,20 @@
         }
       }
     },
-    "D:\\NET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
+    "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\NET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
+        "projectUniqueName": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
         "projectName": "TrotIS.Shared",
-        "projectPath": "D:\\NET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
-        "packagesPath": "C:\\Users\\cbelu\\.nuget\\packages\\",
-        "outputPath": "D:\\NET\\TrotIS\\TrotIS\\obj\\",
+        "projectPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
+        "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
+        "outputPath": "D:\\ANUL III\\dotNET\\abc\\TrotIS\\TrotIS\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\cbelu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

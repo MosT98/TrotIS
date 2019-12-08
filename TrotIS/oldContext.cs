@@ -9,7 +9,7 @@ namespace TrotIS.Shared
         
 
         //public DbSet<User> Users { get; set; }
-        public DbSet<Scooter> Scooters { get; set; }
+        //public DbSet<Scooter> Scooters { get; set; }
         public DbSet<Address> Addresses { get; set; }
    
         public oldContext()
@@ -33,7 +33,7 @@ namespace TrotIS.Shared
 
             //modelBuilder.Entity<User>().HasData(new User("catalinbelu21@gmail.com", "parola", "Catalin", "Belu", 
             //    "0770796616", DateTime.Parse("06/16/1999"), EnumLists.SocialClass.student));
-            modelBuilder.Entity<Scooter>().HasData(new Scooter("Yamaha", "v2.0", 20, 14, 60, 120, 25, 15));
+            //modelBuilder.Entity<Scooter>().HasData(new Scooter("Yamaha", "v2.0", 20, 14, 60, 120, 25, 15));
             //modelBuilder.Entity<Address>().HasData(new Address("Romania", "Iasi", "Iasi", "Moara de foc", 35, "Solomon", 7, "7A"));
         }
     }

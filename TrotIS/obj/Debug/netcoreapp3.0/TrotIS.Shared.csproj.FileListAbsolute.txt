@@ -14,3 +14,11 @@ D:\ANUL III\dotNET\TrotIS\TrotIS\obj\Debug\netcoreapp3.0\TrotIS.Shared.AssemblyI
 D:\ANUL III\dotNET\TrotIS\TrotIS\obj\Debug\netcoreapp3.0\TrotIS.Shared.AssemblyInfo.cs
 D:\ANUL III\dotNET\TrotIS\TrotIS\obj\Debug\netcoreapp3.0\TrotIS.Shared.dll
 D:\ANUL III\dotNET\TrotIS\TrotIS\obj\Debug\netcoreapp3.0\TrotIS.Shared.pdb
+D:\ANUL III\dotNET\abc\TrotIS\TrotIS\obj\Debug\netcoreapp3.0\TrotIS.Shared.csprojAssemblyReference.cache
+D:\ANUL III\dotNET\abc\TrotIS\TrotIS\obj\Debug\netcoreapp3.0\TrotIS.Shared.AssemblyInfoInputs.cache
+D:\ANUL III\dotNET\abc\TrotIS\TrotIS\obj\Debug\netcoreapp3.0\TrotIS.Shared.AssemblyInfo.cs
+D:\ANUL III\dotNET\abc\TrotIS\TrotIS\obj\Debug\netcoreapp3.0\TrotIS.Shared.dll
+D:\ANUL III\dotNET\abc\TrotIS\TrotIS\obj\Debug\netcoreapp3.0\TrotIS.Shared.pdb
+D:\ANUL III\dotNET\abc\TrotIS\TrotIS\bin\Debug\netcoreapp3.0\TrotIS.Shared.deps.json
+D:\ANUL III\dotNET\abc\TrotIS\TrotIS\bin\Debug\netcoreapp3.0\TrotIS.Shared.dll
+D:\ANUL III\dotNET\abc\TrotIS\TrotIS\bin\Debug\netcoreapp3.0\TrotIS.Shared.pdb

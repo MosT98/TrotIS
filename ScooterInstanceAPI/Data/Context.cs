@@ -26,9 +26,15 @@ namespace ScooterInstanceAPI.Data
             modelBuilder.Entity<ScooterInstance>()
                 .HasOne(a => a.Scooter);
 
-            modelBuilder.Entity<ScooterInstance>()
-                .HasData(ScooterInstance.Create(7, new Scooter("Yamaha", "v7", 25, 15, 25, 200, 500, 90)));
+            //modelBuilder.Entity<Scooter>()
+            //    .HasMany(a => a.ScooterInstances);
 
+            modelBuilder.Entity<Scooter>()
+                .HasData(Scooter.Create("Yamaha", "v2", 50, 15, 25, 150, 500, 85));
+
+            modelBuilder.Entity<ScooterInstance>()
+                .HasData(ScooterInstance.Create(7));
+            //Scooter.Create("Yamaha", "v2", 50, 15, 25, 150, 500, 85)));
         }
     }
 }

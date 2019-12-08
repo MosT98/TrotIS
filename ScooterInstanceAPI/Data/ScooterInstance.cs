@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
-using TrotIS.Shared;
 
 namespace ScooterInstanceAPI.Data
 {
@@ -17,16 +15,15 @@ namespace ScooterInstanceAPI.Data
             ScooterInstanceId = Guid.NewGuid();
         }
 
-        public static ScooterInstance Create(int scooterAutonomy, Scooter scooter)
+        public static ScooterInstance Create(int scooterAutonomy)
         {
-            return new ScooterInstance()
+            return new ScooterInstance
             {
-                ScooterAutonomy = scooterAutonomy,
-                Scooter = scooter
+                ScooterInstanceId = Guid.NewGuid(),
+                ScooterAutonomy = scooterAutonomy
+                //Scooter = scooter
             };
         }
-
-        //TODO: scuter, autonomie, id + relatiile cu scuter in oldContext, maybe ala de locatie sau scooter
 
     }
 }
