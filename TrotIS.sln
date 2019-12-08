@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrotIS.Shared", "TrotIS\TrotIS.Shared.csproj", "{EC442457-DA79-4465-9673-3666A2CD7211}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserAPI", "UserAPI\UserAPI.csproj", "{367922EC-1DF1-4743-9995-56710766A1C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserAPI", "UserAPI\UserAPI.csproj", "{367922EC-1DF1-4743-9995-56710766A1C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScooterInstanceAPI", "ScooterInstanceAPI\ScooterInstanceAPI.csproj", "{B73BFEE1-9B97-4F80-8272-E3EEE2774B0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{367922EC-1DF1-4743-9995-56710766A1C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{367922EC-1DF1-4743-9995-56710766A1C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{367922EC-1DF1-4743-9995-56710766A1C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B73BFEE1-9B97-4F80-8272-E3EEE2774B0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B73BFEE1-9B97-4F80-8272-E3EEE2774B0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B73BFEE1-9B97-4F80-8272-E3EEE2774B0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B73BFEE1-9B97-4F80-8272-E3EEE2774B0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
