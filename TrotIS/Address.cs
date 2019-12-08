@@ -18,9 +18,29 @@ namespace TrotIS.Shared
         public string Apartment { get; set; }
         //spublic virtual User User { get; set; }
 
-        public Address(string country, string county, string city, string street, int number, string block, int floor, string apartment)
+        public static Address Create(string country, string county, string city, string street, int number, string block, int floor, string apartment)
+        {
+            return new Address()
+            {
+                AddressId = Guid.NewGuid(),
+                Country = country,
+                County = county,
+                City = city,
+                Street = street,
+                Number = number,
+                Block = block,
+                Floor = floor,
+                Apartment = apartment
+            };
+        }
+
+        public Address()
         {
             AddressId = Guid.NewGuid();
+        }
+
+        public void Update(string country, string county, string city, string street, int number, string block, int floor, string apartment)
+        {
             Country = country;
             County = county;
             City = city;
@@ -29,11 +49,6 @@ namespace TrotIS.Shared
             Block = block;
             Floor = floor;
             Apartment = apartment;
-        }
-
-        public Address()
-        {
-            AddressId = Guid.NewGuid();
         }
     }
 }

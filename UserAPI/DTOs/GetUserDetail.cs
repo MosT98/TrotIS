@@ -1,15 +1,16 @@
 ﻿using MediatR;
+using System;
 using UserAPI.Data;
 
 namespace UserAPI.DTOs
 {
     public class GetUserDetail: IRequest<User>
     {
-        public GetUserDetail(string email)
+        public GetUserDetail(Guid id)
         {
-            Email = email;
+            UserId = id;
         }
 
-        public string Email { get; }
+        public Guid UserId { get; }
     }
 }

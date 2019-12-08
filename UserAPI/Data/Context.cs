@@ -8,6 +8,7 @@ namespace UserAPI.Data
     {
         
         public DbSet<User> Users { get; set; }
+        public DbSet<Address> Addresses { get; set; }
    
         public Context(DbContextOptions<Context> options) : base(options)
         {
@@ -30,6 +31,7 @@ namespace UserAPI.Data
 
             modelBuilder.Entity<User>().HasData(User.Create("catalinbelu21@gmail.com", "parola", "Catalin", "Belu", 
                 "0770796616", DateTime.Parse("06/16/1999"), EnumLists.SocialClass.student));
+            modelBuilder.Entity<Address>().HasData(Address.Create("Romania", "Iasi", "Iasi", "Moara de foc", 35, "Solomon", 7, "7A"));
         }
     }
 }

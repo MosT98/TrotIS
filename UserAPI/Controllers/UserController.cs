@@ -48,14 +48,28 @@ namespace UserAPI.Controllers
         }
 
         [HttpGet ("{email}")]
-        public async Task<ActionResult<User>> Get(string email)
+        public async Task<ActionResult<User>> Get(Guid id)
         {
-            var users = await mediator.Send(new GetUserDetail(email));
+            var users = await mediator.Send(new GetUserDetail(id));
             if (users == null)
             {
                 return NotFound();
             }
             return Ok(users);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromBody] DeleteUser request)
+        {
+            await mediator.Send(request);
+            return NoContent();
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<User>> Update([FromBody] UpdateUser request)
+        {
+            var user = await mediator.Send(request);
+            return user;
         }
     }
 }

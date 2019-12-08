@@ -5,8 +5,9 @@ using UserAPI.Data;
 
 namespace UserAPI.DTOs
 {
-    public class CreateUser: IRequest<User>
+    public class UpdateUser: IRequest<User>
     {
+        public Guid UserId { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string FirstName { get; set; }
@@ -14,5 +15,7 @@ namespace UserAPI.DTOs
         public string Phone { get; set; }
         public DateTime BirthDay { get; set; }
         public EnumLists.SocialClass SocialClass { get; set; }
+        public Address Address { get; set; }
+
     }
 }
