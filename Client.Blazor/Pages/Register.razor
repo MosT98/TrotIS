@@ -16,21 +16,8 @@
                 <input type="text" name="phone"  @bind="user.Phone"><br>
                 <input type="date" name="birthday"  @bind="user.BirthDay"><br>
                 <input type="text" name="socialclass"  @bind="user.SocialClass"><br>
-                <button @onclick="RegisterUser()">Register</button>
+                <button  onclick="@((Action<EventArgs>) (args => RegisterUser(args)))">Register</button>
             </form>
-        @*<EditForm Model="@user" OnValidSubmit="@RegisterUser">
-            <DataAnnotationsValidator />
-            <ValidationSummary />
-
-            <InputText id="email" @bind-Value="user.Email" />
-            <InputText id="password" @bind-Value="user.Password" />
-            <InputText id="firstname" @bind-Value="user.FirstName" />
-            <InputText id="lastname" @bind-Value="user.LastName" />
-            <InputText id="phone" @bind-Value="user.Phone" />
-            <InputDate id="birthday" @bind-Value="user.BirthDay" />
-            <InputNumber id="socialclass" @bind-Value="user.SocialClass" />
-            <button type="submit">Submit</button>
-        </EditForm>*@
     </div>
 </div>
 
@@ -42,24 +29,12 @@
 
     private string apiUrl = "https://localhost:5010/api/user";
     private User user = new User();
-    public EventCallback RegisterUser()
+    private void RegisterUser(EventArgs args)
     {
-        //user = new User
-        //{
-        //    UserId = Guid.NewGuid(),
-        //    Email = @email,
-        //    Password = password,
-        //    FirstName = firstname,
-        //    LastName = lastname,
-        //    Phone = phone,
-        //    BirthDay = birthday,
-        //    SocialClass = socialclass,
-        //    Address = null
-        //};
+        user.UserId = Guid.NewGuid();
+        user.Address = null;
         Http.PostAsJsonAsync(apiUrl, user);
         navManager.NavigateTo("/", true);
-        
-        
     }
 
     public class User
