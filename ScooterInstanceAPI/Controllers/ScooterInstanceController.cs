@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ScooterInstanceAPI.Data;
@@ -26,7 +27,7 @@ namespace ScooterInstanceAPI.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet] 
         public async Task<ActionResult<ScooterInstance>> Get()
         {
             var scooterInstances = await mediator.Send(new GetScooterInstances());
@@ -36,6 +37,39 @@ namespace ScooterInstanceAPI.Controllers
             }
 
             return Ok(scooterInstances);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ScooterInstance>> Get(Guid id)
+        {
+            var scooterInstance = await mediator.Send(new GetScooterInstanceById(id));
+            if (scooterInstance==null)
+            {
+                return NotFound();
+            }
+
+            return Ok(scooterInstance);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<ScooterInstance>> Create([FromBody] CreateScooterInstance request)
+        {
+            var newScooterInstance = await mediator.Send(request);
+            return newScooterInstance;
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult<ScooterInstance>> Delete([FromBody] DeleteScooterInstance request)
+        {
+            await mediator.Send(request);
+            return NoContent();
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<ScooterInstance>> Update([FromBody] UpdateScooterInstance request)
+        {
+            var scooterInstance = await mediator.Send(request);
+            return scooterInstance;
         }
     }
 }
