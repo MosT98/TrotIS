@@ -1,0 +1,78 @@
+﻿@page "/register"
+@inject HttpClient Http
+@using TrotIS.Shared
+@inject NavigationManager navManager
+
+
+<h3>Register</h3>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+                <input type="email" name="email" @bind="user.Email"><br>
+                <input type="password" name="password" @bind="user.Password"><br>
+                <input type="text" name="firstname"  @bind="user.FirstName"><br>
+                <input type="text" name="lastname"  @bind="user.LastName"><br>
+                <input type="text" name="phone"  @bind="user.Phone"><br>
+                <input type="date" name="birthday"  @bind="user.BirthDay"><br>
+                <input type="text" name="socialclass"  @bind="user.SocialClass"><br>
+                <button @onclick="RegisterUser()">Register</button>
+            </form>
+        @*<EditForm Model="@user" OnValidSubmit="@RegisterUser">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <InputText id="email" @bind-Value="user.Email" />
+            <InputText id="password" @bind-Value="user.Password" />
+            <InputText id="firstname" @bind-Value="user.FirstName" />
+            <InputText id="lastname" @bind-Value="user.LastName" />
+            <InputText id="phone" @bind-Value="user.Phone" />
+            <InputDate id="birthday" @bind-Value="user.BirthDay" />
+            <InputNumber id="socialclass" @bind-Value="user.SocialClass" />
+            <button type="submit">Submit</button>
+        </EditForm>*@
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@code {
+
+    private string apiUrl = "https://localhost:5010/api/user";
+    private User user = new User();
+    public EventCallback RegisterUser()
+    {
+        //user = new User
+        //{
+        //    UserId = Guid.NewGuid(),
+        //    Email = @email,
+        //    Password = password,
+        //    FirstName = firstname,
+        //    LastName = lastname,
+        //    Phone = phone,
+        //    BirthDay = birthday,
+        //    SocialClass = socialclass,
+        //    Address = null
+        //};
+        Http.PostAsJsonAsync(apiUrl, user);
+        navManager.NavigateTo("/", true);
+        
+        
+    }
+
+    public class User
+    {
+        public Guid UserId { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Phone { get; set; }
+        public DateTime BirthDay { get; set; }
+        public EnumLists.SocialClass SocialClass { get; set; }
+        public virtual Address Address { get; set; }
+    }
+
+}

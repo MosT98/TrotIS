@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Client.Blazor.Data;
+using System.Net.Http;
 
 namespace Client.Blazor
 {
@@ -29,6 +30,18 @@ namespace Client.Blazor
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            if (services.All(x => x.ServiceType != typeof(HttpClient)))
+            {
+                services.AddScoped(
+                    s =>
+                    {
+                        var navigationManager = s.GetRequiredService<NavigationManager>();
+                        return new HttpClient
+                        {
+                            BaseAddress = new Uri(navigationManager.BaseUri)
+                        };
+                    });
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

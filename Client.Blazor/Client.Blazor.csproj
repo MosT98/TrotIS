@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TrotIS\TrotIS.Shared.csproj" />
-    <ProjectReference Include="..\UserAPI\UserAPI.csproj" />
   </ItemGroup>
 
 </Project>

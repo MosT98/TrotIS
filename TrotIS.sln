@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserAPI", "UserAPI\UserAPI.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScooterInstanceAPI", "ScooterInstanceAPI\ScooterInstanceAPI.csproj", "{B73BFEE1-9B97-4F80-8272-E3EEE2774B0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Blazor", "Client.Blazor\Client.Blazor.csproj", "{A004F359-8840-44B6-9010-CC382CD450EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.Blazor", "Client.Blazor\Client.Blazor.csproj", "{A004F359-8840-44B6-9010-CC382CD450EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

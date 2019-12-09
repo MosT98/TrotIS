@@ -1,10 +1,7 @@
 D:\NET\TrotIS\Client.Blazor\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\NET\TrotIS\Client.Blazor\bin\Debug\netcoreapp3.1\appsettings.json
 D:\NET\TrotIS\Client.Blazor\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
-D:\NET\TrotIS\Client.Blazor\bin\Debug\netcoreapp3.1\UserAPI.exe
 D:\NET\TrotIS\Client.Blazor\bin\Debug\netcoreapp3.1\Client.Blazor.exe
-D:\NET\TrotIS\Client.Blazor\bin\Debug\netcoreapp3.1\MediatR.dll
-D:\NET\TrotIS\Client.Blazor\bin\Debug\netcoreapp3.1\MediatR.Extensions.Microsoft.DependencyInjection.dll
 D:\NET\TrotIS\Client.Blazor\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 D:\NET\TrotIS\Client.Blazor\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
 D:\NET\TrotIS\Client.Blazor\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
@@ -13,9 +10,7 @@ D:\NET\TrotIS\Client.Blazor\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCor
 D:\NET\TrotIS\Client.Blazor\bin\Debug\netcoreapp3.1\Npgsql.dll
 D:\NET\TrotIS\Client.Blazor\bin\Debug\netcoreapp3.1\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 D:\NET\TrotIS\Client.Blazor\bin\Debug\netcoreapp3.1\TrotIS.Shared.dll
-D:\NET\TrotIS\Client.Blazor\bin\Debug\netcoreapp3.1\UserAPI.dll
 D:\NET\TrotIS\Client.Blazor\bin\Debug\netcoreapp3.1\TrotIS.Shared.pdb
-D:\NET\TrotIS\Client.Blazor\bin\Debug\netcoreapp3.1\UserAPI.pdb
 D:\NET\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Client.Blazor.csprojAssemblyReference.cache
 D:\NET\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\staticwebassets\Client.Blazor.StaticWebAssets.Manifest.cache
 D:\NET\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\staticwebassets\Client.Blazor.StaticWebAssets.xml
@@ -157,10 +152,8 @@ D:\NET\TrotIS\Client.Blazor\bin\Debug\netcoreapp3.1\Client.Blazor.Views.pdb
 D:\NET\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Client.Blazor.Views.pdb
 D:\NET\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Client.Blazor.dll
 D:\NET\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Client.Blazor.pdb
-D:\NET\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Razor\Pages\Register.cshtml.g.cs
 D:\NET\TrotIS\Client.Blazor\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
 D:\NET\TrotIS\Client.Blazor\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
-D:\NET\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Client.Blazor.MvcApplicationPartsAssemblyInfo.cs
 D:\NET\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Client.Blazor.MvcApplicationPartsAssemblyInfo.cache
 D:\NET\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\RazorDeclaration\Client.Blazor.dll
 D:\NET\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Razor\App.razor.g.cs
@@ -344,3 +337,5 @@ D:\ANUL III\dotNET\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Client.Blazor.Vi
 D:\ANUL III\dotNET\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Client.Blazor.csproj.CopyComplete
 D:\ANUL III\dotNET\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Client.Blazor.dll
 D:\ANUL III\dotNET\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Client.Blazor.pdb
+D:\NET\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Register.razor.g.cs
+D:\NET\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Razor\Pages\Register.razor.g.cs

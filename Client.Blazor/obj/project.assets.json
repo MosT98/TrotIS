@@ -2,28 +2,6 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "MediatR/7.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/MediatR.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/MediatR.dll": {}
-        }
-      },
-      "MediatR.Extensions.Microsoft.DependencyInjection/7.0.0": {
-        "type": "package",
-        "dependencies": {
-          "MediatR": "7.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/MediatR.Extensions.Microsoft.DependencyInjection.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/MediatR.Extensions.Microsoft.DependencyInjection.dll": {}
-        }
-      },
       "Microsoft.AspNet.WebApi.Client/5.2.7": {
         "type": "package",
         "dependencies": {
@@ -922,7 +900,7 @@
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
         }
       },
-      "Npgsql/4.1.2": {
+      "Npgsql/4.1.1": {
         "type": "package",
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "4.6.0"
@@ -934,19 +912,19 @@
           "lib/netcoreapp3.0/Npgsql.dll": {}
         }
       },
-      "Npgsql.EntityFrameworkCore.PostgreSQL/3.1.0": {
+      "Npgsql.EntityFrameworkCore.PostgreSQL/3.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "3.1.0",
-          "Microsoft.EntityFrameworkCore.Abstractions": "3.1.0",
-          "Microsoft.EntityFrameworkCore.Relational": "3.1.0",
-          "Npgsql": "4.1.2"
+          "Microsoft.EntityFrameworkCore": "3.0.0",
+          "Microsoft.EntityFrameworkCore.Abstractions": "3.0.0",
+          "Microsoft.EntityFrameworkCore.Relational": "3.0.0",
+          "Npgsql": "4.1.1"
         },
         "compile": {
-          "lib/netstandard2.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {}
+          "lib/netstandard2.1/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {}
+          "lib/netstandard2.1/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {}
         }
       },
       "NuGet.Frameworks/4.7.0": {
@@ -2779,55 +2757,10 @@
         "runtime": {
           "bin/placeholder/TrotIS.Shared.dll": {}
         }
-      },
-      "UserAPI/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.0",
-        "dependencies": {
-          "MediatR": "7.0.0",
-          "MediatR.Extensions.Microsoft.DependencyInjection": "7.0.0",
-          "Microsoft.EntityFrameworkCore": "3.1.0",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "3.1.0",
-          "TrotIS.Shared": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/UserAPI.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/UserAPI.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
       }
     }
   },
   "libraries": {
-    "MediatR/7.0.0": {
-      "sha512": "sgfHxkBsmMlHOD564SnLqTvSbAuGlFiZfc6ybxBSI1wYV/2u+Y5TXtFoIhCISFg5/s/6aMvB338QC2JseHsjTA==",
-      "type": "package",
-      "path": "mediatr/7.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net461/MediatR.dll",
-        "lib/netstandard2.0/MediatR.dll",
-        "mediatr.7.0.0.nupkg.sha512",
-        "mediatr.nuspec"
-      ]
-    },
-    "MediatR.Extensions.Microsoft.DependencyInjection/7.0.0": {
-      "sha512": "DRf8jBnjBg84da1L1L0YmwqkhCV+UJTg7bTBHOhleWrLfrtSK5h5aNeE1HOofs1Afisq03B6H2C10NmS47gmqA==",
-      "type": "package",
-      "path": "mediatr.extensions.microsoft.dependencyinjection/7.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard2.0/MediatR.Extensions.Microsoft.DependencyInjection.dll",
-        "mediatr.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
-        "mediatr.extensions.microsoft.dependencyinjection.nuspec"
-      ]
-    },
     "Microsoft.AspNet.WebApi.Client/5.2.7": {
       "sha512": "/76fAHknzvFqbznS6Uj2sOyE9rJB3PltY+f53TH8dX9RiGhk02EhuFCWljSj5nnqKaTsmma8DFR50OGyQ4yJ1g==",
       "type": "package",
@@ -4256,10 +4189,10 @@
         "newtonsoft.json.bson.nuspec"
       ]
     },
-    "Npgsql/4.1.2": {
-      "sha512": "41Nht/GnC/cRCA/2T9vq5NAv8m24RDp3paRhJCMc8ipOURH6zDZAQFe8mcLq1hAgMkK1Wy8VoRYL/8Op+L6OCg==",
+    "Npgsql/4.1.1": {
+      "sha512": "VvYSduwCVCy1erIntV3jVbBduAL8+hqobg8xf5xPmkqzGJ5j9Wx4y/eXz2+BLmFkozJEjTzxz8/X5cOyJ4P9Ig==",
       "type": "package",
-      "path": "npgsql/4.1.2",
+      "path": "npgsql/4.1.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4275,23 +4208,22 @@
         "lib/netstandard2.1/Npgsql.dll",
         "lib/netstandard2.1/Npgsql.pdb",
         "lib/netstandard2.1/Npgsql.xml",
-        "npgsql.4.1.2.nupkg.sha512",
+        "npgsql.4.1.1.nupkg.sha512",
         "npgsql.nuspec",
         "postgresql.png"
       ]
     },
-    "Npgsql.EntityFrameworkCore.PostgreSQL/3.1.0": {
-      "sha512": "RoT3YXmYpjGTPqYnENYAnKTgTe0/8IIDWpJ5JC+R/KgqS0/+XZDFMY0mV5yzQzjVt1rj/KChQ4ta7WLzqnI2/g==",
+    "Npgsql.EntityFrameworkCore.PostgreSQL/3.0.1": {
+      "sha512": "eaPyTwh8udaOJLCUe95EKuSehxEmzw7FAY2ZRk7djfvSC89cUiuVYByyn4D1mJCYK6O892O3V6w7n6zlelIQEQ==",
       "type": "package",
-      "path": "npgsql.entityframeworkcore.postgresql/3.1.0",
+      "path": "npgsql.entityframeworkcore.postgresql/3.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/netstandard2.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll",
-        "lib/netstandard2.0/Npgsql.EntityFrameworkCore.PostgreSQL.pdb",
-        "npgsql.entityframeworkcore.postgresql.3.1.0.nupkg.sha512",
-        "npgsql.entityframeworkcore.postgresql.nuspec",
-        "postgresql.png"
+        "lib/netstandard2.1/Npgsql.EntityFrameworkCore.PostgreSQL.dll",
+        "lib/netstandard2.1/Npgsql.EntityFrameworkCore.PostgreSQL.pdb",
+        "npgsql.entityframeworkcore.postgresql.3.0.1.nupkg.sha512",
+        "npgsql.entityframeworkcore.postgresql.nuspec"
       ]
     },
     "NuGet.Frameworks/4.7.0": {
@@ -8803,11 +8735,6 @@
       "type": "project",
       "path": "../TrotIS/TrotIS.Shared.csproj",
       "msbuildProject": "../TrotIS/TrotIS.Shared.csproj"
-    },
-    "UserAPI/1.0.0": {
-      "type": "project",
-      "path": "../UserAPI/UserAPI.csproj",
-      "msbuildProject": "../UserAPI/UserAPI.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -8818,28 +8745,23 @@
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.0",
       "Microsoft.Extensions.Logging.Debug >= 3.1.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.0",
-      "TrotIS.Shared >= 1.0.0",
-      "UserAPI >= 1.0.0"
+      "TrotIS.Shared >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\andre\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\cbelu\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ANUL III\\dotNET\\TrotIS\\Client.Blazor\\Client.Blazor.csproj",
+      "projectUniqueName": "D:\\NET\\TrotIS\\Client.Blazor\\Client.Blazor.csproj",
       "projectName": "Client.Blazor",
-      "projectPath": "D:\\ANUL III\\dotNET\\TrotIS\\Client.Blazor\\Client.Blazor.csproj",
-      "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-      "outputPath": "D:\\ANUL III\\dotNET\\TrotIS\\Client.Blazor\\obj\\",
+      "projectPath": "D:\\NET\\TrotIS\\Client.Blazor\\Client.Blazor.csproj",
+      "packagesPath": "C:\\Users\\cbelu\\.nuget\\packages\\",
+      "outputPath": "D:\\NET\\TrotIS\\Client.Blazor\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\cbelu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8852,11 +8774,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
-              "projectPath": "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj"
-            },
-            "D:\\ANUL III\\dotNET\\TrotIS\\UserAPI\\UserAPI.csproj": {
-              "projectPath": "D:\\ANUL III\\dotNET\\TrotIS\\UserAPI\\UserAPI.csproj"
+            "D:\\NET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
+              "projectPath": "D:\\NET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj"
             }
           }
         }

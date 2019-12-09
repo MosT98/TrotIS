@@ -89,3 +89,4 @@ D:\ANUL III\dotNET\TrotIS\UserAPI\obj\Debug\netcoreapp3.0\UserAPI.dll
 D:\ANUL III\dotNET\TrotIS\UserAPI\obj\Debug\netcoreapp3.0\UserAPI.pdb
 D:\ANUL III\dotNET\TrotIS\UserAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.Design.dll
 D:\ANUL III\dotNET\TrotIS\UserAPI\obj\Debug\netcoreapp3.0\UserAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\NET\TrotIS\UserAPI\bin\Debug\netcoreapp3.0\Microsoft.EntityFrameworkCore.Design.dll
