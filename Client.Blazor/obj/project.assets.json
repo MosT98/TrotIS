@@ -8749,19 +8749,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\cbelu\\.nuget\\packages\\": {}
+    "C:\\Users\\andre\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\NET\\TrotIS\\Client.Blazor\\Client.Blazor.csproj",
+      "projectUniqueName": "D:\\ANUL III\\dotNET\\TrotIS\\Client.Blazor\\Client.Blazor.csproj",
       "projectName": "Client.Blazor",
-      "projectPath": "D:\\NET\\TrotIS\\Client.Blazor\\Client.Blazor.csproj",
-      "packagesPath": "C:\\Users\\cbelu\\.nuget\\packages\\",
-      "outputPath": "D:\\NET\\TrotIS\\Client.Blazor\\obj\\",
+      "projectPath": "D:\\ANUL III\\dotNET\\TrotIS\\Client.Blazor\\Client.Blazor.csproj",
+      "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
+      "outputPath": "D:\\ANUL III\\dotNET\\TrotIS\\Client.Blazor\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\cbelu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8774,8 +8778,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\NET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
-              "projectPath": "D:\\NET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj"
+            "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
+              "projectPath": "D:\\ANUL III\\dotNET\\TrotIS\\TrotIS\\TrotIS.Shared.csproj"
             }
           }
         }

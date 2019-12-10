@@ -25,5 +25,10 @@ namespace ScooterInstanceAPI.Data
             };
         }
 
+        public void Update(int scooterAutonomy)
+        {
+            ScooterAutonomy = scooterAutonomy;
+            //Scooter = scooter;
+        }
     }
 }
