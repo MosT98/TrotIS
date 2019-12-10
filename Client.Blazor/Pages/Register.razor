@@ -16,7 +16,7 @@
                 <input type="text" name="phone"  @bind="user.Phone"><br>
                 <input type="date" name="birthday"  @bind="user.BirthDay"><br>
                 <input type="text" name="socialclass"  @bind="user.SocialClass"><br>
-                <button  onclick="@((Action<EventArgs>) (args => RegisterUser(args)))">Register</button>
+                <button  @onclick="@RegisterUser">Register</button>
             </form>
     </div>
 </div>
@@ -27,9 +27,9 @@
 
 @code {
 
-    private string apiUrl = "https://localhost:5010/api/user";
+    private string apiUrl = "https://localhost:5002/api/user";
     private User user = new User();
-    private void RegisterUser(EventArgs args)
+    private void RegisterUser()
     {
         user.UserId = Guid.NewGuid();
         user.Address = null;
