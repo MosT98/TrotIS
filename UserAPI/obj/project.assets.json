@@ -973,23 +973,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Andrei\\.nuget\\packages\\": {},
+    "C:\\Users\\ake\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\UserAPI\\UserAPI.csproj",
+      "projectUniqueName": "D:\\ANUL 3\\Semestrul 1\\.NET\\PROJECT\\TrotIS\\UserAPI\\UserAPI.csproj",
       "projectName": "UserAPI",
-      "projectPath": "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\UserAPI\\UserAPI.csproj",
-      "packagesPath": "C:\\Users\\Andrei\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\UserAPI\\obj\\",
+      "projectPath": "D:\\ANUL 3\\Semestrul 1\\.NET\\PROJECT\\TrotIS\\UserAPI\\UserAPI.csproj",
+      "packagesPath": "C:\\Users\\ake\\.nuget\\packages\\",
+      "outputPath": "D:\\ANUL 3\\Semestrul 1\\.NET\\PROJECT\\TrotIS\\UserAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Andrei\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ake\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1002,8 +1002,8 @@
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
-            "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
-              "projectPath": "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\TrotIS\\TrotIS.Shared.csproj"
+            "D:\\ANUL 3\\Semestrul 1\\.NET\\PROJECT\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
+              "projectPath": "D:\\ANUL 3\\Semestrul 1\\.NET\\PROJECT\\TrotIS\\TrotIS\\TrotIS.Shared.csproj"
             }
           }
         }
@@ -1058,6 +1058,14 @@
           {
             "name": "Microsoft.NETCore.App.Host.win-x64",
             "version": "[3.0.1, 3.0.1]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[3.0.0, 3.0.0]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[3.0.0, 3.0.0]"
           }
         ],
         "frameworkReferences": {

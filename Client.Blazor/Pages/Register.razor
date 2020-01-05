@@ -9,7 +9,6 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
             <label for="email">Email </label><input id="email" type="email" name="email" @bind="user.Email" placeholder="Email..."><br>
             <label for="password">Password </label><input id="password" type="password" name="password" @bind="user.Password" placeholder="Password..."><br>
             <label for="firstname">First name </label><input id="firstname" type="text" name="firstname" @bind="user.FirstName" placeholder="First Name"><br>
@@ -18,7 +17,6 @@
             <label for="birthday">Email </label><input id="birthday" type="date" name="birthday" @bind="user.BirthDay" placeholder="Birthday"><br>
             <label for="socialclass">Social class </label><input id="socialclass" type="text" name="socialclass" @bind="user.SocialClass" placeholder="Social class"><br>
             <button @onclick="@RegisterUser">Register</button>
-        </form>
     </div>
 </div>
 <div>
@@ -32,11 +30,11 @@
 
     private string apiUrl = "https://localhost:5002/api/user";
     private User user = new User();
-    private void RegisterUser()
+    private async void RegisterUser()
     {
         user.UserId = Guid.NewGuid();
         user.Address = null;
-        Http.PostAsJsonAsync(apiUrl, user);
+        await Http.PostAsJsonAsync(apiUrl, user);
         navManager.NavigateTo("/", true);
     }
     private void NavigateToLoginComponent()

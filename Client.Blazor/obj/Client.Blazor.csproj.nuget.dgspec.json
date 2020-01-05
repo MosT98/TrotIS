@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\Client.Blazor\\Client.Blazor.csproj": {}
+    "D:\\ANUL 3\\Semestrul 1\\.NET\\PROJECT\\TrotIS\\Client.Blazor\\Client.Blazor.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\Client.Blazor\\Client.Blazor.csproj": {
+    "D:\\ANUL 3\\Semestrul 1\\.NET\\PROJECT\\TrotIS\\Client.Blazor\\Client.Blazor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\Client.Blazor\\Client.Blazor.csproj",
+        "projectUniqueName": "D:\\ANUL 3\\Semestrul 1\\.NET\\PROJECT\\TrotIS\\Client.Blazor\\Client.Blazor.csproj",
         "projectName": "Client.Blazor",
-        "projectPath": "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\Client.Blazor\\Client.Blazor.csproj",
-        "packagesPath": "C:\\Users\\Andrei\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\Client.Blazor\\obj\\",
+        "projectPath": "D:\\ANUL 3\\Semestrul 1\\.NET\\PROJECT\\TrotIS\\Client.Blazor\\Client.Blazor.csproj",
+        "packagesPath": "C:\\Users\\ake\\.nuget\\packages\\",
+        "outputPath": "D:\\ANUL 3\\Semestrul 1\\.NET\\PROJECT\\TrotIS\\Client.Blazor\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Andrei\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ake\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -30,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
-                "projectPath": "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\TrotIS\\TrotIS.Shared.csproj"
+              "D:\\ANUL 3\\Semestrul 1\\.NET\\PROJECT\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
+                "projectPath": "D:\\ANUL 3\\Semestrul 1\\.NET\\PROJECT\\TrotIS\\TrotIS\\TrotIS.Shared.csproj"
               }
             }
           }
@@ -94,20 +94,20 @@
         }
       }
     },
-    "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
+    "D:\\ANUL 3\\Semestrul 1\\.NET\\PROJECT\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
+        "projectUniqueName": "D:\\ANUL 3\\Semestrul 1\\.NET\\PROJECT\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
         "projectName": "TrotIS.Shared",
-        "projectPath": "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
-        "packagesPath": "C:\\Users\\Andrei\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\TrotIS\\obj\\",
+        "projectPath": "D:\\ANUL 3\\Semestrul 1\\.NET\\PROJECT\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
+        "packagesPath": "C:\\Users\\ake\\.nuget\\packages\\",
+        "outputPath": "D:\\ANUL 3\\Semestrul 1\\.NET\\PROJECT\\TrotIS\\TrotIS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Andrei\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ake\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -154,6 +154,14 @@
             {
               "name": "Microsoft.AspNetCore.App.Ref",
               "version": "[3.0.1, 3.0.1]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
             }
           ],
           "frameworkReferences": {

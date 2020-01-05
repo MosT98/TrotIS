@@ -846,3 +846,5 @@ C:\Users\Andrei\Desktop\salll\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Clien
 C:\Users\Andrei\Desktop\salll\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Client.Blazor.csproj.CopyComplete
 C:\Users\Andrei\Desktop\salll\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Client.Blazor.dll
 C:\Users\Andrei\Desktop\salll\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Client.Blazor.pdb
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Login.razor.g.cs
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Razor\Pages\Login.razor.g.cs
