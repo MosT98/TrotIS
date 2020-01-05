@@ -23,22 +23,22 @@
 </div>
 
 @code {
-    private void NavigateToRegisterComponent()
-    {
+	private void NavigateToRegisterComponent()
+	{
 
-        NavigationManager.NavigateTo("/register", true);
-    }
-    private User user = new User();
-    private async void LoginUser()
-    {
-        await sessionStorage.SetItemAsync("sal","salutare frate")
-        
-        NavigationManager.NavigateTo("/", true);
+		NavigationManager.NavigateTo("/register", true);
+	}
+	private User user = new User();
+	private async void LoginUser()
+	{
+		await sessionStorage.SetItemAsync("sal", "salutare frate");
 
-    }
-    public class User
-    {
-        public string Email { get; set; }
-        public string Password { get; set; }
-    }
+		NavigationManager.NavigateTo("/", true);
+
+	}
+	public class User
+	{
+		public string Email { get; set; }
+		public string Password { get; set; }
+	}
 }

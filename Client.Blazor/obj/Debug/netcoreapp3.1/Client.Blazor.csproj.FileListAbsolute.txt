@@ -849,3 +849,4 @@ C:\Users\Andrei\Desktop\salll\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Razor
 C:\Users\Andrei\Desktop\salll\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Razor\Shared\MainLayout.razor.g.cs
 C:\Users\Andrei\Desktop\salll\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Razor\Shared\NavMenu.razor.g.cs
 C:\Users\Andrei\Desktop\salll\TrotIS\Client.Blazor\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\Client.Blazor\bin\Debug\netcoreapp3.1\Blazored.SessionStorage.dll
