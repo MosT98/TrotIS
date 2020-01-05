@@ -56,7 +56,7 @@ namespace ScooterInstanceAPI.Migrations
                     b.HasData(
                         new
                         {
-                            ScooterId = new Guid("74327683-ba31-4bef-bca7-e3b23212d24d"),
+                            ScooterId = new Guid("6f9b6ef3-31d9-4f16-bb45-a6235aba003b"),
                             AgeLimitMax = 25,
                             AgeLimitMin = 15,
                             BatteryLife = 50,
@@ -89,7 +89,7 @@ namespace ScooterInstanceAPI.Migrations
                     b.HasData(
                         new
                         {
-                            ScooterInstanceId = new Guid("b3451766-f082-4981-9c44-add0d8d383c3"),
+                            ScooterInstanceId = new Guid("f05b7547-502f-4286-8aa2-d80df326b90c"),
                             ScooterAutonomy = 7
                         });
                 });

@@ -1,6 +1,7 @@
 ﻿@page "/register"
 @inject HttpClient Http
 @using TrotIS.Shared
+@using Microsoft.AspNetCore.Components;
 @inject NavigationManager navManager
 
 
@@ -9,14 +10,14 @@
 <div class="row">
     <div class="col-md-4">
         <form method="post">
-                <input type="email" name="email" @bind="user.Email"><br>
-                <input type="password" name="password" @bind="user.Password"><br>
-                <input type="text" name="firstname"  @bind="user.FirstName"><br>
-                <input type="text" name="lastname"  @bind="user.LastName"><br>
-                <input type="text" name="phone"  @bind="user.Phone"><br>
-                <input type="date" name="birthday"  @bind="user.BirthDay"><br>
-                <input type="text" name="socialclass"  @bind="user.SocialClass"><br>
-                <button  @onclick="@RegisterUser">Register</button>
+                <label for="email">Email </label><input id="email" type="email" name="email" @bind="user.Email"><br>
+                <label for="password">Password </label><input id="password" type="password" name="password" @bind="user.Password"><br>
+                <label for="firstname">First name </label><input id="firstname" type="text" name="firstname" @bind="user.FirstName"><br>
+                <label for="lastname">Last name </label><input id="lastname" type="text" name="lastname" @bind="user.LastName"><br>
+                <label for="phone">Phone </label><input id="phone" type="text" name="phone" @bind="user.Phone"><br>
+                <label for="birthday">Email </label><input id="birthday" type="date" name="birthday" @bind="user.BirthDay"><br>
+                <label for="socialclass">Social class </label><input id="socialclass" type="text" name="socialclass" @bind="user.SocialClass"><br>
+                <button @onclick="@RegisterUser">Register</button>
             </form>
     </div>
 </div>

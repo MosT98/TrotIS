@@ -56,7 +56,7 @@ namespace UserAPI.Migrations
                     b.HasData(
                         new
                         {
-                            AddressId = new Guid("ec2856fc-8c84-4330-9299-15ffba7b697a"),
+                            AddressId = new Guid("457828fe-659e-45d0-866f-ff779243abdc"),
                             Apartment = "7A",
                             Block = "Solomon",
                             City = "Iasi",
@@ -107,8 +107,8 @@ namespace UserAPI.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = new Guid("5e076492-8603-486c-a9df-1da58256938e"),
-                            BirthDay = new DateTime(1999, 12, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UserId = new Guid("095b5ad5-26de-456e-867e-36c363d0fdcc"),
+                            BirthDay = new DateTime(1999, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "catalinbelu21@gmail.com",
                             FirstName = "Catalin",
                             LastName = "Belu",

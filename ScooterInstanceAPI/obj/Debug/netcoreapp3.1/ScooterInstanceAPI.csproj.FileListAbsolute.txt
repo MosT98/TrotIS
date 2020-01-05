@@ -90,3 +90,34 @@ D:\NET\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInstanceAPI.Razo
 D:\NET\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInstanceAPI.csproj.CopyComplete
 D:\NET\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInstanceAPI.dll
 D:\NET\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInstanceAPI.pdb
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\appsettings.json
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\ScooterInstanceAPI.exe
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\ScooterInstanceAPI.deps.json
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\ScooterInstanceAPI.runtimeconfig.json
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\ScooterInstanceAPI.runtimeconfig.dev.json
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\ScooterInstanceAPI.dll
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\ScooterInstanceAPI.pdb
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\MediatR.dll
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\MediatR.Extensions.Microsoft.DependencyInjection.dll
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\Npgsql.dll
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\TrotIS.Shared.dll
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\bin\Debug\netcoreapp3.1\TrotIS.Shared.pdb
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInstanceAPI.csprojAssemblyReference.cache
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\staticwebassets\ScooterInstanceAPI.StaticWebAssets.Manifest.cache
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\staticwebassets\ScooterInstanceAPI.StaticWebAssets.xml
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInstanceAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInstanceAPI.AssemblyInfoInputs.cache
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInstanceAPI.AssemblyInfo.cs
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInstanceAPI.RazorTargetAssemblyInfo.cache
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInstanceAPI.csproj.CopyComplete
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInstanceAPI.dll
+D:\ANUL 3\Semestrul 1\.NET\PROJECT\TrotIS\ScooterInstanceAPI\obj\Debug\netcoreapp3.1\ScooterInstanceAPI.pdb
