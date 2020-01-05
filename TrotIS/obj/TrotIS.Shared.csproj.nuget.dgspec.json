@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Andrei\\Desktop\\trotis sa moara mama\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {}
+    "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Andrei\\Desktop\\trotis sa moara mama\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
+    "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Andrei\\Desktop\\trotis sa moara mama\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
         "projectName": "TrotIS.Shared",
-        "projectPath": "C:\\Users\\Andrei\\Desktop\\trotis sa moara mama\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
+        "projectPath": "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
         "packagesPath": "C:\\Users\\Andrei\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Andrei\\Desktop\\trotis sa moara mama\\TrotIS\\TrotIS\\obj\\",
+        "outputPath": "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\TrotIS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

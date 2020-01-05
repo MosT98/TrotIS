@@ -979,11 +979,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Andrei\\Desktop\\trotis sa moara mama\\TrotIS\\UserAPI\\UserAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\UserAPI\\UserAPI.csproj",
       "projectName": "UserAPI",
-      "projectPath": "C:\\Users\\Andrei\\Desktop\\trotis sa moara mama\\TrotIS\\UserAPI\\UserAPI.csproj",
+      "projectPath": "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\UserAPI\\UserAPI.csproj",
       "packagesPath": "C:\\Users\\Andrei\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Andrei\\Desktop\\trotis sa moara mama\\TrotIS\\UserAPI\\obj\\",
+      "outputPath": "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\UserAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -1002,8 +1002,8 @@
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
-            "C:\\Users\\Andrei\\Desktop\\trotis sa moara mama\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
-              "projectPath": "C:\\Users\\Andrei\\Desktop\\trotis sa moara mama\\TrotIS\\TrotIS\\TrotIS.Shared.csproj"
+            "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\TrotIS\\TrotIS.Shared.csproj": {
+              "projectPath": "C:\\Users\\Andrei\\Desktop\\salll\\TrotIS\\TrotIS\\TrotIS.Shared.csproj"
             }
           }
         }
