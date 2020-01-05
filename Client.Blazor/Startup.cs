@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Client.Blazor.Data;
 using System.Net.Http;
+using Blazored.SessionStorage;
 
 namespace Client.Blazor
 {
@@ -30,6 +31,7 @@ namespace Client.Blazor
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddBlazoredSessionStorage();
             if (services.All(x => x.ServiceType != typeof(HttpClient)))
             {
                 services.AddScoped(

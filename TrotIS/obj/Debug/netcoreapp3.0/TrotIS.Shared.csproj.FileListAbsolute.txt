@@ -38,3 +38,11 @@ C:\Users\Andrei\Desktop\trotis sa moara mama\TrotIS\TrotIS\obj\Debug\netcoreapp3
 C:\Users\Andrei\Desktop\trotis sa moara mama\TrotIS\TrotIS\obj\Debug\netcoreapp3.0\TrotIS.Shared.AssemblyInfo.cs
 C:\Users\Andrei\Desktop\trotis sa moara mama\TrotIS\TrotIS\obj\Debug\netcoreapp3.0\TrotIS.Shared.dll
 C:\Users\Andrei\Desktop\trotis sa moara mama\TrotIS\TrotIS\obj\Debug\netcoreapp3.0\TrotIS.Shared.pdb
+C:\Users\Andrei\Desktop\salll\TrotIS\TrotIS\bin\Debug\netcoreapp3.0\TrotIS.Shared.deps.json
+C:\Users\Andrei\Desktop\salll\TrotIS\TrotIS\bin\Debug\netcoreapp3.0\TrotIS.Shared.dll
+C:\Users\Andrei\Desktop\salll\TrotIS\TrotIS\bin\Debug\netcoreapp3.0\TrotIS.Shared.pdb
+C:\Users\Andrei\Desktop\salll\TrotIS\TrotIS\obj\Debug\netcoreapp3.0\TrotIS.Shared.csprojAssemblyReference.cache
+C:\Users\Andrei\Desktop\salll\TrotIS\TrotIS\obj\Debug\netcoreapp3.0\TrotIS.Shared.AssemblyInfoInputs.cache
+C:\Users\Andrei\Desktop\salll\TrotIS\TrotIS\obj\Debug\netcoreapp3.0\TrotIS.Shared.AssemblyInfo.cs
+C:\Users\Andrei\Desktop\salll\TrotIS\TrotIS\obj\Debug\netcoreapp3.0\TrotIS.Shared.dll
+C:\Users\Andrei\Desktop\salll\TrotIS\TrotIS\obj\Debug\netcoreapp3.0\TrotIS.Shared.pdb
