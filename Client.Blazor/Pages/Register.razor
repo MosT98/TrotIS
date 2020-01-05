@@ -10,21 +10,23 @@
 <div class="row">
     <div class="col-md-4">
         <form method="post">
-                <label for="email">Email </label><input id="email" type="email" name="email" @bind="user.Email"><br>
-                <label for="password">Password </label><input id="password" type="password" name="password" @bind="user.Password"><br>
-                <label for="firstname">First name </label><input id="firstname" type="text" name="firstname" @bind="user.FirstName"><br>
-                <label for="lastname">Last name </label><input id="lastname" type="text" name="lastname" @bind="user.LastName"><br>
-                <label for="phone">Phone </label><input id="phone" type="text" name="phone" @bind="user.Phone"><br>
-                <label for="birthday">Email </label><input id="birthday" type="date" name="birthday" @bind="user.BirthDay"><br>
-                <label for="socialclass">Social class </label><input id="socialclass" type="text" name="socialclass" @bind="user.SocialClass"><br>
-                <button @onclick="@RegisterUser">Register</button>
-            </form>
+            <label for="email">Email </label><input id="email" type="email" name="email" @bind="user.Email" placeholder="Email..."><br>
+            <label for="password">Password </label><input id="password" type="password" name="password" @bind="user.Password" placeholder="Password..."><br>
+            <label for="firstname">First name </label><input id="firstname" type="text" name="firstname" @bind="user.FirstName" placeholder="First Name"><br>
+            <label for="lastname">Last name </label><input id="lastname" type="text" name="lastname" @bind="user.LastName" placeholder="Last Name"><br>
+            <label for="phone">Phone </label><input id="phone" type="text" name="phone" @bind="user.Phone" placeholder="Phone..."><br>
+            <label for="birthday">Email </label><input id="birthday" type="date" name="birthday" @bind="user.BirthDay" placeholder="Birthday"><br>
+            <label for="socialclass">Social class </label><input id="socialclass" type="text" name="socialclass" @bind="user.SocialClass" placeholder="Social class"><br>
+            <button @onclick="@RegisterUser">Register</button>
+        </form>
     </div>
 </div>
-
 <div>
-    <a asp-page="Index">Back to List</a>
+    Already have an account?       <button class="btn btn-primary" @onclick="NavigateToLoginComponent">
+        Login
+    </button>
 </div>
+
 
 @code {
 
@@ -36,6 +38,10 @@
         user.Address = null;
         Http.PostAsJsonAsync(apiUrl, user);
         navManager.NavigateTo("/", true);
+    }
+    private void NavigateToLoginComponent()
+    {
+        navManager.NavigateTo("/login", true);
     }
 
     public class User

@@ -1,0 +1,40 @@
+﻿@page "/login"
+@inject HttpClient Http
+@using TrotIS.Shared
+@inject NavigationManager NavigationManager
+
+<h3>Login</h3>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <input type="email" name="email" @bind="user.Email" placeholder="Email..."><br>
+            <input type="password" name="password" @bind="user.Password" placeholder="Password.."><br>
+            <button @onclick="@LoginUser">Login</button>
+        </form>
+    </div>
+</div>
+
+<div>
+    Need an account?       <button class="btn btn-primary" @onclick="NavigateToRegisterComponent">
+        Register now.
+    </button>
+</div>
+
+@code {
+    private void NavigateToRegisterComponent()
+    {
+
+        NavigationManager.NavigateTo("/register", true);
+    }
+    private User user = new User();
+    private void LoginUser()
+    {
+
+    }
+    public class User
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+}
