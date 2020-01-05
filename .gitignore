@@ -1,3 +1,5 @@
 */.cache
 */.dtbcache
+*/bin/*
+*/obj/*
 .vs
