@@ -2,6 +2,7 @@
 @inject HttpClient Http
 @using TrotIS.Shared
 @inject NavigationManager NavigationManager
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
 
 <h3>Login</h3>
 
@@ -17,24 +18,27 @@
 
 <div>
     Need an account?       <button class="btn btn-primary" @onclick="NavigateToRegisterComponent">
-        Register now.
+        Register now!
     </button>
 </div>
 
 @code {
-    private void NavigateToRegisterComponent()
-    {
+	private void NavigateToRegisterComponent()
+	{
 
-        NavigationManager.NavigateTo("/register", true);
-    }
-    private User user = new User();
-    private void LoginUser()
-    {
+		NavigationManager.NavigateTo("/register", true);
+	}
+	private User user = new User();
+	private async void LoginUser()
+	{
+		await sessionStorage.SetItemAsync("sal", "salutare frate");
 
-    }
-    public class User
-    {
-        public string Email { get; set; }
-        public string Password { get; set; }
-    }
+		NavigationManager.NavigateTo("/", true);
+
+	}
+	public class User
+	{
+		public string Email { get; set; }
+		public string Password { get; set; }
+	}
 }
