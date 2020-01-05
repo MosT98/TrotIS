@@ -15,13 +15,13 @@ namespace ScooterInstanceAPI.Data
             ScooterInstanceId = Guid.NewGuid();
         }
 
-        public static ScooterInstance Create(int scooterAutonomy)
+        public static ScooterInstance Create(int scooterAutonomy, Scooter scooter)
         {
             return new ScooterInstance
             {
                 ScooterInstanceId = Guid.NewGuid(),
-                ScooterAutonomy = scooterAutonomy
-                //Scooter = scooter
+                ScooterAutonomy = scooterAutonomy,
+                Scooter = scooter           
             };
         }
 

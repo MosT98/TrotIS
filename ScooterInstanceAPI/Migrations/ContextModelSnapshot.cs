@@ -51,21 +51,7 @@ namespace ScooterInstanceAPI.Migrations
 
                     b.HasKey("ScooterId");
 
-                    b.ToTable("Scooter");
-
-                    b.HasData(
-                        new
-                        {
-                            ScooterId = new Guid("6f9b6ef3-31d9-4f16-bb45-a6235aba003b"),
-                            AgeLimitMax = 25,
-                            AgeLimitMin = 15,
-                            BatteryLife = 50,
-                            Brand = "Yamaha",
-                            ClimbAngle = 85,
-                            Model = "v2",
-                            SpeedLimit = 500,
-                            WeightMax = 150
-                        });
+                    b.ToTable("Scooters");
                 });
 
             modelBuilder.Entity("ScooterInstanceAPI.Data.ScooterInstance", b =>
@@ -85,13 +71,6 @@ namespace ScooterInstanceAPI.Migrations
                     b.HasIndex("ScooterId");
 
                     b.ToTable("ScooterInstances");
-
-                    b.HasData(
-                        new
-                        {
-                            ScooterInstanceId = new Guid("f05b7547-502f-4286-8aa2-d80df326b90c"),
-                            ScooterAutonomy = 7
-                        });
                 });
 
             modelBuilder.Entity("ScooterInstanceAPI.Data.ScooterInstance", b =>

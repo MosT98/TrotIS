@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ScooterInstanceAPI.Data
 {
@@ -13,12 +14,12 @@ namespace ScooterInstanceAPI.Data
         public int WeightMax { get; set; } //kg
         public int SpeedLimit { get; set; } //km/h
         public int ClimbAngle { get; set; } //degree
-        ///public List<ScooterInstance> ScooterInstances { get; set; }
+
+        //public ICollection<ScooterInstance> ScooterInstances { get; set; }
 
         public Scooter()
         {
             ScooterId = Guid.NewGuid();
-            //ScooterInstances = new List<ScooterInstance>();
         }
 
         public static Scooter Create(string brand, string model, int batterylife, int agelimitmin, int agelimitmax, int weightmax, int speedlimit, int climbangle)

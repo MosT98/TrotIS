@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using ScooterInstanceAPI.Data;
 using ScooterInstanceAPI.DTOs;
 
@@ -17,7 +18,8 @@ namespace ScooterInstanceAPI.Business
 
         public async Task<ScooterInstance> Handle(CreateScooterInstance request, CancellationToken cancellationToken)
         {
-            var newScooterInstance = ScooterInstance.Create(request.ScooterAutonomy); //mai trebuie adaugat si scooter dupa ce se implementeaza
+            var actualScooter = await context.Scooters.SingleOrDefaultAsync(u => u.ScooterId == request.Scooter);
+            var newScooterInstance = ScooterInstance.Create(request.ScooterAutonomy, actualScooter); 
 
             context.ScooterInstances.Add(newScooterInstance);
             await context.SaveChangesAsync(cancellationToken);

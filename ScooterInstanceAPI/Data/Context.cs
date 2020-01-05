@@ -7,6 +7,7 @@ namespace ScooterInstanceAPI.Data
     {
 
         public DbSet<ScooterInstance> ScooterInstances { get; set; }
+        public DbSet<Scooter> Scooters { get; set; }
 
         public Context(DbContextOptions<Context> options) : base(options)
         {
@@ -25,15 +26,16 @@ namespace ScooterInstanceAPI.Data
         {
             modelBuilder.Entity<ScooterInstance>()
                 .HasOne(a => a.Scooter);
+                //.WithMany(b=> b.ScooterInstances);
 
             //modelBuilder.Entity<Scooter>()
             //    .HasMany(a => a.ScooterInstances);
+            //var scooter = Scooter.Create("Yamaha", "v2", 50, 15, 25, 150, 500, 85);
+            //modelBuilder.Entity<Scooter>()
+            //    .HasData(scooter);
 
-            modelBuilder.Entity<Scooter>()
-                .HasData(Scooter.Create("Yamaha", "v2", 50, 15, 25, 150, 500, 85));
-
-            modelBuilder.Entity<ScooterInstance>()
-                .HasData(ScooterInstance.Create(7));
+            //modelBuilder.Entity<ScooterInstance>()
+            //    .HasData(ScooterInstance.Create(7, scooter));
             //Scooter.Create("Yamaha", "v2", 50, 15, 25, 150, 500, 85)));
         }
     }

@@ -6,6 +6,7 @@ namespace ScooterInstanceAPI.DTOs
     public class CreateScooterInstance : IRequest<ScooterInstance>
     {
         public int ScooterAutonomy { get; set; } //km
-        public Scooter Scooter { get; set; } 
+
+        public System.Guid Scooter { get; set; }
     }
 }

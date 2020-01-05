@@ -728,24 +728,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ake\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\catal\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ANUL 3\\Semestrul 1\\.NET\\PROJECT\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
+      "projectUniqueName": "C:\\Faculty\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
       "projectName": "TrotIS.Shared",
-      "projectPath": "D:\\ANUL 3\\Semestrul 1\\.NET\\PROJECT\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
-      "packagesPath": "C:\\Users\\ake\\.nuget\\packages\\",
-      "outputPath": "D:\\ANUL 3\\Semestrul 1\\.NET\\PROJECT\\TrotIS\\TrotIS\\obj\\",
+      "projectPath": "C:\\Faculty\\TrotIS\\TrotIS\\TrotIS.Shared.csproj",
+      "packagesPath": "C:\\Users\\catal\\.nuget\\packages\\",
+      "outputPath": "C:\\Faculty\\TrotIS\\TrotIS\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\ake\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\catal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"
