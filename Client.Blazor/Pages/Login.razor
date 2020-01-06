@@ -8,11 +8,9 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
             <input type="email" name="email" @bind="user.Email" placeholder="Email..."><br>
             <input type="password" name="password" @bind="user.Password" placeholder="Password.."><br>
             <button @onclick="@LoginUser">Login</button>
-        </form>
     </div>
 </div>
 
@@ -23,21 +21,28 @@
 </div>
 
 @code {
+	private string apiUrl = "http://localhost:5003/login";
 	private void NavigateToRegisterComponent()
 	{
 
 		NavigationManager.NavigateTo("/register", true);
 	}
 	private User user = new User();
+	
 	private async void LoginUser()
 	{
-		await sessionStorage.SetItemAsync("sal", "salutare frate");
+		user.UserId = Guid.NewGuid();
+		
+		var result = await Http.PostAsJsonAsync(apiUrl, user);
+		if(result.StatusCode.ToString()=="OK")
+			await sessionStorage.SetItemAsync("user_email", user.Email);
 
 		NavigationManager.NavigateTo("/", true);
 
 	}
 	public class User
 	{
+		public Guid UserId { get; set; }
 		public string Email { get; set; }
 		public string Password { get; set; }
 	}

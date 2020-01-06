@@ -34,6 +34,18 @@ namespace UserAPI.Controllers
             return user;
         }
 
+        [Route("/login")]
+        [HttpPost]
+        public async Task<ActionResult<User>> Login([FromBody]Login request)
+        {
+            var user = await mediator.Send(request);
+            if(user==null)
+            {
+                return NotFound();
+            }
+            return Ok(User);
+        }
+
         [HttpGet]
         public async Task<ActionResult<User>> Get()
         {
