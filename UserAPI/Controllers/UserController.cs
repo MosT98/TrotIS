@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using TrotIS.Shared;
 using UserAPI.Data;
 using UserAPI.DTOs;
 
@@ -36,14 +37,15 @@ namespace UserAPI.Controllers
 
         [Route("/login")]
         [HttpPost]
-        public async Task<ActionResult<User>> Login([FromBody]Login request)
+        public async Task<ActionResult<LoginObj>> Login([FromBody]Login request)
         {
-            var user = await mediator.Send(request);
-            if(user==null)
+            var loginObj = await mediator.Send(request);
+            if(loginObj == null)
             {
                 return NotFound();
             }
-            return Ok(User);
+            
+            return new ObjectResult(loginObj);
         }
 
         [HttpGet]

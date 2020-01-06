@@ -21,29 +21,41 @@
 </div>
 
 @code {
-	private string apiUrl = "http://localhost:5003/login";
-	private void NavigateToRegisterComponent()
-	{
+    private string apiUrl = "http://localhost:5003/login";
+    private void NavigateToRegisterComponent()
+    {
 
-		NavigationManager.NavigateTo("/register", true);
-	}
-	private User user = new User();
-	
-	private async void LoginUser()
-	{
-		user.UserId = Guid.NewGuid();
-		
-		var result = await Http.PostAsJsonAsync(apiUrl, user);
-		if(result.StatusCode.ToString()=="OK")
-			await sessionStorage.SetItemAsync("user_email", user.Email);
+        NavigationManager.NavigateTo("/register", true);
+    }
+    private User user = new User();
 
-		NavigationManager.NavigateTo("/", true);
+    private async void LoginUser()
+    {
+        //user.UserId = Guid.NewGuid();
 
-	}
-	public class User
-	{
-		public Guid UserId { get; set; }
-		public string Email { get; set; }
-		public string Password { get; set; }
-	}
+        var result = await Http.PostAsJsonAsync(apiUrl, user);
+        if (result.StatusCode.ToString() == "OK")
+        {
+            var content = await result.Content.ReadAsAsync<ResponseObject>();
+
+            await sessionStorage.SetItemAsync("hash", content.Hash);
+            await sessionStorage.SetItemAsync("firstname", content.FirstName);
+            await sessionStorage.SetItemAsync("lastname", content.LastName);
+        }
+        NavigationManager.NavigateTo("/", true);
+
+    }
+
+    public class User
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    public class ResponseObject
+    {
+        public string Hash { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+    }
 }
