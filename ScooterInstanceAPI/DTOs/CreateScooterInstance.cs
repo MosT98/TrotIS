@@ -8,5 +8,7 @@ namespace ScooterInstanceAPI.DTOs
         public int ScooterAutonomy { get; set; } //km
 
         public System.Guid Scooter { get; set; }
+
+        public decimal Price { get; set; }
     }
 }

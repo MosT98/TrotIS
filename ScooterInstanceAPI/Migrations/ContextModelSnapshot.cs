@@ -60,6 +60,9 @@ namespace ScooterInstanceAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("numeric");
+
                     b.Property<int>("ScooterAutonomy")
                         .HasColumnType("integer");
 

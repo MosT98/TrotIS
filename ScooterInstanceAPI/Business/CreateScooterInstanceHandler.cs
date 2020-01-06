@@ -19,7 +19,7 @@ namespace ScooterInstanceAPI.Business
         public async Task<ScooterInstance> Handle(CreateScooterInstance request, CancellationToken cancellationToken)
         {
             var actualScooter = await context.Scooters.SingleOrDefaultAsync(u => u.ScooterId == request.Scooter);
-            var newScooterInstance = ScooterInstance.Create(request.ScooterAutonomy, actualScooter); 
+            var newScooterInstance = ScooterInstance.Create(request.ScooterAutonomy, request.Price, actualScooter); 
 
             context.ScooterInstances.Add(newScooterInstance);
             await context.SaveChangesAsync(cancellationToken);

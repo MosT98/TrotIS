@@ -10,17 +10,20 @@ namespace ScooterInstanceAPI.Data
 
         public Scooter Scooter { get; set; }
 
+        public decimal Price { get; set; }
+
         public ScooterInstance()
         {
             ScooterInstanceId = Guid.NewGuid();
         }
 
-        public static ScooterInstance Create(int scooterAutonomy, Scooter scooter)
+        public static ScooterInstance Create(int scooterAutonomy, decimal price, Scooter scooter)
         {
             return new ScooterInstance
             {
                 ScooterInstanceId = Guid.NewGuid(),
                 ScooterAutonomy = scooterAutonomy,
+                Price = price,
                 Scooter = scooter           
             };
         }
@@ -28,7 +31,6 @@ namespace ScooterInstanceAPI.Data
         public void Update(int scooterAutonomy)
         {
             ScooterAutonomy = scooterAutonomy;
-            //Scooter = scooter;
         }
     }
 }

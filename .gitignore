@@ -1,5 +1,5 @@
-*/.cache
-*/.dtbcache
+*/.cache/*
+*/.dtbcache/*
 */bin/*
 */obj/*
-.vs
+.vs/*
