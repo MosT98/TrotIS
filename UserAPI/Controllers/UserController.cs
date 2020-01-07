@@ -59,7 +59,7 @@ namespace UserAPI.Controllers
             return Ok(users);
         }
 
-        [HttpGet ("{email}")]
+        [HttpGet ("{id}")]
         public async Task<ActionResult<User>> Get(Guid id)
         {
             var users = await mediator.Send(new GetUserDetail(id));
