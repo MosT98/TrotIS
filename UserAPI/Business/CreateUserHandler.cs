@@ -18,8 +18,8 @@ namespace UserAPI.Business
         }
         public async Task<User> Handle(CreateUser request, CancellationToken cancellationToken)
         {
-
-            User user = User.Create(request.Email, request.Password,
+            var sha256Password = Shared.Utilities.sha256_hash(request.Password);
+            User user = User.Create(request.Email, sha256Password,
                 request.FirstName, request.LastName, request.Phone, request.BirthDay, request.SocialClass);
             if (context.Users.FirstOrDefault(u => u.Email == user.Email) == default(User))
             {
