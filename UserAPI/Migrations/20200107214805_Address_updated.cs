@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace UserAPI.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Address_updated : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,13 +13,9 @@ namespace UserAPI.Migrations
                 {
                     AddressId = table.Column<Guid>(nullable: false),
                     Country = table.Column<string>(nullable: true),
-                    County = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
                     Street = table.Column<string>(nullable: true),
-                    Number = table.Column<int>(nullable: false),
-                    Block = table.Column<string>(nullable: true),
-                    Floor = table.Column<int>(nullable: false),
-                    Apartment = table.Column<string>(nullable: true)
+                    Number = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -53,13 +49,13 @@ namespace UserAPI.Migrations
 
             migrationBuilder.InsertData(
                 table: "Addresses",
-                columns: new[] { "AddressId", "Apartment", "Block", "City", "Country", "County", "Floor", "Number", "Street" },
-                values: new object[] { new Guid("ec2856fc-8c84-4330-9299-15ffba7b697a"), "7A", "Solomon", "Iasi", "Romania", "Iasi", 7, 35, "Moara de foc" });
+                columns: new[] { "AddressId", "City", "Country", "Number", "Street" },
+                values: new object[] { new Guid("6719bc69-b700-40a3-8c00-ecf14eb977cd"), "Iasi", "Romania", 35, "Moara de foc" });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "UserId", "AddressId", "BirthDay", "Email", "FirstName", "LastName", "Password", "Phone", "SocialClass" },
-                values: new object[] { new Guid("5e076492-8603-486c-a9df-1da58256938e"), null, new DateTime(1999, 12, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "catalinbelu21@gmail.com", "Catalin", "Belu", "parola", "0770796616", 1 });
+                values: new object[] { new Guid("7d4cf1ec-acc7-4f7c-adc1-9cbc565ccfd1"), null, new DateTime(1999, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "catalinbelu21@gmail.com", "Catalin", "Belu", "parola", "0770796616", 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_AddressId",

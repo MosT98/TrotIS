@@ -10,8 +10,8 @@ using UserAPI.Data;
 namespace UserAPI.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20200105162549_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20200107214805_Address_updated")]
+    partial class Address_updated
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,23 +27,11 @@ namespace UserAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("Apartment")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Block")
-                        .HasColumnType("text");
-
                     b.Property<string>("City")
                         .HasColumnType("text");
 
                     b.Property<string>("Country")
                         .HasColumnType("text");
-
-                    b.Property<string>("County")
-                        .HasColumnType("text");
-
-                    b.Property<int>("Floor")
-                        .HasColumnType("integer");
 
                     b.Property<int>("Number")
                         .HasColumnType("integer");
@@ -58,13 +46,9 @@ namespace UserAPI.Migrations
                     b.HasData(
                         new
                         {
-                            AddressId = new Guid("457828fe-659e-45d0-866f-ff779243abdc"),
-                            Apartment = "7A",
-                            Block = "Solomon",
+                            AddressId = new Guid("6719bc69-b700-40a3-8c00-ecf14eb977cd"),
                             City = "Iasi",
                             Country = "Romania",
-                            County = "Iasi",
-                            Floor = 7,
                             Number = 35,
                             Street = "Moara de foc"
                         });
@@ -109,7 +93,7 @@ namespace UserAPI.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = new Guid("095b5ad5-26de-456e-867e-36c363d0fdcc"),
+                            UserId = new Guid("7d4cf1ec-acc7-4f7c-adc1-9cbc565ccfd1"),
                             BirthDay = new DateTime(1999, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "catalinbelu21@gmail.com",
                             FirstName = "Catalin",

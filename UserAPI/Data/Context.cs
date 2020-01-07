@@ -39,7 +39,7 @@ namespace UserAPI.Data
             modelBuilder.Entity<User>().HasData(User.Create("catalinbelu21@gmail.com", "parola", "Catalin", "Belu", 
                 "0770796616", DateTime.Parse("06/12/1999"), EnumLists.SocialClass.student));
 
-            modelBuilder.Entity<Address>().HasData(Address.Create("Romania", "Iasi", "Iasi", "Moara de foc", 35, "Solomon", 7, "7A"));
+            modelBuilder.Entity<Address>().HasData(Address.Create("Romania", "Iasi", "Moara de foc", 35));
 
         }
     }

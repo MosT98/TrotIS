@@ -33,15 +33,15 @@ namespace UserAPI.Business
             
             if(address==null)
             {
-                address = Address.Create(request.Address.Country, request.Address.County, request.Address.City, request.Address.Street,
-                    request.Address.Number, request.Address.Block, request.Address.Floor, request.Address.Apartment);
+                address = Address.Create(request.Address.Country, request.Address.City, request.Address.Street,
+                    request.Address.Number);
                 context.Addresses.Add(address);
                 await context.SaveChangesAsync(cancellationToken);
             }
             else
             {
-                address.Update(request.Address.Country, request.Address.County, request.Address.City, request.Address.Street,
-                    request.Address.Number, request.Address.Block, request.Address.Floor, request.Address.Apartment);
+                address.Update(request.Address.Country, request.Address.City, request.Address.Street,
+                    request.Address.Number);
                 await context.SaveChangesAsync(cancellationToken);
             }
 
