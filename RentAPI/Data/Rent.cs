@@ -9,6 +9,7 @@ namespace RentAPI.Data
         public Guid UserID { get; set; }
         public Guid ScooterInstanceID { get; set; }
         public DateTime RentDate { get; set; }
+        public bool IsCancelled { get; set; }
 
         public Rent()
         {
@@ -23,7 +24,8 @@ namespace RentAPI.Data
                 LocationID = Guid.Parse(locationID),
                 UserID = Guid.Parse(userID),
                 ScooterInstanceID = Guid.Parse(scooterInstanceID),
-                RentDate = rentDate
+                RentDate = rentDate,
+                IsCancelled = false
             };
 
         }

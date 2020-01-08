@@ -10,7 +10,7 @@ using RentAPI.Data;
 namespace RentAPI.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20200108172523_Rent_Added")]
+    [Migration("20200108214542_Rent_Added")]
     partial class Rent_Added
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,6 +26,9 @@ namespace RentAPI.Migrations
                     b.Property<Guid>("RentID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<bool>("IsCancelled")
+                        .HasColumnType("boolean");
 
                     b.Property<Guid>("LocationID")
                         .HasColumnType("uuid");
@@ -46,7 +49,8 @@ namespace RentAPI.Migrations
                     b.HasData(
                         new
                         {
-                            RentID = new Guid("24bad7b3-9669-421d-b5c6-cc16e4e1c562"),
+                            RentID = new Guid("566afc98-7210-45e4-ae94-5001a899b8e7"),
+                            IsCancelled = false,
                             LocationID = new Guid("e5cf7f23-0146-4a4a-8322-d1209cf737d0"),
                             RentDate = new DateTime(2019, 1, 3, 6, 0, 0, 0, DateTimeKind.Unspecified),
                             ScooterInstanceID = new Guid("47364138-912d-4ea2-b59f-eca02e4d8db7"),
