@@ -24,12 +24,5 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Business\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="DTOs\" />
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 
 </Project>
