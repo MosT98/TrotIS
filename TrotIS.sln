@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScooterInstanceAPI", "Scoot
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.Blazor", "Client.Blazor\Client.Blazor.csproj", "{A004F359-8840-44B6-9010-CC382CD450EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocationAPI", "LocationAPI\LocationAPI.csproj", "{96385DF6-888E-41F4-BA5D-0ACAC349AF4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocationAPI", "LocationAPI\LocationAPI.csproj", "{96385DF6-888E-41F4-BA5D-0ACAC349AF4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentAPI", "RentAPI\RentAPI.csproj", "{CD7A5A46-3CC3-4FC3-86A5-C89AF595ACA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{96385DF6-888E-41F4-BA5D-0ACAC349AF4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96385DF6-888E-41F4-BA5D-0ACAC349AF4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96385DF6-888E-41F4-BA5D-0ACAC349AF4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD7A5A46-3CC3-4FC3-86A5-C89AF595ACA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD7A5A46-3CC3-4FC3-86A5-C89AF595ACA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD7A5A46-3CC3-4FC3-86A5-C89AF595ACA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD7A5A46-3CC3-4FC3-86A5-C89AF595ACA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

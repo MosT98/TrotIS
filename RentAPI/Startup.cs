@@ -1,4 +1,3 @@
-using LocationAPI.Data;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,8 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using RentAPI.Data;
 
-namespace LocationAPI
+namespace RentAPI
 {
     public class Startup
     {
@@ -43,7 +43,7 @@ namespace LocationAPI
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "LocationAPI", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "RentAPI", Version = "v1" });
             });
         }
 
@@ -72,7 +72,7 @@ namespace LocationAPI
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "LocationAPI V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "RentAPI V1");
             });
         }
     }
