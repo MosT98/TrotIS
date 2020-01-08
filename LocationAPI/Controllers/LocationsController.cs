@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using LocationAPI.Data;
 using LocationAPI.DTOs;
+using System.Collections.Generic;
 
 namespace LocationAPI.Controllers
 {
@@ -31,6 +32,14 @@ namespace LocationAPI.Controllers
         [Route("api/locations/scooter_instance")]
         [HttpPost]
         public async Task<ActionResult<LocationsToScooters>> AddScooterInstance([FromBody]AddScooterInstance request)
+        {
+            var link = await mediator.Send(request);
+            return link;
+        }
+
+        [Route("api/locations/scooter_instances")]
+        [HttpPost]
+        public async Task<ActionResult<List<LocationsToScooters>>> AddScooterInstance([FromBody]AddScooterInstances request)
         {
             var link = await mediator.Send(request);
             return link;
