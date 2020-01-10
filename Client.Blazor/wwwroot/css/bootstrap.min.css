@@ -247,7 +247,10 @@ select {
 }
 
     [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
-        cursor: pointer
+        cursor: pointer;
+        border: none;
+        color: aliceblue;
+        background: transparent;
     }
 
     [type=button]::-moz-focus-inner, [type=reset]::-moz-focus-inner, [type=submit]::-moz-focus-inner, button::-moz-focus-inner {
