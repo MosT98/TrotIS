@@ -42,8 +42,8 @@
             await sessionStorage.SetItemAsync("firstname", content.FirstName);
             await sessionStorage.SetItemAsync("lastname", content.LastName);
         }
+        //succesfully message or not
         NavigationManager.NavigateTo("/", true);
-
     }
 
     public class User

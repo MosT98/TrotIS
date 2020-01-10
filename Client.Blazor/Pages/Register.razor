@@ -139,30 +139,7 @@
     </div>
 </div>
 
-@*<div class="row">
-        <div class="col-md-4">
-            <label for="email">Email </label><input id="email" type="email" name="email" @bind="user.Email" placeholder="Email..."><br>
-            <label for="password">Password </label><input id="password" type="password" name="password" @bind="user.Password" placeholder="Password..."><br>
-            <label for="firstname">First name </label><input id="firstname" type="text" name="firstname" @bind="user.FirstName" placeholder="First Name"><br>
-            <label for="lastname">Last name </label><input id="lastname" type="text" name="lastname" @bind="user.LastName" placeholder="Last Name"><br>
-            <label for="phone">Phone </label><input id="phone" type="text" name="phone" @bind="user.Phone" placeholder="Phone..."><br>
-            <label for="birthday">Birthday </label><input id="birthday" type="date" name="birthday" @bind="user.BirthDay" placeholder="Birthday"><br>
-            <label for="socialclass">Social class </label><input id="socialclass" type="text" name="socialclass" @bind="user.SocialClass" placeholder="Social class"><br>
-            <button @onclick="@RegisterUser">Register</button>
-        </div>
-    </div>*@
-@*<div>
-        Already have an account?       <button class="btn btn-primary" @onclick="NavigateToLoginComponent">
-            Login
-        </button>
-    </div>*@
-
-
 @code {
-	private async Task ShowAlert(string message)
-	{
-		await jsRuntime.InvokeAsync<object>("ShowAlert", message);
-	}
 
 	private string apiUrl = "http://localhost:5003/api/user";
 	private User user = new User();

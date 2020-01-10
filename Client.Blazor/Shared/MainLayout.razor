@@ -5,7 +5,7 @@
 </div>
 
 <div class="main">
-    @if (name != String.Empty)
+    @if (name != null)
     {
         <div class="top-row px-4">
             <a href="/login">Hello, @name</a>
@@ -23,9 +23,18 @@
     </div>
 </div>
 @code{
-    public string name = String.Empty;
-    protected async override void OnInitialized()
-    {
-        name = await sessionStorage.GetItemAsync<string>("firstname");
-    }
+	public string name = null;
+	protected async override void OnInitialized()
+	{
+		try
+		{
+			name = await sessionStorage.GetItemAsync<string>("firstname");
+            this.StateHasChanged();
+		}
+		catch
+		{
+
+		}
+
+	}
 }
