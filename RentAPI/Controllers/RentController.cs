@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RentAPI.Data;
 using RentAPI.DTOs;
+using System;
 using System.Threading.Tasks;
 
 namespace RentAPI.Controllers
@@ -29,6 +30,33 @@ namespace RentAPI.Controllers
             return Ok(rents);
         }
 
+        [Route("[action]/{idUser}")]
+        [HttpGet]
+        public async Task<ActionResult<Rent>> GetByIdUser(Guid idUser)
+        {
+            var rent = await mediator.Send(new GetRentByIdUser(idUser));
+            if (rent == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(rent);
+        }
+
+        [Route("[action]/{idLocation}")]
+        [HttpGet]
+        public async Task<ActionResult<Rent>> GetByIdLocation(Guid idLocation)
+        {
+            var rent = await mediator.Send(new GetRentByIdLocation(idLocation));
+            if (rent == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(rent);
+        }
+
+
         // POST: api/Locations
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
@@ -38,14 +66,6 @@ namespace RentAPI.Controllers
             var location = await mediator.Send(request);
             return location;
         }
-
-        //[Route("api/locations/scooter_instance")]
-        //[HttpPost]
-        //public async Task<ActionResult<LocationsToScooters>> AddScooterInstance([FromBody]AddScooterInstance request)
-        //{
-        //    var link = await mediator.Send(request);
-        //    return link;
-        //}
 
     }
 }
