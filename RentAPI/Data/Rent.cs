@@ -16,7 +16,7 @@ namespace RentAPI.Data
             RentId = Guid.NewGuid();
         }
 
-        public static Rent Create(string locationId, string userId, string scooterInstanceId, DateTime rentDate)
+        public static Rent Create(string locationId, string userId, string scooterInstanceId)
         {
             return new Rent
             {
@@ -24,7 +24,7 @@ namespace RentAPI.Data
                 LocationId = Guid.Parse(locationId),
                 UserId = Guid.Parse(userId),
                 ScooterInstanceId = Guid.Parse(scooterInstanceId),
-                RentDate = rentDate,
+                RentDate = DateTime.UtcNow,
                 IsCancelled = false
             };
 

@@ -9,6 +9,5 @@ namespace RentAPI.DTOs
         public string LocationId { get; set; }
         public string UserId { get; set; }
         public string ScooterInstanceId { get; set; }
-        public DateTime RentDate { get; set; }
     }
 }
