@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TrotIS.Shared
+﻿namespace TrotIS.Shared
 {
     public static class EnumLists
     {
