@@ -25,7 +25,12 @@ app {
     display: flex;
     align-items: center;
 }
-
+.butoon {
+    cursor: pointer;
+    border: none;
+    color: aliceblue;
+    background: transparent;
+}
 .main {
     flex: 1;
 }

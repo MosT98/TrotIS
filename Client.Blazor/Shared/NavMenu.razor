@@ -22,7 +22,11 @@
         @if (email != null)
         {
             <li class="nav-item px-3">
-                <button @onclick="DeleteSession" class="nav-link">
+                <button @onclick="DeleteSession" class="nav-link" style="
+                                                                        background: transparent;
+                                                                        border: none;
+                                                                        color: aliceblue;
+                                                                    ">
                     <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>&nbsp;Log out
                 </button>
             </li>
