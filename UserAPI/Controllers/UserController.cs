@@ -35,6 +35,20 @@ namespace UserAPI.Controllers
             return user;
         }
 
+
+        [Route("/check")]
+        [HttpPost]
+        public async Task<ActionResult<string>> RegisterCheck([FromBody]RegisterCheck request)
+        {
+            var check = await mediator.Send(request);
+            if (check == null)
+            {
+                return null;
+            }
+
+            return check;
+        }
+
         [Route("/login")]
         [HttpPost]
         public async Task<ActionResult<LoginObj>> Login([FromBody]Login request)

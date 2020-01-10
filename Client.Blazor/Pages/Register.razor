@@ -82,7 +82,7 @@
                         <input id="socialclass" type="text" name="password" @bind="user.SocialClass" placeholder="Social class" class="form-control bg-white border-left-0 border-md">
                     </div>
 
-                    
+
 
                     <!-- Birthday -->
                     <div class="input-group col-lg-12 mb-4">
@@ -116,10 +116,22 @@
 
                     <!-- Submit Button -->
                     <div class="form-group col-lg-12 mx-auto mb-0">
-                        <a href="#" class="btn btn-primary btn-block py-2" @onclick="@RegisterUser">
+                        <!-- !!!!!!!!!!! -->
+                        <!-- !!!!!!!!!!! -->
+                        <!-- !!!!!!!!!!! -->
+                        <!-- href asta te si redirectioneaza la on click. Trebuie facut fara href astfel incat sa te redirectioneze doar din functia RegisterUser cu navigateto-->
+                        <!-- !!!!!!!!!!! -->
+                        <!-- !!!!!!!!!!! -->
+                        <!-- !!!!!!!!!!! -->
+
+                        <!-- try without <a> (button or smth) -->
+                        <a href="register" class="btn btn-primary btn-block py-2" @onclick="@RegisterUser">
+                            <!-- !!!!!!!!!!! -->
+
                             <span class="font-weight-bold">Create your account</span>
                         </a>
                     </div>
+
 
                     <!-- Line -->
                     <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
@@ -133,52 +145,66 @@
                         <p class="text-muted font-weight-bold">Already registered? <a href="#" class="text-primary ml-2" @onclick="NavigateToLoginComponent">Login</a></p>
                     </div>
 
-                </div>
+                    </div>
             </form>
         </div>
     </div>
 </div>
 
 @code {
-
-	private string apiUrl = "http://localhost:5003/api/user";
-	private User user = new User();
-	private async void RegisterUser()
-	{
-		//verify password
+    private string ToastContent { get; set; }
+    private string apiUrl = "http://localhost:5003/api/user";
+    private string apiUrlCheck = "http://localhost:5003/check";
+    private User user = new User();
+    private async void RegisterUser()
+    {
 
         //verify if email already exists
-
-        //verify if phone number already exists
-		if (user.Password == user.PasswordConfirmation)
-		{
-			user.UserId = Guid.NewGuid();
-			user.Address = null;
-			await Http.PostAsJsonAsync(apiUrl, user);
-			navManager.NavigateTo("/", true);
-		}
-		else
-		{
+        var result = await Http.PostAsJsonAsync(apiUrlCheck, user);
+        var content = await result.Content.ReadAsStringAsync();
+        if (content != string.Empty) 
+        {
+            ToastContent = content;
+            //show a popup with ToastContent error
+            //I Installed a package for this
+            //documentation here: https://ej2.syncfusion.com/blazor/documentation/toast/config/
+            //or use javascript idk...
             
-		}
-	}
-	private void NavigateToLoginComponent()
-	{
-		navManager.NavigateTo("/login", true);
-	}
+            //after that you should remain on current page and modify email/phone
+            
+        }
+        else if (user.Password == user.PasswordConfirmation)
+        {
+                user.UserId = Guid.NewGuid();
+                user.Address = null;
+                await Http.PostAsJsonAsync(apiUrl, user);
+                //show popup you are now logged in - timout 2 sec
+                //go to home after that
+                //only here the register button should redirect // va fi logat aici
+                navManager.NavigateTo("/", false); 
+        }
+        //else -- if fail
+        else
+            navManager.NavigateTo("/register", false); //show popup password!=confirmpassword and remain on current page to modify password.
 
-	public class User
-	{
-		public Guid UserId { get; set; }
-		public string Email { get; set; }
-		public string Password { get; set; }
-		public string PasswordConfirmation { get; set; }
-		public string FirstName { get; set; }
-		public string LastName { get; set; }
-		public string Phone { get; set; }
-		public DateTime BirthDay { get; set; }
-		public EnumLists.SocialClass SocialClass { get; set; }
-		public virtual Address Address { get; set; }
-	}
+    }
+    private void NavigateToLoginComponent()
+    {
+        navManager.NavigateTo("/login", true); //asta cred ca e useless aici
+    }
+
+    public class User
+    {
+        public Guid UserId { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string PasswordConfirmation { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Phone { get; set; }
+        public DateTime BirthDay { get; set; }
+        public EnumLists.SocialClass SocialClass { get; set; }
+        public virtual Address Address { get; set; }
+    }
 
 }

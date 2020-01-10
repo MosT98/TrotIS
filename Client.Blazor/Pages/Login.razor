@@ -91,6 +91,7 @@
             await sessionStorage.SetItemAsync("hash", content.Hash);
             await sessionStorage.SetItemAsync("firstname", content.FirstName);
             await sessionStorage.SetItemAsync("lastname", content.LastName);
+            await sessionStorage.SetItemAsync("admin", content.IsAdmin);
         }
         //succesfully message or not
         NavigationManager.NavigateTo("/", true);
@@ -98,7 +99,7 @@
 
     public class User
     {
-        
+
         public string Email { get; set; }
         public string Password { get; set; }
     }
@@ -108,5 +109,6 @@
         public string Hash { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }
