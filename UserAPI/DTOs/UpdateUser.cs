@@ -16,6 +16,7 @@ namespace UserAPI.DTOs
         public DateTime BirthDay { get; set; }
         public EnumLists.SocialClass SocialClass { get; set; }
         public Address Address { get; set; }
+        public bool IsAdmin { get; set; }
 
     }
 }

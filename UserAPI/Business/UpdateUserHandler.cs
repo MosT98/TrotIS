@@ -29,6 +29,11 @@ namespace UserAPI.Business
                 if (await context.Users.SingleOrDefaultAsync(u => u.Email == request.Email) != null)
                     throw new Exception("Email already used. Try another email");
             }
+            if (user.Phone != request.Phone) //try to change phone number
+            {
+                if (await context.Users.SingleOrDefaultAsync(u => u.Phone == request.Phone) != null)
+                    throw new Exception("Phone number already used. Try another phone number");
+            }
             var address = context.Addresses.FirstOrDefault(a => a.AddressId == request.Address.AddressId);
             
             if(address==null)
@@ -46,7 +51,7 @@ namespace UserAPI.Business
             }
 
             user.Update(request.Email, request.Password, request.FirstName, request.LastName, request.Phone,
-                request.BirthDay, request.SocialClass, address);
+                request.BirthDay, request.SocialClass, address, request.IsAdmin);
 
             await context.SaveChangesAsync(cancellationToken);
             return user;

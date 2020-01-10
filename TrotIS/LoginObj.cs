@@ -10,11 +10,14 @@ namespace TrotIS.Shared
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public LoginObj(string hash, string firstName, string lastName)
+        public bool IsAdmin { get; set; }
+
+        public LoginObj(string hash, string firstName, string lastName, bool isAdmin)
         {
             Hash = hash;
             FirstName = firstName;
             LastName = lastName;
+            IsAdmin = isAdmin;
         }
     }
 }

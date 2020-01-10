@@ -19,7 +19,7 @@ namespace UserAPI.Business
             var sha256Password = Shared.Utilities.sha256_hash(request.Password);
             User user = User.Create(request.Email, sha256Password,
                 request.FirstName, request.LastName, request.Phone, request.BirthDay, request.SocialClass);
-            if (context.Users.FirstOrDefault(u => u.Email == user.Email) == default(User))
+            if (context.Users.FirstOrDefault(u => u.Email == user.Email) == default(User) && context.Users.FirstOrDefault(u => u.Phone == user.Phone) == default(User))
             {
                 context.Users.Add(user);
                 await context.SaveChangesAsync(cancellationToken);

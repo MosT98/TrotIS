@@ -15,6 +15,8 @@ namespace UserAPI.Data
         public DateTime BirthDay { get; set; }
         public EnumLists.SocialClass SocialClass { get; set; }
         public virtual Address Address { get; set; }
+        public bool IsAdmin { get; set; }
+        public DateTime DTE_CRE { get; set; }
 
         public static User Create(string email, string password, string firstName, string lastName,
             string phone, DateTime birthDay, EnumLists.SocialClass socialClass)
@@ -28,7 +30,9 @@ namespace UserAPI.Data
                 LastName = lastName,
                 Phone = phone,
                 BirthDay = birthDay,
-                SocialClass = socialClass
+                SocialClass = socialClass,
+                IsAdmin = false,
+                DTE_CRE = DateTime.UtcNow
             };
         }
 
@@ -38,7 +42,7 @@ namespace UserAPI.Data
         }
 
         public void Update(string email, string password, string firstName, string lastName,
-            string phone, DateTime birthDay, EnumLists.SocialClass socialClass, Address address)
+            string phone, DateTime birthDay, EnumLists.SocialClass socialClass, Address address, bool isAdmin)
         {
             Email = email;
             Password = password;
@@ -48,7 +52,7 @@ namespace UserAPI.Data
             BirthDay = birthDay;
             SocialClass = socialClass;
             Address = address;
-
+            IsAdmin = isAdmin;
         }
 
     }
