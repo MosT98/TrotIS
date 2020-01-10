@@ -5,16 +5,16 @@
 </div>
 
 <div class="main">
-    @if (name != null)
+    @if (fname != null)
     {
         <div class="top-row px-4">
-            <a href="/login">Hello, @name</a>
+            <a href="/login">Hello, @fname @lname</a>
         </div>
     }
     else
     {
         <div class="top-row px-4">
-            <a href="/login">Login</a>
+            <a href="/register">Register</a>
         </div>
     }
 
@@ -23,18 +23,22 @@
     </div>
 </div>
 @code{
-	public string name = null;
-	protected async override void OnInitialized()
-	{
-		try
-		{
-			name = await sessionStorage.GetItemAsync<string>("firstname");
+    public string email = null;
+    public string fname = null;
+    public string lname = null;
+    protected async override void OnInitialized()
+    {
+        try
+        {
+            fname = await sessionStorage.GetItemAsync<string>("firstname");
+            email = await sessionStorage.GetItemAsync<string>("hash");
+            lname = await sessionStorage.GetItemAsync<string>("lastname");
             this.StateHasChanged();
-		}
-		catch
-		{
+        }
+        catch
+        {
 
-		}
+        }
 
-	}
+    }
 }

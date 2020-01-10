@@ -15,28 +15,36 @@
             </NavLink>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="login">
-                <span class="oi oi-plus" aria-hidden="true"></span>
-                @if (name != null)
-                {
-                    <span>Log out</span>
-                }
-                else
-                {
-                    <span>Login</span>
-                }
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
+            <NavLink class="nav-link" href="locations">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Locations
             </NavLink>
         </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="register">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Register
-            </NavLink>
-        </li>
+        @if (email != null)
+        {
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="login">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Log out
+                </NavLink>
+            </li>
+
+        }
+
+        else
+        {
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="login">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Log in
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="register">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Register
+                </NavLink>
+            </li>
+
+        }
+
+
     </ul>
 </div>
 
@@ -44,6 +52,9 @@
     private bool collapseNavMenu = true;
 
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    public string email = null;
+    public string fname = null;
+    public string lname = null;
 
     private void ToggleNavMenu()
     {
@@ -51,12 +62,14 @@
     }
 
 
-    public string name = null;
+
     protected async override void OnInitialized()
     {
         try
         {
-            name = await sessionStorage.GetItemAsync<string>("firstname");
+            fname = await sessionStorage.GetItemAsync<string>("firstname");
+            email = await sessionStorage.GetItemAsync<string>("hash");
+            lname = await sessionStorage.GetItemAsync<string>("lastname");
             this.StateHasChanged();
         }
         catch
@@ -64,6 +77,20 @@
 
         }
 
+    }
+    private async void DeleteSession()
+    {
+        try
+        {
+            await sessionStorage.SetItemAsync("hash", null);
+            await sessionStorage.SetItemAsync("firstname", null);
+            await sessionStorage.SetItemAsync("lastname", null);
+            this.StateHasChanged();
+        }
+        catch
+        {
+
+        }
     }
 
 
