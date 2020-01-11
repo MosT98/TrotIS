@@ -1,0 +1,318 @@
+﻿@page "/editprofile"
+@inject HttpClient Http
+@using TrotIS.Shared
+@inject NavigationManager NavigationManager
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+<!-- Navbar-->
+<div class="container">
+    <h1>Edit Profile, @lname @fname</h1>
+    <hr>
+    <div class="row">
+
+
+        <!-- edit form column -->
+        <div class="col-md-9 personal-info">
+            <div class="alert alert-info alert-dismissable">
+                <a class="panel-close close" data-dismiss="alert">×</a>
+                <i class="fa fa-coffee"></i>
+                This is an <strong>.alert</strong>. Use this to show important messages to the user.
+            </div>
+            <h3>Personal info</h3>
+
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">First name:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" type="text" value="Jane">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Last name:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" type="text" value="Bishop">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Company:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" type="text" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Email:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" type="text" value="janesemail@gmail.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Time Zone:</label>
+                    <div class="col-lg-8">
+                        <div class="ui-select">
+                            <select id="user_time_zone" class="form-control">
+                                <option value="Hawaii">(GMT-10:00) Hawaii</option>
+                                <option value="Alaska">(GMT-09:00) Alaska</option>
+                                <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+                                <option value="Arizona">(GMT-07:00) Arizona</option>
+                                <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+                                <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
+                                <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+                                <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Username:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" value="janeuser">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Password:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="password" value="11111122333">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Confirm password:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="password" value="11111122333">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label"></label>
+                    <div class="col-md-8">
+                        <input type="button" class="btn btn-primary" value="Save Changes">
+                        <span></span>
+                        <input type="reset" class="btn btn-default" value="Cancel">
+                    </div>
+                </div>
+            </form>
+            <EditForm Model="@user" OnInvalidSubmit="@HandleInvalidSubmit" OnValidSubmit="@EditInfoUser">
+
+
+                <div class="form-group">
+
+                </div>
+                @*Firstname*@
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <InputText Id="firstName" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.FirstName" placeholder=""></InputText>
+
+                </div>
+                @*LastName*@
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-user-circle"></i>
+                        </span>
+                    </div>
+                    <InputText Id="lastName" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.LastName" placeholder="Last Name"></InputText>
+
+                </div>
+                @*Email*@
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-envelope text-muted"></i>
+                        </span>
+                    </div>
+                    <InputText Id="email" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Email" placeholder="Email"></InputText>
+
+                </div>
+                @*Phone number*@
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-phone"></i>
+                        </span>
+                    </div>
+                    <InputText Id="phoneNumber" Class="form-control bg-white border-md border-left-0 pl-3" @bind-Value="@user.Phone" placeholder="Phone number"></InputText>
+
+                </div>
+                @*Job*@
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-user-md"></i>
+                        </span>
+                    </div>
+                    <InputSelect id="socialclass" @bind-Value="user.SocialClass" class="form-control bg-white border-left-0 border-md" placeholder="Social Class">
+                        <option value="">Select social class ...</option>
+                        <option value="elev">Elev</option>
+                        <option value="student">Student</option>
+                        <option value="pensionar">Pensionar</option>
+                        <option value="normal">Normal</option>
+                        <option value="scutit">Scutit</option>
+                    </InputSelect>
+
+                </div>
+                @*Birthdate*@
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-birthday-cake"></i>
+                        </span>
+                    </div>
+                    <InputDate Id="bdate" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.BirthDay" placeholder="Birth date"></InputDate>
+
+                </div>
+                @*Password*@
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-key"></i>
+                        </span>
+                    </div>
+                    <InputText type="password" placeholder="Password" Class="form-control" @bind-Value="@user.Password" />
+                    <ValidationMessage For="@(() => user.Password)" />
+                </div>
+                @*rety[e p[assowrd*@
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-key"></i>
+                        </span>
+                    </div>
+                    <InputText type="password" placeholder="Confirm Password" Class="form-control" @bind-Value="@user.PasswordConfirmation" />
+                    <ValidationMessage For="@(() => user.PasswordConfirmation)" />
+                </div>
+                <div class="alert @StatusClass">@StatusMessage</div>
+
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <button type="submit" class="btn btn-primary btn-block py-2">Create your account</button>
+                <!-- Line -->
+                <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                    <div class="border-bottom w-100 ml-5"></div>
+                    @*<span class="px-2 small text-muted font-weight-bold text-muted">OR</span>*@
+                    <div class="border-bottom w-100 mr-5"></div>
+                </div>
+
+                <!-- Already Registered -->
+                <div class="text-center w-100">
+                    <p class="text-muted font-weight-bold">Already have an account?<a href="/login" class="text-primary ml-2">Login!</a></p>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>
+<hr>
+
+@code{
+    public string email = null;
+    public string fname = null;
+    public string lname = null;
+
+    private string apiUrl = "http://localhost:5003/login";
+
+    private User user = new User();
+
+    private string StatusMessage;
+    private string StatusClass;
+    protected async override void OnInitialized()
+    {
+        try
+        {
+            fname = await sessionStorage.GetItemAsync<string>("firstname");
+            email = await sessionStorage.GetItemAsync<string>("hash");
+            lname = await sessionStorage.GetItemAsync<string>("lastname");
+            this.StateHasChanged();
+        }
+        catch
+        {
+
+        }
+
+    }
+
+
+    private async void EditInfoUser()
+    {
+        //user.UserId = Guid.NewGuid();
+
+        var result = await Http.PostAsJsonAsync(apiUrl, user);
+        if (result.StatusCode.ToString() == "OK")
+        {
+            var content = await result.Content.ReadAsAsync<ResponseObject>();
+
+            await sessionStorage.SetItemAsync("hash", content.Hash);
+            await sessionStorage.SetItemAsync("firstname", content.FirstName);
+            await sessionStorage.SetItemAsync("lastname", content.LastName);
+            await sessionStorage.SetItemAsync("admin", content.IsAdmin);
+            NavigationManager.NavigateTo("/", true);
+        }
+        else
+        {
+            ErrorEmailPassword();
+        }
+        //succesfully message or not
+
+    }
+    public class User
+    {
+
+        [Required(ErrorMessage = "Email is required.")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "password is required.")]
+        [MinLength(8, ErrorMessage = "password must be atleast 8 characters")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [Required(ErrorMessage = "re-type password is required.")]
+        [Compare(nameof(Password), ErrorMessage = "password dosent match")]
+        public string PasswordConfirmation { get; set; }
+
+        [Required(ErrorMessage = "Firstname is required.")]
+        public string FirstName { get; set; }
+
+        [Required(ErrorMessage = "Lastname is required.")]
+        public string LastName { get; set; }
+
+        [Required(ErrorMessage = "Phone is required.")]
+        public string Phone { get; set; }
+
+        [Required(ErrorMessage = "Birthdate is required.")]
+        public DateTime BirthDay { get; set; }
+
+        [Required(ErrorMessage = "Social is required.")]
+        public EnumLists.SocialClass SocialClass { get; set; }
+
+        public virtual Address Address { get; set; }
+        public Guid UserId { get; set; }
+
+
+    }
+
+    public class ResponseObject
+    {
+        public string Hash { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public bool IsAdmin { get; set; }
+    }
+
+
+    protected void HandleValidSubmit()
+    {
+        StatusClass = "alert-info";
+        StatusMessage = DateTime.Now + " Handle valid submit";
+    }
+
+    protected void HandleInvalidSubmit()
+    {
+        StatusClass = "alert-danger";
+        StatusMessage = DateTime.Now + " Handle invalid submit";
+    }
+    protected void ErrorEmailPassword()
+    {
+        StatusClass = "alert-danger";
+        StatusMessage = "Email and password doesnt match";
+    }
+
+}
