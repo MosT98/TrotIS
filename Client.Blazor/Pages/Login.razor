@@ -91,6 +91,7 @@
             await sessionStorage.SetItemAsync("firstname", content.FirstName);
             await sessionStorage.SetItemAsync("lastname", content.LastName);
             await sessionStorage.SetItemAsync("admin", content.IsAdmin);
+            await sessionStorage.SetItemAsync("userID", content.UserID);
             NavigationManager.NavigateTo("/", true);
         }
         else
@@ -116,6 +117,7 @@
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public bool IsAdmin { get; set; }
+        public Guid UserID { get; set; }
     }
 
 

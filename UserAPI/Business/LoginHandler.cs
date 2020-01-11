@@ -24,7 +24,7 @@ namespace UserAPI.Business
             if (actualUser != null)
                 if (actualUser.Password == Shared.Utilities.sha256_hash(request.Password))
                 {
-                    LoginObj loginObj = new LoginObj(Shared.Utilities.sha256_hash(actualUser.Email), actualUser.FirstName, actualUser.LastName, actualUser.IsAdmin);
+                    LoginObj loginObj = new LoginObj(actualUser.UserId, Shared.Utilities.sha256_hash( actualUser.Email), actualUser.FirstName, actualUser.LastName, actualUser.IsAdmin);
                     return loginObj;
                 }
             return null;
