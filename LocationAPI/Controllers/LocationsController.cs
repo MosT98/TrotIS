@@ -57,8 +57,9 @@ namespace LocationAPI.Controllers
             return Ok(locations);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(Guid id)
+        [Route("delete")]
+        [HttpPost]
+        public async Task<IActionResult> Delete([FromBody]Guid id)
         {
             await mediator.Send(new DeleteLocation(id));
             return NoContent();

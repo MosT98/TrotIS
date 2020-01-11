@@ -83,6 +83,7 @@
         //user.UserId = Guid.NewGuid();
 
         var result = await Http.PostAsJsonAsync(apiUrl, user);
+
         if (result.StatusCode.ToString() == "OK")
         {
             var content = await result.Content.ReadAsAsync<ResponseObject>();
