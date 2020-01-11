@@ -51,7 +51,7 @@
                 <div class="input-group col-lg-12 mb-4">
                     <div class="input-group-prepend">
                         <span class="input-group-text bg-white px-4 border-md border-right-0">
-                            <i class="fa fa-envelope text-muted"></i>
+                            <i class="fa fa-user-circle"></i>
                         </span>
                     </div>
                     <InputText Id="lastName" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.LastName" placeholder="Last Name"></InputText>
@@ -71,7 +71,7 @@
                 <div class="input-group col-lg-12 mb-4">
                     <div class="input-group-prepend">
                         <span class="input-group-text bg-white px-4 border-md border-right-0">
-                            <i class="fa fa-envelope text-muted"></i>
+                            <i class="fa fa-phone"></i>
                         </span>
                     </div>
                     <InputText Id="phoneNumber" Class="form-control bg-white border-md border-left-0 pl-3" @bind-Value="@user.Phone" placeholder="Phone number"></InputText>
@@ -81,7 +81,7 @@
                 <div class="input-group col-lg-12 mb-4">
                     <div class="input-group-prepend">
                         <span class="input-group-text bg-white px-4 border-md border-right-0">
-                            <i class="fa fa-envelope text-muted"></i>
+                            <i class="fa fa-user-md"></i>
                         </span>
                     </div>
                     <InputSelect Id="bdate" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.SocialClass" placeholder="Social Class"></InputSelect>
@@ -91,7 +91,7 @@
                 <div class="input-group col-lg-12 mb-4">
                     <div class="input-group-prepend">
                         <span class="input-group-text bg-white px-4 border-md border-right-0">
-                            <i class="fa fa-envelope text-muted"></i>
+                            <i class="fa fa-birthday-cake"></i>
                         </span>
                     </div>
                     <InputDate Id="bdate" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.BirthDay" placeholder="Birth date"></InputDate>
@@ -101,7 +101,7 @@
                 <div class="input-group col-lg-12 mb-4">
                     <div class="input-group-prepend">
                         <span class="input-group-text bg-white px-4 border-md border-right-0">
-                            <i class="fa fa-envelope text-muted"></i>
+                            <i class="fa fa-key"></i>
                         </span>
                     </div>
                     <InputText type="password" placeholder="Password" Class="form-control" @bind-Value="@user.Password" />
@@ -111,7 +111,7 @@
                 <div class="input-group col-lg-12 mb-4">
                     <div class="input-group-prepend">
                         <span class="input-group-text bg-white px-4 border-md border-right-0">
-                            <i class="fa fa-envelope text-muted"></i>
+                            <i class="fa fa-key"></i>
                         </span>
                     </div>
                     <InputText type="password" placeholder="Confirm Password" Class="form-control" @bind-Value="@user.PasswordConfirmation" />
@@ -208,8 +208,6 @@
 
         [Required(ErrorMessage = "Social is required.")]
         public EnumLists.SocialClass SocialClass { get; set; }
-
-        [Required(ErrorMessage = "Adress is required.")]
         public virtual Address Address { get; set; }
     }
 
