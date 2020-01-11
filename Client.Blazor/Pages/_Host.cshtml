@@ -2,49 +2,107 @@
 @namespace Client.Blazor.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
-    Layout = null;
+	Layout = null;
 }
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Client.Blazor</title>
-    <base href="~/" />
-    @*<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
-        <link href="css/site.css" rel="stylesheet" />*@
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Client.Blazor</title>
+	<base href="~/" />
+	@*<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+		<link href="css/site.css" rel="stylesheet" />*@
 
-    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="css/site.css" rel="stylesheet" />
+	<link href="~/css/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="css/site.css" rel="stylesheet" />
 
-    <script src="~/scripts/jquery-3.3.1.slim.min.js"></script>
-    <script src="~/scripts/bootstrap.bundle.min.js"></script>
+	<script src="~/scripts/jquery-3.3.1.slim.min.js"></script>
+	<script src="~/scripts/bootstrap.bundle.min.js"></script>
 
-    <link href="~/css/register.css" rel="stylesheet" />
-    <script src="~/scripts/dobpicker.js"></script>
-    <script src="~/scripts/register.js"></script>
-    
+	<link href="~/css/register.css" rel="stylesheet" />
+	<script src="~/scripts/register.js"></script>
 
+	@*MAP BOX API*@
+
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js'></script>
+	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css' rel='stylesheet' />
+	<link href="~/css/map.css" rel="stylesheet" />
+
+	<script>
+		mapboxgl.accessToken = 'pk.eyJ1IjoiYWtlMzciLCJhIjoiY2s1OWx2bjdvMGxkYzNqam05cnBzamw3YyJ9.HVgbu-GJfUnhwA6UFIR1TQ';
+		var map;
+		function initMap() {
+			map = new mapboxgl.Map({
+				container: 'map',
+				style: 'mapbox://styles/mapbox/light-v10',
+				center: [27.5743639, 47.1739724],
+				zoom: 12
+			});
+
+
+			var geojson = {
+				type: 'FeatureCollection',
+				features: [{
+					type: 'Feature',
+					geometry: {
+						type: 'Point',
+						coordinates: [27.5743639, 47.1739724]
+					},
+					properties: {
+						title: 'TrotIS Center',
+						description: 'Faculty of Computer Science, Iasi'
+					}
+				},
+				{
+					type: 'Feature',
+					geometry: {
+						type: 'Point',
+						coordinates: [27.586982, 47.1581859]
+					},
+					properties: {
+						title: 'TrotIS Center',
+						description: 'Palace of Culture, Iasi'
+					}
+				}]
+			};
+
+			// add markers to map
+			geojson.features.forEach(function (marker) {
+
+				// create a HTML element for each feature
+				var el = document.createElement('div');
+				el.className = 'marker';
+
+				// make a marker for each feature and add to the map
+				new mapboxgl.Marker(el)
+					.setLngLat(marker.geometry.coordinates)
+					.setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+						.setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+					.addTo(map);
+			});
+		}
+	</script>
 </head>
 <body>
-    <app>
-        <component type="typeof(App)" render-mode="ServerPrerendered" />
-    </app>
+	<app>
+		<component type="typeof(App)" render-mode="ServerPrerendered" />
+	</app>
 
-    <div id="blazor-error-ui">
-        <environment include="Staging,Production">
-            An error has occurred. This application may no longer respond until reloaded.
-        </environment>
-        <environment include="Development">
-            An unhandled exception has occurred. See browser dev tools for details.
-        </environment>
-        <a href="" class="reload">Reload</a>
-        <a class="dismiss">🗙</a>
-    </div>
+	<div id="blazor-error-ui">
+		<environment include="Staging,Production">
+			An error has occurred. This application may no longer respond until reloaded.
+		</environment>
+		<environment include="Development">
+			An unhandled exception has occurred. See browser dev tools for details.
+		</environment>
+		<a href="" class="reload">Reload</a>
+		<a class="dismiss">🗙</a>
+	</div>
 
-    <script src="_framework/blazor.server.js"></script>
+	<script src="_framework/blazor.server.js"></script>
 
 </body>
 </html>

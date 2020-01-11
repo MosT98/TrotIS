@@ -31,8 +31,6 @@ namespace UserAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-            
             modelBuilder.Entity<User>()
                 .HasOne(s => s.Address);
 
