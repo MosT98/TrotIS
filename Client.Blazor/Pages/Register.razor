@@ -4,7 +4,6 @@
 @using Microsoft.AspNetCore.Components;
 @inject NavigationManager navManager
 @inject IJSRuntime jsRuntime
-
 <!-- Navbar-->
 <header class="header">
     <nav class="navbar navbar-expand-lg navbar-light py-3">
@@ -28,125 +27,109 @@
 
         <!-- Registeration Form -->
         <div class="col-md-7 col-lg-6 ml-auto">
-            <form action="#">
-                <div class="row">
+           
+            <EditForm Model="@user" OnInvalidSubmit="@HandleInvalidSubmit">
+                <div class="alert @StatusClass">@StatusMessage</div>
 
-                    <!-- First Name -->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-user text-muted"></i>
-                            </span>
-                        </div>
-                        <input id="firstName" type="text" name="firstname" @bind="user.FirstName" placeholder="First Name" class="form-control bg-white border-left-0 border-md">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+
+                <div class="form-group">
+
+                </div>
+                @*Firstname*@
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        </span>
                     </div>
-
-                    <!-- Last Name -->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-user text-muted"></i>
-                            </span>
-                        </div>
-                        <input id="lastName" type="text" name="lastname" @bind="user.LastName" placeholder="Last Name" class="form-control bg-white border-left-0 border-md">
+                    <InputText Id="firstName" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.FirstName" placeholder="First Name"></InputText>
+                    <ValidationMessage For="@(() => user.FirstName)" />
+                </div>
+                @*LastName*@
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-envelope text-muted"></i>
+                        </span>
                     </div>
-
-                    <!-- Email Address -->
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-envelope text-muted"></i>
-                            </span>
-                        </div>
-                        <input id="email" type="email" name="email" @bind="user.Email" placeholder="Email Address" class="form-control bg-white border-left-0 border-md">
+                    <InputText Id="lastName" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.LastName" placeholder="Last Name"></InputText>
+                    <ValidationMessage For="@(() => user.LastName)" />
+                </div>
+                @*Email*@
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-envelope text-muted"></i>
+                        </span>
                     </div>
-
-                    <!-- Phone Number -->
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-phone-square text-muted"></i>
-                            </span>
-                        </div>
-                        <input id="phoneNumber" type="tel" name="phone" @bind="user.Phone" placeholder="Phone Number" class="form-control bg-white border-md border-left-0 pl-3">
-                    </div>.
-
-
-                    <!-- Job -->
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-black-tie text-muted"></i>
-                            </span>
-                        </div>
-                        <input id="socialclass" type="text" name="password" @bind="user.SocialClass" placeholder="Social class" class="form-control bg-white border-left-0 border-md">
+                    <InputText Id="email" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Email" placeholder="Email"></InputText>
+                    <ValidationMessage For="@(() => user.Email)" />
+                </div>
+                @*Phone number*@
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-envelope text-muted"></i>
+                        </span>
                     </div>
-
-
-
-                    <!-- Birthday -->
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-birthday-cake text-muted"></i>
-                            </span>
-                        </div>
-                        <input id="birthday" type="date" name="birthday" @bind="user.BirthDay" placeholder="Birthday" class="form-control bg-white border-left-0 border-md">
+                    <InputText Id="phoneNumber" Class="form-control bg-white border-md border-left-0 pl-3" @bind-Value="@user.Phone" placeholder="Phone number"></InputText>
+                    <ValidationMessage For="@(() => user.Phone)" />
+                </div>
+                @*Job*@
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-envelope text-muted"></i>
+                        </span>
                     </div>
-
-                    <!-- Password -->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-lock text-muted"></i>
-                            </span>
-                        </div>
-                        <input id="password" type="password" name="password" @bind="user.Password" placeholder="Password" class="form-control bg-white border-left-0 border-md">
+                    <InputSelect Id="bdate" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.SocialClass" placeholder="Social Class"></InputSelect>
+                    <ValidationMessage For="@(() => user.SocialClass)" />
+                </div>
+                @*Birthdate*@
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-envelope text-muted"></i>
+                        </span>
                     </div>
-
-                    <!-- Password Confirmation -->
-                    <div class="input-group col-lg-6 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-lock text-muted"></i>
-                            </span>
-                        </div>
-                        <input id="passwordConfirmation" type="password" name="passwordConfirmation" @bind="user.PasswordConfirmation" placeholder="Confirm Password" class="form-control bg-white border-left-0 border-md">
+                    <InputDate Id="bdate" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.BirthDay" placeholder="Birth date"></InputDate>
+                    <ValidationMessage For="@(() => user.BirthDay)" />
+                </div>
+                @*Password*@
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-envelope text-muted"></i>
+                        </span>
                     </div>
-
-                    <!-- Submit Button -->
-                    <div class="form-group col-lg-12 mx-auto mb-0">
-                        <!-- !!!!!!!!!!! -->
-                        <!-- !!!!!!!!!!! -->
-                        <!-- !!!!!!!!!!! -->
-                        <!-- href asta te si redirectioneaza la on click. Trebuie facut fara href astfel incat sa te redirectioneze doar din functia RegisterUser cu navigateto-->
-                        <!-- !!!!!!!!!!! -->
-                        <!-- !!!!!!!!!!! -->
-                        <!-- !!!!!!!!!!! -->
-
-                        <!-- try without <a> (button or smth) -->
-                        <a href="register" class="btn btn-primary btn-block py-2" @onclick="@RegisterUser">
-                            <!-- !!!!!!!!!!! -->
-
-                            <span class="font-weight-bold">Create your account</span>
-                        </a>
+                    <InputText type="password" placeholder="Password" Class="form-control" @bind-Value="@user.Password" />
+                    <ValidationMessage For="@(() => user.Password)" />
+                </div>
+                @*rety[e p[assowrd*@
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-envelope text-muted"></i>
+                        </span>
                     </div>
+                    <InputText type="password" placeholder="Confirm Password" Class="form-control" @bind-Value="@user.PasswordConfirmation" />
+                    <ValidationMessage For="@(() => user.PasswordConfirmation)" />
+                </div>
+                <button @onclick="@RegisterUser" class="btn btn-primary btn-block py-2">Create your account</button>
+                <!-- Line -->
+                <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                    <div class="border-bottom w-100 ml-5"></div>
+                    @*<span class="px-2 small text-muted font-weight-bold text-muted">OR</span>*@
+                    <div class="border-bottom w-100 mr-5"></div>
+                </div>
 
-
-                    <!-- Line -->
-                    <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
-                        <div class="border-bottom w-100 ml-5"></div>
-                        @*<span class="px-2 small text-muted font-weight-bold text-muted">OR</span>*@
-                        <div class="border-bottom w-100 mr-5"></div>
-                    </div>
-
-                    <!-- Already Registered -->
-                    <div class="text-center w-100">
-                        <p class="text-muted font-weight-bold">Already registered? <a href="#" class="text-primary ml-2" @onclick="NavigateToLoginComponent">Login</a></p>
-                    </div>
-
-                    </div>
-            </form>
+                <!-- Already Registered -->
+                <div class="text-center w-100">
+                    <p class="text-muted font-weight-bold">Already have an account?<a href="/login" class="text-primary ml-2">Login!</a></p>
+                </div>
+            </EditForm>
         </div>
     </div>
 </div>
@@ -156,32 +139,34 @@
     private string apiUrl = "http://localhost:5003/api/user";
     private string apiUrlCheck = "http://localhost:5003/check";
     private User user = new User();
+    private string StatusMessage;
+    private string StatusClass;
     private async void RegisterUser()
     {
 
         //verify if email already exists
         var result = await Http.PostAsJsonAsync(apiUrlCheck, user);
         var content = await result.Content.ReadAsStringAsync();
-        if (content != string.Empty) 
+        if (content != string.Empty)
         {
             ToastContent = content;
             //show a popup with ToastContent error
             //I Installed a package for this
             //documentation here: https://ej2.syncfusion.com/blazor/documentation/toast/config/
             //or use javascript idk...
-            
+
             //after that you should remain on current page and modify email/phone
-            
+
         }
         else if (user.Password == user.PasswordConfirmation)
         {
-                user.UserId = Guid.NewGuid();
-                user.Address = null;
-                await Http.PostAsJsonAsync(apiUrl, user);
-                //show popup you are now logged in - timout 2 sec
-                //go to home after that
-                //only here the register button should redirect // va fi logat aici
-                navManager.NavigateTo("/", false); 
+            user.UserId = Guid.NewGuid();
+            user.Address = null;
+            await Http.PostAsJsonAsync(apiUrl, user);
+            //show popup you are now logged in - timout 2 sec
+            //go to home after that
+            //only here the register button should redirect // va fi logat aici
+            navManager.NavigateTo("/", false);
         }
         //else -- if fail
         else
@@ -196,15 +181,48 @@
     public class User
     {
         public Guid UserId { get; set; }
+
+        [Required(ErrorMessage = "Email is required.")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "password is required.")]
+        [MinLength(8, ErrorMessage = "password must be atleast 8 characters")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        [Required(ErrorMessage = "re-type password is required.")]
+        [Compare(nameof(Password), ErrorMessage = "password dosent match")]
         public string PasswordConfirmation { get; set; }
+
+        [Required(ErrorMessage = "Firstname is required.")]
         public string FirstName { get; set; }
+
+        [Required(ErrorMessage = "Lastname is required.")]
         public string LastName { get; set; }
+
+        [Required(ErrorMessage = "Phone is required.")]
         public string Phone { get; set; }
+
+        [Required(ErrorMessage = "Birthdate is required.")]
         public DateTime BirthDay { get; set; }
+
+        [Required(ErrorMessage = "Social is required.")]
         public EnumLists.SocialClass SocialClass { get; set; }
+
+        [Required(ErrorMessage = "Adress is required.")]
         public virtual Address Address { get; set; }
+    }
+
+    protected void HandleValidSubmit()
+    {
+        StatusClass = "alert-info";
+        StatusMessage = DateTime.Now + " Handle valid submit";
+    }
+
+    protected void HandleInvalidSubmit()
+    {
+        StatusClass = "alert-danger";
+        StatusMessage = DateTime.Now + " Handle invalid submit";
     }
 
 }
