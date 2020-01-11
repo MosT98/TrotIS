@@ -3,8 +3,6 @@ using LocationAPI.DTOs;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -19,7 +17,7 @@ namespace LocationAPI.Business
         }
         public async Task<Unit> Handle(DeleteLocation request, CancellationToken cancellationToken)
         {
-            var user = await context.Locations.SingleOrDefaultAsync(u => u.LocationID == request.LocationId);
+            var user = await context.Locations.SingleOrDefaultAsync(u => u.LocationID == request.LocationID);
             if (user == null)
             {
                 throw new Exception("Location does not exists");
