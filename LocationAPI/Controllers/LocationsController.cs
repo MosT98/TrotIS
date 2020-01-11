@@ -45,5 +45,16 @@ namespace LocationAPI.Controllers
             return link;
         }
 
+        [HttpGet]
+        public async Task<ActionResult<Location>> Get()
+        {
+            var locations = await mediator.Send(new GetLocations());
+            if (locations == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(locations);
+        }
     }
 }
