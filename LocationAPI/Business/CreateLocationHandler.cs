@@ -15,7 +15,7 @@ namespace LocationAPI.Business
         }
         public async Task<Location> Handle(CreateLocation request, CancellationToken cancellationToken)
         {
-            Location location = Location.Create(request.addressID);
+            Location location = Location.Create(request.Longitude, request.Latitude, request.Comment);
             if (location != null)
             {
                 context.Locations.Add(location);

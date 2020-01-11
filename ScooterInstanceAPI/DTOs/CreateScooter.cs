@@ -13,6 +13,7 @@ namespace ScooterInstanceAPI.DTOs
         public int WeightMax { get; set; } //kg
         public int SpeedLimit { get; set; } //km/h
         public int ClimbAngle { get; set; } //degree
+        public string ImgName { get; set; }
 
     }
 }

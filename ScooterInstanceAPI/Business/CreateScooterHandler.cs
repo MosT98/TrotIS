@@ -18,7 +18,7 @@ namespace ScooterInstanceAPI.Business
 
         public async Task<Scooter> Handle(CreateScooter request, CancellationToken cancellationToken)
         {
-            var newScooter = Scooter.Create(request.Brand, request.Model, request.BatteryLife, request.AgeLimitMin, request.AgeLimitMax, request.WeightMax, request.SpeedLimit, request.ClimbAngle);
+            var newScooter = Scooter.Create(request.Brand, request.Model, request.BatteryLife, request.AgeLimitMin, request.AgeLimitMax, request.WeightMax, request.SpeedLimit, request.ClimbAngle, request.ImgName);
 
             context.Scooters.Add(newScooter);
             await context.SaveChangesAsync(cancellationToken);

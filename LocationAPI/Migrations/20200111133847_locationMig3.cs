@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LocationAPI.Migrations
 {
-    public partial class location_added : Migration
+    public partial class locationMig3 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -24,8 +24,9 @@ namespace LocationAPI.Migrations
                 columns: table => new
                 {
                     LocationID = table.Column<Guid>(nullable: false),
-                    AddressID = table.Column<Guid>(nullable: false),
-                    valid = table.Column<bool>(nullable: false)
+                    Longitude = table.Column<decimal>(nullable: false),
+                    Latitude = table.Column<decimal>(nullable: false),
+                    Comment = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -35,12 +36,12 @@ namespace LocationAPI.Migrations
             migrationBuilder.InsertData(
                 table: "LinkLocationsToScooterInstances",
                 columns: new[] { "LocationID", "ScooterInstanceID" },
-                values: new object[] { new Guid("b4b821df-fac2-4b76-b4ac-10f3dd1ce8ce"), new Guid("65a1ecd5-5ac1-434b-8c35-1bedcee04dd4") });
+                values: new object[] { new Guid("c23f0569-c10f-4eed-9180-b710af6e057a"), new Guid("65a1ecd5-5ac1-434b-8c35-1bedcee04dd4") });
 
             migrationBuilder.InsertData(
                 table: "Locations",
-                columns: new[] { "LocationID", "AddressID", "valid" },
-                values: new object[] { new Guid("b4b821df-fac2-4b76-b4ac-10f3dd1ce8ce"), new Guid("6719bc69-b700-40a3-8c00-ecf14eb977cd"), true });
+                columns: new[] { "LocationID", "Comment", "Latitude", "Longitude" },
+                values: new object[] { new Guid("c23f0569-c10f-4eed-9180-b710af6e057a"), "Prima dupa colt", 42.8731m, 12.3121m });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

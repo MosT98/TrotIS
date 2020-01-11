@@ -14,6 +14,7 @@ namespace ScooterInstanceAPI.Data
         public int WeightMax { get; set; } //kg
         public int SpeedLimit { get; set; } //km/h
         public int ClimbAngle { get; set; } //degree
+        public string ImgName { get; set; }
 
         //public ICollection<ScooterInstance> ScooterInstances { get; set; }
 
@@ -22,7 +23,7 @@ namespace ScooterInstanceAPI.Data
             ScooterId = Guid.NewGuid();
         }
 
-        public static Scooter Create(string brand, string model, int batterylife, int agelimitmin, int agelimitmax, int weightmax, int speedlimit, int climbangle)
+        public static Scooter Create(string brand, string model, int batterylife, int agelimitmin, int agelimitmax, int weightmax, int speedlimit, int climbangle, string imgName)
         {
             return new Scooter
             {
@@ -35,7 +36,8 @@ namespace ScooterInstanceAPI.Data
                 AgeLimitMax = agelimitmax,
                 WeightMax = weightmax,
                 SpeedLimit = speedlimit,
-                ClimbAngle = climbangle
+                ClimbAngle = climbangle,
+                ImgName = imgName,
             };
         }
     }

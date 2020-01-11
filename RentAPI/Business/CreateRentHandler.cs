@@ -17,7 +17,7 @@ namespace RentAPI.Business
 
         public async Task<Rent> Handle(CreateRent request, CancellationToken cancellationToken)
         {
-            var rent = Rent.Create(request.LocationId, request.UserId, request.ScooterInstanceId);
+            var rent = Rent.Create(request.LocationId, request.UserId, request.ScooterInstanceId, request.StartDate, request.EndDate);
             if (rent != null)
             {
                 context.Rents.Add(rent);

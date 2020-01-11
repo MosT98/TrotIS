@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LocationAPI.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20200108203059_location_added")]
-    partial class location_added
+    [Migration("20200111133847_locationMig3")]
+    partial class locationMig3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,11 +27,14 @@ namespace LocationAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("AddressID")
-                        .HasColumnType("uuid");
+                    b.Property<string>("Comment")
+                        .HasColumnType("text");
 
-                    b.Property<bool>("valid")
-                        .HasColumnType("boolean");
+                    b.Property<decimal>("Latitude")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("Longitude")
+                        .HasColumnType("numeric");
 
                     b.HasKey("LocationID");
 
@@ -40,9 +43,10 @@ namespace LocationAPI.Migrations
                     b.HasData(
                         new
                         {
-                            LocationID = new Guid("b4b821df-fac2-4b76-b4ac-10f3dd1ce8ce"),
-                            AddressID = new Guid("6719bc69-b700-40a3-8c00-ecf14eb977cd"),
-                            valid = true
+                            LocationID = new Guid("c23f0569-c10f-4eed-9180-b710af6e057a"),
+                            Comment = "Prima dupa colt",
+                            Latitude = 42.8731m,
+                            Longitude = 12.3121m
                         });
                 });
 
@@ -61,7 +65,7 @@ namespace LocationAPI.Migrations
                     b.HasData(
                         new
                         {
-                            LocationID = new Guid("b4b821df-fac2-4b76-b4ac-10f3dd1ce8ce"),
+                            LocationID = new Guid("c23f0569-c10f-4eed-9180-b710af6e057a"),
                             ScooterInstanceID = new Guid("65a1ecd5-5ac1-434b-8c35-1bedcee04dd4")
                         });
                 });

@@ -25,17 +25,23 @@ namespace RentAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<bool>("IsCancelled")
                         .HasColumnType("boolean");
 
                     b.Property<Guid>("LocationId")
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("RentDate")
+                    b.Property<DateTime>("OrderDate")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid>("ScooterInstanceId")
                         .HasColumnType("uuid");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
@@ -47,12 +53,14 @@ namespace RentAPI.Migrations
                     b.HasData(
                         new
                         {
-                            RentId = new Guid("3666b1ef-c954-4b2a-b97a-5cc9a7ca12f8"),
+                            RentId = new Guid("f2c7dbe2-9f6c-4219-9240-9610ca09b3d9"),
+                            EndDate = new DateTime(2000, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsCancelled = false,
-                            LocationId = new Guid("e5cf7f23-0146-4a4a-8322-d1209cf737d0"),
-                            RentDate = new DateTime(2019, 1, 3, 6, 0, 0, 0, DateTimeKind.Unspecified),
+                            LocationId = new Guid("e5cf7f23-0146-4a4a-8322-d1209cf747d0"),
+                            OrderDate = new DateTime(2020, 1, 11, 13, 32, 56, 100, DateTimeKind.Utc).AddTicks(2104),
                             ScooterInstanceId = new Guid("47364138-912d-4ea2-b59f-eca02e4d8db7"),
-                            UserId = new Guid("843e8cb6-4928-4bb8-85ca-2412ff36a3eb")
+                            StartDate = new DateTime(1999, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UserId = new Guid("843e8cb6-4928-4bb8-85ca-2412ff35a3eb")
                         });
                 });
 #pragma warning restore 612, 618

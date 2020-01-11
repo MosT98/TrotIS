@@ -5,20 +5,22 @@ namespace LocationAPI.Data
     public class Location
     {
         public Guid LocationID { get; set; }
-        public Guid AddressID { get; set; }
-        public bool valid { get; set; }
+        public decimal Longitude { get; set; }
+        public decimal Latitude { get; set; }
+        public string Comment { get; set; }
         public Location()
         {
             LocationID = Guid.NewGuid();
         }
 
-        public static Location Create(string addressID)
+        public static Location Create(decimal longitude, decimal latitude, string comment)
         {
             return new Location
             {
                 LocationID = Guid.NewGuid(),
-                AddressID = Guid.Parse(addressID),
-                valid = true
+                Longitude=longitude,
+                Latitude=latitude,
+                Comment=comment
             };
         }
     }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RentAPI.Migrations
 {
-    public partial class Rent_Added : Migration
+    public partial class rentMig : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,9 @@ namespace RentAPI.Migrations
                     LocationId = table.Column<Guid>(nullable: false),
                     UserId = table.Column<Guid>(nullable: false),
                     ScooterInstanceId = table.Column<Guid>(nullable: false),
-                    RentDate = table.Column<DateTime>(nullable: false),
+                    OrderDate = table.Column<DateTime>(nullable: false),
+                    StartDate = table.Column<DateTime>(nullable: false),
+                    EndDate = table.Column<DateTime>(nullable: false),
                     IsCancelled = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
@@ -25,8 +27,8 @@ namespace RentAPI.Migrations
 
             migrationBuilder.InsertData(
                 table: "Rents",
-                columns: new[] { "RentId", "IsCancelled", "LocationId", "RentDate", "ScooterInstanceId", "UserId" },
-                values: new object[] { new Guid("3666b1ef-c954-4b2a-b97a-5cc9a7ca12f8"), false, new Guid("e5cf7f23-0146-4a4a-8322-d1209cf737d0"), new DateTime(2019, 1, 3, 6, 0, 0, 0, DateTimeKind.Unspecified), new Guid("47364138-912d-4ea2-b59f-eca02e4d8db7"), new Guid("843e8cb6-4928-4bb8-85ca-2412ff36a3eb") });
+                columns: new[] { "RentId", "EndDate", "IsCancelled", "LocationId", "OrderDate", "ScooterInstanceId", "StartDate", "UserId" },
+                values: new object[] { new Guid("f2c7dbe2-9f6c-4219-9240-9610ca09b3d9"), new DateTime(2000, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), false, new Guid("e5cf7f23-0146-4a4a-8322-d1209cf747d0"), new DateTime(2020, 1, 11, 13, 32, 56, 100, DateTimeKind.Utc).AddTicks(2104), new Guid("47364138-912d-4ea2-b59f-eca02e4d8db7"), new DateTime(1999, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new Guid("843e8cb6-4928-4bb8-85ca-2412ff35a3eb") });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
