@@ -28,7 +28,7 @@
         <!-- Registeration Form -->
         <div class="col-md-7 col-lg-6 ml-auto">
            
-            <EditForm Model="@user" OnInvalidSubmit="@HandleInvalidSubmit">
+            <EditForm Model="@user" OnInvalidSubmit="@HandleInvalidSubmit" OnValidSubmit="@HandleValidSubmit">
                 <div class="alert @StatusClass">@StatusMessage</div>
 
                 <DataAnnotationsValidator />
@@ -78,15 +78,22 @@
                     <ValidationMessage For="@(() => user.Phone)" />
                 </div>
                 @*Job*@
-                <div class="input-group col-lg-12 mb-4">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-white px-4 border-md border-right-0">
-                            <i class="fa fa-user-md"></i>
-                        </span>
-                    </div>
-                    <InputSelect Id="bdate" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.SocialClass" placeholder="Social Class"></InputSelect>
-                    <ValidationMessage For="@(() => user.SocialClass)" />
+            <div class="input-group col-lg-12 mb-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                        <i class="fa fa-user-md"></i>
+                    </span>
                 </div>
+                <InputSelect id="socialclass" @bind-Value="user.SocialClass" class="form-control bg-white border-left-0 border-md" placeholder="Social Class">
+                    <option value="">Select social class ...</option>
+                    <option value="elev">Elev</option>
+                    <option value="student">Student</option>
+                    <option value="pensionar">Pensionar</option>
+                    <option value="normal">Normal</option>
+                    <option value="scutit">Scutit</option>
+                </InputSelect>
+                <ValidationMessage For="@(() => user.SocialClass)" />
+            </div>
                 @*Birthdate*@
                 <div class="input-group col-lg-12 mb-4">
                     <div class="input-group-prepend">
@@ -117,7 +124,7 @@
                     <InputText type="password" placeholder="Confirm Password" Class="form-control" @bind-Value="@user.PasswordConfirmation" />
                     <ValidationMessage For="@(() => user.PasswordConfirmation)" />
                 </div>
-                <button @onclick="@RegisterUser" class="btn btn-primary btn-block py-2">Create your account</button>
+                <button type="submit" class="btn btn-primary btn-block py-2">Create your account</button>
                 <!-- Line -->
                 <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
                     <div class="border-bottom w-100 ml-5"></div>
@@ -163,6 +170,7 @@
             user.UserId = Guid.NewGuid();
             user.Address = null;
             await Http.PostAsJsonAsync(apiUrl, user);
+
             //show popup you are now logged in - timout 2 sec
             //go to home after that
             //only here the register button should redirect // va fi logat aici
@@ -180,7 +188,6 @@
 
     public class User
     {
-        public Guid UserId { get; set; }
 
         [Required(ErrorMessage = "Email is required.")]
         public string Email { get; set; }
@@ -208,19 +215,24 @@
 
         [Required(ErrorMessage = "Social is required.")]
         public EnumLists.SocialClass SocialClass { get; set; }
+
         public virtual Address Address { get; set; }
+        public Guid UserId { get; set; }
+
+
     }
 
     protected void HandleValidSubmit()
     {
         StatusClass = "alert-info";
-        StatusMessage = DateTime.Now + " Handle valid submit";
+        StatusMessage = "You're registered now!";
+        RegisterUser();
     }
 
     protected void HandleInvalidSubmit()
     {
         StatusClass = "alert-danger";
-        StatusMessage = DateTime.Now + " Handle invalid submit";
+        StatusMessage = DateTime.Now + " something went wrong";
     }
 
 }
