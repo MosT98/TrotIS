@@ -27,12 +27,9 @@
 
         <!-- Registeration Form -->
         <div class="col-md-7 col-lg-6 ml-auto">
-           
-            <EditForm Model="@user" OnInvalidSubmit="@HandleInvalidSubmit" OnValidSubmit="@HandleValidSubmit">
-                <div class="alert @StatusClass">@StatusMessage</div>
 
-                <DataAnnotationsValidator />
-                <ValidationSummary />
+            <EditForm Model="@user" OnInvalidSubmit="@HandleInvalidSubmit" OnValidSubmit="@RegisterUser">
+
 
                 <div class="form-group">
 
@@ -45,7 +42,7 @@
                         </span>
                     </div>
                     <InputText Id="firstName" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.FirstName" placeholder="First Name"></InputText>
-                    <ValidationMessage For="@(() => user.FirstName)" />
+                    
                 </div>
                 @*LastName*@
                 <div class="input-group col-lg-12 mb-4">
@@ -55,7 +52,7 @@
                         </span>
                     </div>
                     <InputText Id="lastName" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.LastName" placeholder="Last Name"></InputText>
-                    <ValidationMessage For="@(() => user.LastName)" />
+                    
                 </div>
                 @*Email*@
                 <div class="input-group col-lg-12 mb-4">
@@ -65,7 +62,7 @@
                         </span>
                     </div>
                     <InputText Id="email" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Email" placeholder="Email"></InputText>
-                    <ValidationMessage For="@(() => user.Email)" />
+                    
                 </div>
                 @*Phone number*@
                 <div class="input-group col-lg-12 mb-4">
@@ -75,25 +72,25 @@
                         </span>
                     </div>
                     <InputText Id="phoneNumber" Class="form-control bg-white border-md border-left-0 pl-3" @bind-Value="@user.Phone" placeholder="Phone number"></InputText>
-                    <ValidationMessage For="@(() => user.Phone)" />
+                    
                 </div>
                 @*Job*@
-            <div class="input-group col-lg-12 mb-4">
-                <div class="input-group-prepend">
-                    <span class="input-group-text bg-white px-4 border-md border-right-0">
-                        <i class="fa fa-user-md"></i>
-                    </span>
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-user-md"></i>
+                        </span>
+                    </div>
+                    <InputSelect id="socialclass" @bind-Value="user.SocialClass" class="form-control bg-white border-left-0 border-md" placeholder="Social Class">
+                        <option value="">Select social class ...</option>
+                        <option value="elev">Elev</option>
+                        <option value="student">Student</option>
+                        <option value="pensionar">Pensionar</option>
+                        <option value="normal">Normal</option>
+                        <option value="scutit">Scutit</option>
+                    </InputSelect>
+                    
                 </div>
-                <InputSelect id="socialclass" @bind-Value="user.SocialClass" class="form-control bg-white border-left-0 border-md" placeholder="Social Class">
-                    <option value="">Select social class ...</option>
-                    <option value="elev">Elev</option>
-                    <option value="student">Student</option>
-                    <option value="pensionar">Pensionar</option>
-                    <option value="normal">Normal</option>
-                    <option value="scutit">Scutit</option>
-                </InputSelect>
-                <ValidationMessage For="@(() => user.SocialClass)" />
-            </div>
                 @*Birthdate*@
                 <div class="input-group col-lg-12 mb-4">
                     <div class="input-group-prepend">
@@ -102,7 +99,7 @@
                         </span>
                     </div>
                     <InputDate Id="bdate" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.BirthDay" placeholder="Birth date"></InputDate>
-                    <ValidationMessage For="@(() => user.BirthDay)" />
+                    
                 </div>
                 @*Password*@
                 <div class="input-group col-lg-12 mb-4">
@@ -124,6 +121,10 @@
                     <InputText type="password" placeholder="Confirm Password" Class="form-control" @bind-Value="@user.PasswordConfirmation" />
                     <ValidationMessage For="@(() => user.PasswordConfirmation)" />
                 </div>
+                <div class="alert @StatusClass">@StatusMessage</div>
+
+                <DataAnnotationsValidator />
+                <ValidationSummary />
                 <button type="submit" class="btn btn-primary btn-block py-2">Create your account</button>
                 <!-- Line -->
                 <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
@@ -157,6 +158,7 @@
         if (content != string.Empty)
         {
             ToastContent = content;
+            Invalid(ToastContent);
             //show a popup with ToastContent error
             //I Installed a package for this
             //documentation here: https://ej2.syncfusion.com/blazor/documentation/toast/config/
@@ -165,7 +167,7 @@
             //after that you should remain on current page and modify email/phone
 
         }
-        else if (user.Password == user.PasswordConfirmation)
+        else if(user.Password == user.PasswordConfirmation)
         {
             user.UserId = Guid.NewGuid();
             user.Address = null;
@@ -226,7 +228,6 @@
     {
         StatusClass = "alert-info";
         StatusMessage = "You're registered now!";
-        RegisterUser();
     }
 
     protected void HandleInvalidSubmit()
@@ -235,4 +236,9 @@
         StatusMessage = DateTime.Now + " something went wrong";
     }
 
+        protected void Invalid(string content)
+    {
+        StatusClass = "alert-danger";
+        StatusMessage = content;
+    }
 }

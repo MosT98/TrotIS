@@ -26,15 +26,8 @@
 
         <!-- Login Form -->
         <div class="col-md-7 col-lg-6 ml-auto">
-            <EditForm Model="@user" OnInvalidSubmit="@HandleInvalidSubmit">
-                <div class="alert @StatusClass">@StatusMessage</div>
+            <EditForm Model="@user" OnInvalidSubmit="@HandleInvalidSubmit" OnValidSubmit="@LoginUser">
 
-                <DataAnnotationsValidator />
-                <ValidationSummary />
-
-                <div class="form-group">
-
-                </div>
                 <div class="input-group col-lg-12 mb-4">
                     <div class="input-group-prepend">
                         <span class="input-group-text bg-white px-4 border-md border-right-0">
@@ -42,7 +35,7 @@
                         </span>
                     </div>
                     <InputText Id="email" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Email" placeholder="Email"></InputText>
-                    <ValidationMessage For="@(() => user.Email)" />
+                    @*<ValidationMessage For="@(() => user.Email)" />*@
                 </div>
                 <div class="input-group col-lg-12 mb-4">
                     <div class="input-group-prepend">
@@ -51,9 +44,13 @@
                         </span>
                     </div>
                     <InputText type="password" placeholder="Password" Class="form-control" @bind-Value="@user.Password" />
-                    <ValidationMessage For="@(() => user.Password)" />
+                    @*<ValidationMessage For="@(() => user.Password)" />*@
                 </div>
-                <button @onclick="@LoginUser" class="btn btn-primary btn-block py-2">Login</button>
+                <div class="alert @StatusClass">@StatusMessage</div>
+
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <button type="submit" class="btn btn-primary btn-block py-2">Login</button>
                 <!-- Line -->
                 <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
                     <div class="border-bottom w-100 ml-5"></div>
@@ -94,9 +91,14 @@
             await sessionStorage.SetItemAsync("firstname", content.FirstName);
             await sessionStorage.SetItemAsync("lastname", content.LastName);
             await sessionStorage.SetItemAsync("admin", content.IsAdmin);
+            NavigationManager.NavigateTo("/", true);
+        }
+        else
+        {
+            ErrorEmailPassword();
         }
         //succesfully message or not
-        NavigationManager.NavigateTo("/", true);
+
     }
 
     public class User
@@ -127,5 +129,10 @@
     {
         StatusClass = "alert-danger";
         StatusMessage = DateTime.Now + " Handle invalid submit";
+    }
+    protected void ErrorEmailPassword()
+    {
+        StatusClass = "alert-danger";
+        StatusMessage = "Email and password doesnt match";
     }
 }
