@@ -56,5 +56,12 @@ namespace LocationAPI.Controllers
 
             return Ok(locations);
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromBody] DeleteLocation request)
+        {
+            await mediator.Send(request);
+            return NoContent();
+        }
     }
 }
