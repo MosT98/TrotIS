@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LocationAPI.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20200111133847_locationMig3")]
+    [Migration("20200111142238_locationMig3")]
     partial class locationMig3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,10 +43,10 @@ namespace LocationAPI.Migrations
                     b.HasData(
                         new
                         {
-                            LocationID = new Guid("c23f0569-c10f-4eed-9180-b710af6e057a"),
-                            Comment = "Prima dupa colt",
-                            Latitude = 42.8731m,
-                            Longitude = 12.3121m
+                            LocationID = new Guid("dd9cc90c-dd61-474d-abec-a288458eaad9"),
+                            Comment = "TrotIS Center, Faculty of Computer Science",
+                            Latitude = 47.1739724m,
+                            Longitude = 27.5743639m
                         });
                 });
 
@@ -65,7 +65,7 @@ namespace LocationAPI.Migrations
                     b.HasData(
                         new
                         {
-                            LocationID = new Guid("c23f0569-c10f-4eed-9180-b710af6e057a"),
+                            LocationID = new Guid("dd9cc90c-dd61-474d-abec-a288458eaad9"),
                             ScooterInstanceID = new Guid("65a1ecd5-5ac1-434b-8c35-1bedcee04dd4")
                         });
                 });

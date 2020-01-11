@@ -25,7 +25,7 @@ namespace LocationAPI.Data
         {
             List<string> scooters = new List<string>();
             scooters.Add("65a1ecd5-5ac1-434b-8c35-1bedcee04dd4");
-            Location location = Location.Create(12.3121M, 42.8731M, "Prima dupa colt");
+            Location location = Location.Create(27.5743639M, 47.1739724M, "TrotIS Center, Faculty of Computer Science");
             
             modelBuilder.Entity<Location>()
                 .HasData(location);
