@@ -8,6 +8,10 @@ namespace LocationAPI.DTOs
 {
     public class DeleteLocation: IRequest
     {
-        public Guid LocationId { get; set; }
+        public DeleteLocation(Guid Id)
+        {
+            LocationID = Id;
+        }
+        public Guid LocationID { get; set; }
     }
 }
