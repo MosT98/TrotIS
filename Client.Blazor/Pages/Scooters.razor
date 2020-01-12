@@ -20,20 +20,16 @@
     <table id="scooters" class="display" style="width:100%">
         <thead>
             <tr>
-                <th>Name</th>
                 <th>Price</th>
                 <th>Autonomy</th>
-                <th>Speed Limit</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var scootean in allOurScootersInstance)
+            @foreach (ScooterInstance scootean in allOurScootersInstance)
             {
                 <tr>
-                    <td>@scootean.Scooter.Brand @scootean.Scooter.Model</td>
                     <td>@scootean.Price</td>
                     <td>@scootean.ScooterAutonomy</td>
-                    <td>@scootean.Scooter.SpeedLimit</td>
                 </tr>
                
             }
