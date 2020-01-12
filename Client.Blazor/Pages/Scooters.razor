@@ -1,0 +1,40 @@
+﻿@page "/scooters"
+@inject HttpClient Http
+@using TrotIS.Shared
+@inject NavigationManager NavigationManager
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+@if (email != null)
+{
+    <h2>Hello Gucci</h2>
+}
+else
+{
+    <h1>No usser logged in</h1>
+}
+
+@code{
+    public string email = null;
+    public string fname = null;
+    public string lname = null;
+    public Guid userid = Guid.Empty;
+    public int isAdmin = 0;
+    protected async override void OnInitialized()
+    {
+        try
+        {
+            fname = await sessionStorage.GetItemAsync<string>("firstname");
+            email = await sessionStorage.GetItemAsync<string>("hash");
+            lname = await sessionStorage.GetItemAsync<string>("lastname");
+            userid = await sessionStorage.GetItemAsync<Guid>("userID");
+            isAdmin = await sessionStorage.GetItemAsync<int>("isAdmin");
+            this.StateHasChanged();
+        }
+        catch
+        {
+
+        }
+
+    }
+
+
+}
