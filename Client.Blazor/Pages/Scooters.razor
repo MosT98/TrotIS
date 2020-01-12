@@ -5,36 +5,36 @@
 @inject Blazored.SessionStorage.ISessionStorageService sessionStorage
 @if (email != null)
 {
-    <div class="input-group col-lg-12 mb-4">
-        <div class="input-group-prepend">
-            <h1>Available scooters are at: </h1>
-            <h1>Location</h1>
-            <select @bind="selectedLocation.LocationID" class="form-control bg-white border-left-0 border-md" placeholder="Latitude">
-                @foreach (var adr in allOurLocations)
-                {
-                    <option value="@adr.LocationID">@adr.Comment</option>
-                }
-            </select>
+    <h1>Available scooters are at: </h1>
+    <select @bind="@locationGuidDrop" class="form-control bg-white border-left-0 border-md" placeholder="location">
+        @foreach (var adr in allOurLocations)
+        {
+            <option value="@adr.LocationID">@adr.Comment</option>
+
+        }
+    </select>
+    <button @onclick="@generateScooters" class="btn btn-primary btn-block py-2">Search</button>
 
 
-        </div>
-    </div>
     <table id="scooters" class="display" style="width:100%">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Price</th>
                 <th>Autonomy</th>
+                <th>Speed Limit</th>
             </tr>
         </thead>
         <tbody>
-            @foreach(var scootean in allOurScootersInstance)
+            @foreach (var scootean in allOurScootersInstance)
             {
-            <tr>
-                <td>@scootean.Scooter.Brand @scootean.Scooter.Model</td>
-                <td>@scootean.Price</td>
-                <td>@scootean.ScooterAutonomy</td>
-            </tr>
+                <tr>
+                    <td>@scootean.Scooter.Brand @scootean.Scooter.Model</td>
+                    <td>@scootean.Price</td>
+                    <td>@scootean.ScooterAutonomy</td>
+                    <td>@scootean.Scooter.SpeedLimit</td>
+                </tr>
+               
             }
 
 
@@ -53,11 +53,13 @@ else
     private List<ScooterInstance> allOurScootersInstance = new List<ScooterInstance>();
     private List<Guid> allScootersGuid = new List<Guid>();
     private List<Scooter> allScooters = new List<Scooter>();
+    private Guid locationGuidDrop;
 
 
     string URL = @"http://localhost:5009/api/locations";
     string URLGuidScooter = @"http://localhost:5009/api/locations/scooters_ids_from_location";
-    string URLScooterInstances = @"http://localhost:5005/api/scooterinstance/get_all_scooters";
+    string URLScooters = @"http://localhost:5005/api/scooterinstance/get_all_scooters";
+    string URLScooterInstances = @"http://localhost:5005/api/scooterinstance/get_all_scooterinstances";
     private Guid location = Guid.Empty;
     public async void GetOurLocations()
     {
@@ -66,16 +68,16 @@ else
             var result = await Http.GetAsync(URL);
 
             allOurLocations = await result.Content.ReadAsAsync<List<Location>>();
-            foreach (Location location in allOurLocations)
-            {
-                await GetOurScootersGuid(location.LocationID);
-            }
+
             this.StateHasChanged();
         }
         catch
         { }
     }
-
+    private async void generateScooters()
+    {
+        await GetOurScootersGuid(locationGuidDrop);
+    }
     protected async override void OnInitialized()
     {
 
@@ -113,7 +115,7 @@ else
         { }
         try
         {
-            var result = await Http.PostAsJsonAsync<List<Guid>>(URLScooterInstances, allScootersGuid);
+            var result = await Http.PostAsJsonAsync<List<Guid>>(URLScooters, allScootersGuid);
 
             allScooters = await result.Content.ReadAsAsync<List<Scooter>>();
 
