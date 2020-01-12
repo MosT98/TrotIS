@@ -69,6 +69,7 @@
 			<EditForm Model="@selectedLocation" OnInvalidSubmit="@HandleInvalidSubmit" OnValidSubmit="@DeleteLocation">
 				<h2>Delete a location</h2>
 				<select @bind="selectedLocation.LocationID" class="form-control bg-white border-left-0 border-md" placeholder="Latitude">
+					<option value="">Select an item</option>
 					@foreach (var adr in allOurLocations)
 					{
 						<option value="@adr.LocationID">@adr.Comment</option>
