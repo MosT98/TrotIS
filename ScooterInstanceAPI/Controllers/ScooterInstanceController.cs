@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -28,9 +29,9 @@ namespace ScooterInstanceAPI.Controllers
 
 
         [HttpGet] 
-        public async Task<ActionResult<ScooterInstance>> Get()
+        public async Task<ActionResult<List<ScooterInstance>>> Get([FromBody] List<Guid> ids)
         {
-            var scooterInstances = await mediator.Send(new GetScooterInstances());
+            var scooterInstances = await mediator.Send(new GetScooterInstances(ids));
             if (scooterInstances == null)
             {
                 return NotFound();
@@ -40,7 +41,7 @@ namespace ScooterInstanceAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ScooterInstance>> Get(Guid id)
+        public async Task<ActionResult<ScooterInstance>> GetById(Guid id)
         {
             var scooterInstance = await mediator.Send(new GetScooterInstanceById(id));
             if (scooterInstance==null)

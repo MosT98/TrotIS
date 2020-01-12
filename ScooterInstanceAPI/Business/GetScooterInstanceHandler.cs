@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
@@ -20,7 +21,8 @@ namespace ScooterInstanceAPI.Business
         public async Task<List<ScooterInstance>> Handle(GetScooterInstances request, CancellationToken cancellationToken)
         {
             var scooterInstances = await context.ScooterInstances.ToListAsync();
-            return scooterInstances;
+            var myScooters = scooterInstances.Where(a => request.ScooterList.Contains(a.ScooterInstanceId)).ToList();
+            return myScooters;
         }
     }
 }
