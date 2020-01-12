@@ -15,15 +15,31 @@
                     <option value="@adr.LocationID">@adr.Comment</option>
                 }
             </select>
-            <h1>SCooters available</h1>
-            <select class="form-control bg-white border-left-0 border-md" placeholder="Latitude">
-                @foreach (var allScoote in allScootersGuid)
-                {
-                    <option value="@allScoote">@allScoote</option>
-                }
-            </select>
+
+
         </div>
     </div>
+    <table id="scooters" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Autonomy</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var scootean in allOurScootersInstance)
+            {
+            <tr>
+                <td>@scootean.Scooter.Brand @scootean.Scooter.Model</td>
+                <td>@scootean.Price</td>
+                <td>@scootean.ScooterAutonomy</td>
+            </tr>
+            }
+
+
+        </tbody>
+    </table>
 }
 else
 {
@@ -34,11 +50,14 @@ else
     public string email = null;
     private List<Location> allOurLocations = new List<Location>();
     private Location selectedLocation = new Location();
-    private List<Scooter> allOurScooters = new List<Scooter>();
+    private List<ScooterInstance> allOurScootersInstance = new List<ScooterInstance>();
     private List<Guid> allScootersGuid = new List<Guid>();
-    private Scooter selectedScooter = new Scooter();
+    private List<Scooter> allScooters = new List<Scooter>();
+
+
     string URL = @"http://localhost:5009/api/locations";
-    string URLGuidScooter = @"http://localhost:5005/api/scooterinstance/get_all_scooters";
+    string URLGuidScooter = @"http://localhost:5009/api/locations/scooters_ids_from_location";
+    string URLScooterInstances = @"http://localhost:5005/api/scooterinstance/get_all_scooters";
     private Guid location = Guid.Empty;
     public async void GetOurLocations()
     {
@@ -47,7 +66,7 @@ else
             var result = await Http.GetAsync(URL);
 
             allOurLocations = await result.Content.ReadAsAsync<List<Location>>();
-            foreach(Location location in allOurLocations)
+            foreach (Location location in allOurLocations)
             {
                 await GetOurScootersGuid(location.LocationID);
             }
@@ -64,10 +83,10 @@ else
         {
             email = await sessionStorage.GetItemAsync<string>("hash");
             GetOurLocations();
-            
+
             this.StateHasChanged();
         }
-        catch{}
+        catch { }
 
 
     }
@@ -77,14 +96,33 @@ else
     {
         try
         {
-            var result = await Http.PostAsJsonAsync<Guid>(URLGuidScooter,locationId);
+            var result = await Http.PostAsJsonAsync<Guid>(URLGuidScooter, locationId);
 
             allScootersGuid = await result.Content.ReadAsAsync<List<Guid>>();
+        }
+        catch
+        { }
+        try
+        {
+            var result = await Http.PostAsJsonAsync<List<Guid>>(URLScooterInstances, allScootersGuid);
+
+            allOurScootersInstance = await result.Content.ReadAsAsync<List<ScooterInstance>>();
 
         }
         catch
         { }
+        try
+        {
+            var result = await Http.PostAsJsonAsync<List<Guid>>(URLScooterInstances, allScootersGuid);
+
+            allScooters = await result.Content.ReadAsAsync<List<Scooter>>();
+
+        }
+        catch
+        { }
+
     }
+
 
     private class Location
     {
@@ -116,7 +154,7 @@ else
         }
     }
 
-    private class Scooter
+    public class Scooter
     {
         public Guid ScooterId { get; set; }
         public string Brand { get; set; }
@@ -152,6 +190,37 @@ else
                 ClimbAngle = climbangle,
                 ImgName = imgName,
             };
+        }
+    }
+    public class ScooterInstance
+    {
+        public Guid ScooterInstanceId { get; set; }
+
+        public int ScooterAutonomy { get; set; } //km
+
+        public Scooter Scooter { get; set; }
+
+        public decimal Price { get; set; }
+
+        public ScooterInstance()
+        {
+            ScooterInstanceId = Guid.NewGuid();
+        }
+
+        public static ScooterInstance Create(int scooterAutonomy, decimal price, Scooter scooter)
+        {
+            return new ScooterInstance
+            {
+                ScooterInstanceId = Guid.NewGuid(),
+                ScooterAutonomy = scooterAutonomy,
+                Price = price,
+                Scooter = scooter
+            };
+        }
+
+        public void Update(int scooterAutonomy)
+        {
+            ScooterAutonomy = scooterAutonomy;
         }
     }
 
