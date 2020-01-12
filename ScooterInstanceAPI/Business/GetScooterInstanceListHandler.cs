@@ -22,8 +22,6 @@ namespace ScooterInstanceAPI.Business
         {
             var scooterInstances = await context.ScooterInstances.ToListAsync();
             var myScootersInstances = scooterInstances.Where(a => request.ScooterInstanceList.Contains(a.ScooterInstanceId)).Select(a=>a.Scooter).ToList();
-            var scooters = await context.Scooters.ToListAsync();
-            var myScooters = scooters.Where(a => scooters.Contains(a)).Distinct().ToList();
             return scooterInstances;
         }
     }
