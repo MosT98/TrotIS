@@ -40,9 +40,7 @@
 				zoom: 12
 			});
 
-			var geojson = {
-				type: 'FeatureCollection',
-				features: [{
+			var x = {
 					type: 'Feature',
 					geometry: {
 						type: 'Point',
@@ -52,20 +50,32 @@
 						title: 'TrotIS Center',
 						description: 'Faculty of Computer Science, Iasi'
 					}
-				},
-				{
+				}
+
+			var geojson = {
+				type: 'FeatureCollection',
+				features: [
+					
+				]
+			};
+
+			for (let i = 0; i < arguments[0].length; i++)
+			{
+				let x = {
 					type: 'Feature',
 					geometry: {
 						type: 'Point',
-						coordinates: [27.586982, 47.1581859]
+						coordinates: [arguments[0][i].longitude, arguments[0][i].latitude]
 					},
 					properties: {
 						title: 'TrotIS Center',
-						description: 'Palace of Culture, Iasi'
+						description: arguments[0][i].comment + ", " + arguments[0][i].longitude + ", " + arguments[0][i].latitude
 					}
-				}]
-			};
+				}
 
+				geojson.features.push(x);
+			}
+			
 			// add markers to map
 			geojson.features.forEach(function (marker) {
 
