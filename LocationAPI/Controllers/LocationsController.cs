@@ -45,6 +45,14 @@ namespace LocationAPI.Controllers
             return link;
         }
 
+        [Route("comment_from_id")]
+        [HttpPost]
+        public async Task<string> Get([FromBody]Guid id)
+        {
+            var link = await mediator.Send(new GetLocationById(id));
+            return link;
+        }
+
         [HttpGet]
         public async Task<ActionResult<Location>> Get()
         {

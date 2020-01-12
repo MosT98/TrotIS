@@ -7,7 +7,7 @@
 {
     <h1>Available scooters are at: </h1>
     <select @bind="@locationGuidDrop" class="form-control bg-white border-left-0 border-md" placeholder="location">
-        <option value="">Select a item</option>
+        <option value="">Select an item</option>
         @foreach (var adr in allOurLocations)
         {
             <option value="@adr.LocationID">@adr.Comment</option>
@@ -20,20 +20,16 @@
     <table id="scooters" class="display" style="width:100%">
         <thead>
             <tr>
-                <th>Name</th>
                 <th>Price</th>
                 <th>Autonomy</th>
-                <th>Speed Limit</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var scootean in allOurScootersInstance)
+            @foreach (ScooterInstance scootean in allOurScootersInstance)
             {
                 <tr>
-                    <td>@scootean.Scooter.Brand @scootean.Scooter.Model</td>
                     <td>@scootean.Price</td>
                     <td>@scootean.ScooterAutonomy</td>
-                    <td>@scootean.Scooter.SpeedLimit</td>
                 </tr>
                
             }
@@ -62,6 +58,7 @@ else
     string URLScooters = @"http://localhost:5005/api/scooterinstance/get_all_scooters";
     string URLScooterInstances = @"http://localhost:5005/api/scooterinstance/get_all_scooterinstances";
     private Guid location = Guid.Empty;
+
     public async void GetOurLocations()
     {
         try
@@ -75,10 +72,12 @@ else
         catch
         { }
     }
+
     private async void generateScooters()
     {
         await GetOurScootersGuid(locationGuidDrop);
     }
+
     protected async override void OnInitialized()
     {
 
@@ -103,6 +102,7 @@ else
         }
         catch
         { }
+
         try
         {
             var result = await Http.PostAsJsonAsync<List<Guid>>(URLScooterInstances, allScootersGuid);
@@ -112,6 +112,7 @@ else
         }
         catch
         { }
+
         try
         {
             var result = await Http.PostAsJsonAsync<List<Guid>>(URLScooters, allScootersGuid);
@@ -121,6 +122,8 @@ else
         }
         catch
         { }
+
+        this.StateHasChanged();
 
     }
 
