@@ -95,6 +95,8 @@
             await sessionStorage.SetItemAsync("hash", null);
             await sessionStorage.SetItemAsync("firstname", null);
             await sessionStorage.SetItemAsync("lastname", null);
+            await sessionStorage.SetItemAsync("admin", null);
+            await sessionStorage.SetItemAsync("userID", Guid.Empty);
             this.StateHasChanged();
             NavigationManager.NavigateTo("/", true);
         }

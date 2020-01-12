@@ -3,6 +3,8 @@
 @using TrotIS.Shared
 @inject NavigationManager NavigationManager
 @inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+@if (email != null)
+{
 <!-- Navbar-->
 <div class="container">
     <h1>Edit Profile, @lname @fname</h1>
@@ -27,7 +29,7 @@
                             <i class="fa fa-user-circle" aria-hidden="true"></i>
                         </span>
                     </div>
-                    <InputText Id="firstName" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.FirstName" placeholder=""></InputText>
+                    <InputText Id="firstName" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.FirstName" placeholder="@fname"></InputText>
 
                 </div>
                 @*LastName*@
@@ -37,7 +39,7 @@
                             <i class="fa fa-user-circle"></i>
                         </span>
                     </div>
-                    <InputText Id="lastName" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.LastName" placeholder="Last Name"></InputText>
+                    <InputText Id="lastName" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.LastName" placeholder="@lname"></InputText>
 
                 </div>
                 @*Password*@
@@ -68,7 +70,7 @@
                             <i class="fa fa-user-circle"></i>
                         </span>
                     </div>
-                    <InputText Id="country" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Address.Country" placeholder="Country..."></InputText>
+                    <InputText Id="country" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Country" placeholder="Country..."></InputText>
 
                 </div>
                 @*City*@
@@ -78,7 +80,7 @@
                             <i class="fa fa-user-circle"></i>
                         </span>
                     </div>
-                    <InputText Id="city" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Address.City" placeholder="City"></InputText>
+                    <InputText Id="city" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.City" placeholder="City"></InputText>
 
                 </div>
                 @*Street*@
@@ -88,7 +90,7 @@
                             <i class="fa fa-user-circle"></i>
                         </span>
                     </div>
-                    <InputText Id="street" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Address.Street" placeholder="Street"></InputText>
+                    <InputText Id="street" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Street" placeholder="Street"></InputText>
 
                 </div>
                 @*Number*@
@@ -98,7 +100,7 @@
                             <i class="fa fa-user-circle"></i>
                         </span>
                     </div>
-                    <InputNumber Id="number" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Address.Number" placeholder="Number"></InputNumber>
+                    <InputNumber Id="number" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Number" placeholder="Number"></InputNumber>
 
                 </div>
                 <div class="alert @StatusClass">@StatusMessage</div>
@@ -117,12 +119,18 @@
     </div>
 </div>
 <hr>
+}
+else
+{
+    <h1>No usser logged in</h1>
+}
 
 @code{
     public string email = null;
     public string fname = null;
     public string lname = null;
     public Guid userid = Guid.Empty;
+    public int isAdmin = 0;
 
     private string apiUrl = "http://localhost:5003/api/user";
     private string getUserURL = "http://localhost:5003/api/user/";
@@ -134,7 +142,7 @@
     public class User
     {
 
-
+        public Guid UserId { get; set; }
         [Required(ErrorMessage = "Firstname is required.")]
         public string FirstName { get; set; }
 
@@ -150,24 +158,27 @@
         [Compare(nameof(Password), ErrorMessage = "password dosent match")]
         public string PasswordConfirmation { get; set; }
 
-        public virtual Address Address { get; set; }
-        public Guid UserId { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
+        public string Street { get; set; }
+        public int Number { get; set; }
 
     }
-    public class UserReceive
+    public class ResponseObj
     {
+
         public Guid UserId { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
         public string FirstName { get; set; }
-        public string Phone { get; set; }
-        public DateTime BirthDay { get; set; }
-        public EnumLists.SocialClass SocialClass { get; set; }
-        public Address Address = null;
+        public string LastName { get; set; }
+        public string Password { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
+        public string Street { get; set; }
+        public int Number { get; set; }
 
     }
+
     private User user = new User();
-    private UserReceive userReceive = new UserReceive();
     protected async override void OnInitialized()
     {
         try
@@ -175,10 +186,8 @@
             fname = await sessionStorage.GetItemAsync<string>("firstname");
             email = await sessionStorage.GetItemAsync<string>("hash");
             lname = await sessionStorage.GetItemAsync<string>("lastname");
-            userid = await sessionStorage.GetItemAsync<Guid>("UserID");
-            getUserURL = getUserURL + "/f7006319-4f97-4143-a7f9-b64c6475a1b9";
-            var content = await Http.GetAsync(getUserURL);
-            userReceive = await content.Content.ReadAsAsync<UserReceive>();
+            userid = await sessionStorage.GetItemAsync<Guid>("userID");
+            isAdmin = await sessionStorage.GetItemAsync<int>("isAdmin");
             this.StateHasChanged();
         }
         catch
@@ -191,14 +200,21 @@
 
     private async void EditInfoUser()
     {
-        // user.UserId = await sessionStorage.GetItemAsync<Guid>("UserID");
-
-        var result = await Http.PutAsJsonAsync(apiUrl, user);
-        if (result!=null)
+        var response = new ResponseObj();
+        response.UserId = userid;
+        response.FirstName = user.FirstName;
+        response.LastName = user.LastName;
+        response.Password = user.Password;
+        response.Country = user.Country;
+        response.City = user.City;
+        response.Street = user.Street;
+        response.Number = user.Number;
+        var result = await Http.PutAsJsonAsync(apiUrl, response);
+        if (result.StatusCode.ToString()=="OK")
         {
             NavigationManager.NavigateTo("/", true);
         }
-        //succesfully message or not
+        this.StateHasChanged();
 
     }
 
