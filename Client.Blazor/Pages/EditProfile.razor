@@ -15,9 +15,18 @@
             <div class="col-md-9 personal-info">
                 <h3>My details</h3>
 
-                <textarea id="details" cols="40" rows="5" readonly>
-                    ANDREI CHIPERI SEFU LA BANI
-                </textarea>
+                <div class="col-lg-12">
+					<div class="form-group">
+						<textarea class="form-control" rows="10">
+                            First name: @myUser.FirstName &#10;
+                            Last name: @myUser.LastName &#10;
+                            Phone: @myUser.Phone. &#10;
+                            Email: @myUser.Email &#10;
+                            Birthday: @myUser.BirthDay &#10;
+                            Date of created account: @myUser.DTE_CRE &#10;
+                        </textarea>
+					</div>
+                </div>
 
             </div>
         </div>
@@ -184,6 +193,8 @@ else
     }
 
     private User user = new User();
+    private UserDetails myUser = new UserDetails();
+
     protected async override void OnInitialized()
     {
         try
@@ -193,6 +204,9 @@ else
             lname = await sessionStorage.GetItemAsync<string>("lastname");
             userid = await sessionStorage.GetItemAsync<Guid>("userID");
             isAdmin = await sessionStorage.GetItemAsync<int>("isAdmin");
+
+            GetUserDetail();
+
             this.StateHasChanged();
         }
         catch
@@ -230,8 +244,6 @@ else
     }
 
 
-
-
     protected void HandleValidSubmit()
     {
         StatusClass = "alert-info";
@@ -244,5 +256,57 @@ else
         StatusMessage = DateTime.Now + " Handle invalid submit";
     }
 
+    public async void GetUserDetail()
+	{
+		try
+		{
+			var result = await Http.GetAsync(apiUrl + "/" + userid);
 
+			myUser = await result.Content.ReadAsAsync<UserDetails>();
+			
+			this.StateHasChanged();
+		}
+		catch
+		{ }
+	}
+
+
+    public class UserDetails
+    {
+        public Guid UserId { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Phone { get; set; }
+        public DateTime BirthDay { get; set; }
+        public EnumLists.SocialClass SocialClass { get; set; }
+        public Address Address { get; set; }
+        public bool IsAdmin { get; set; }
+        public DateTime DTE_CRE { get; set; }
+
+        public static UserDetails Create(string email, string password, string firstName, string lastName,
+            string phone, DateTime birthDay, EnumLists.SocialClass socialClass)
+        {
+            return new UserDetails
+            {
+                UserId = Guid.NewGuid(),
+                Email = email,
+                Password = password,
+                FirstName = firstName,
+                LastName = lastName,
+                Phone = phone,
+                BirthDay = birthDay,
+                SocialClass = socialClass,
+                IsAdmin = false,
+                DTE_CRE = DateTime.UtcNow
+            };
+        }
+
+        public UserDetails()
+        {
+            UserId = Guid.NewGuid();
+        }
+
+    }
 }
