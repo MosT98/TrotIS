@@ -5,7 +5,18 @@
 @inject Blazored.SessionStorage.ISessionStorageService sessionStorage
 @if (email != null)
 {
-    <h2>Hello Gucci</h2>
+    <div class="input-group col-lg-12 mb-4">
+        <div class="input-group-prepend">
+            <h1>Available scooters are at: </h1>
+
+            <select @bind="selectedLocation.LocationID" class="form-control bg-white border-left-0 border-md" placeholder="Latitude">
+                @foreach (var adr in allOurLocations)
+                {
+                    <option value="@adr.LocationID">@adr.Comment</option>
+                }
+            </select>
+        </div>
+    </div>
 }
 else
 {
@@ -14,27 +25,65 @@ else
 
 @code{
     public string email = null;
-    public string fname = null;
-    public string lname = null;
-    public Guid userid = Guid.Empty;
-    public int isAdmin = 0;
-    protected async override void OnInitialized()
+    private List<Location> allOurLocations = new List<Location>();
+    private Location selectedLocation = new Location();
+    string URL = @"http://localhost:5009/api/locations";
+    public async void GetOurLocations()
     {
         try
         {
-            fname = await sessionStorage.GetItemAsync<string>("firstname");
-            email = await sessionStorage.GetItemAsync<string>("hash");
-            lname = await sessionStorage.GetItemAsync<string>("lastname");
-            userid = await sessionStorage.GetItemAsync<Guid>("userID");
-            isAdmin = await sessionStorage.GetItemAsync<int>("isAdmin");
+            var result = await Http.GetAsync(URL);
+
+            allOurLocations = await result.Content.ReadAsAsync<List<Location>>();
+
             this.StateHasChanged();
         }
         catch
-        {
+        { }
+    }
 
+    protected async override void OnInitialized()
+    {
+
+        try
+        {
+            email = await sessionStorage.GetItemAsync<string>("hash");
+            this.StateHasChanged();
+        }
+        catch{}
+            GetOurLocations();
+    
+    }
+    private class Location
+    {
+        public Guid LocationID { get; set; }
+
+        [Required(ErrorMessage = "Longitude is required.")]
+        public decimal Longitude { get; set; }
+
+        [Required(ErrorMessage = "Longitude is required.")]
+        public decimal Latitude { get; set; }
+
+
+        public string Comment { get; set; }
+
+        public Location()
+        {
+            LocationID = Guid.NewGuid();
         }
 
+        public static Location Create(decimal longitude, decimal latitude, string comment)
+        {
+            return new Location
+            {
+                LocationID = Guid.NewGuid(),
+                Longitude = longitude,
+                Latitude = latitude,
+                Comment = comment
+            };
+        }
     }
+
 
 
 }
