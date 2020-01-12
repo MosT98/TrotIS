@@ -9,22 +9,22 @@ using ScooterInstanceAPI.DTOs;
 
 namespace ScooterInstanceAPI.Business
 {
-    public class GetScooterInstanceHandler: IRequestHandler<GetScooterInstances, List<Scooter>>
+    public class GetScooterInstanceListHandler: IRequestHandler<GetScooterInstanceList, List<ScooterInstance>>
     {
         private readonly Context context;
 
-        public GetScooterInstanceHandler(Context context)
+        public GetScooterInstanceListHandler(Context context)
         {
             this.context = context;
         }
 
-        public async Task<List<Scooter>> Handle(GetScooterInstances request, CancellationToken cancellationToken)
+        public async Task<List<ScooterInstance>> Handle(GetScooterInstanceList request, CancellationToken cancellationToken)
         {
             var scooterInstances = await context.ScooterInstances.ToListAsync();
-            var myScootersInstances = scooterInstances.Where(a => request.ScooterList.Contains(a.ScooterInstanceId)).Select(a=>a.Scooter).ToList();
+            var myScootersInstances = scooterInstances.Where(a => request.ScooterInstanceList.Contains(a.ScooterInstanceId)).Select(a=>a.Scooter).ToList();
             var scooters = await context.Scooters.ToListAsync();
             var myScooters = scooters.Where(a => scooters.Contains(a)).Distinct().ToList();
-            return myScooters;
+            return scooterInstances;
         }
     }
 }

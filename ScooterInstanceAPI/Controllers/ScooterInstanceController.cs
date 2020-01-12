@@ -31,7 +31,20 @@ namespace ScooterInstanceAPI.Controllers
         [HttpPost] 
         public async Task<ActionResult<List<Scooter>>> GetAllScooters([FromBody] List<Guid> ids)
         {
-            var scooterInstances = await mediator.Send(new GetScooterInstances(ids));
+            var scooter = await mediator.Send(new GetScooterList(ids));
+            if (scooter == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(scooter);
+        }
+
+        [Route("get_all_scooterinstances")]
+        [HttpPost] 
+        public async Task<ActionResult<List<ScooterInstance>>> GetAllScooterInstances([FromBody] List<Guid> ids)
+        {
+            var scooterInstances = await mediator.Send(new GetScooterInstanceList(ids));
             if (scooterInstances == null)
             {
                 return NotFound();
@@ -39,6 +52,7 @@ namespace ScooterInstanceAPI.Controllers
 
             return Ok(scooterInstances);
         }
+
         [HttpGet]
         public async Task<ActionResult<List<ScooterInstance>>> GetAllScootersInstances()
         {
