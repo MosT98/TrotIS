@@ -308,7 +308,7 @@ else
 
 	string URLLocations = @"http://localhost:5009/api/locations";
 
-	string URLScooterLocation = @"http://localhost:5009/​api/locations/scooter_instance";
+	string URLScooterLocation = @"http://localhost:5009/api/locations/scooter_instance";
 
 
 
@@ -418,10 +418,8 @@ else
 		var myObj = await result.Content.ReadAsAsync<ScooterInstanceObject>();
 		if (content != string.Empty)
 		{
-			this.StateHasChanged();
-			NavigationManager.NavigateTo("/managescooters", true);
-
 			AddLocationScooterLeg(myObj.ScooterInstanceId);
+			this.StateHasChanged();
 		}
 		else
 		{
