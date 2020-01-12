@@ -99,10 +99,11 @@ namespace ScooterInstanceAPI.Controllers
             return NoContent();
         }
 
-        [HttpDelete]
-        public async Task<ActionResult<ScooterInstance>> Delete([FromBody] DeleteScooterInstance request)
+        [Route("/scooterinstance/delete")]
+        [HttpPost]
+        public async Task<IActionResult> DeleteScooterInstance([FromBody] Guid id)
         {
-            await mediator.Send(request);
+            await mediator.Send(new DeleteScooter(id));
             return NoContent();
         }
 
