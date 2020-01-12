@@ -24,34 +24,22 @@ namespace UserAPI.Business
             {
                 throw new Exception("User does not exists");
             }
-            if(user.Email!=request.Email) //try to change email address
-            {
-                if (await context.Users.SingleOrDefaultAsync(u => u.Email == request.Email) != null)
-                    throw new Exception("Email already used. Try another email");
-            }
-            if (user.Phone != request.Phone) //try to change phone number
-            {
-                if (await context.Users.SingleOrDefaultAsync(u => u.Phone == request.Phone) != null)
-                    throw new Exception("Phone number already used. Try another phone number");
-            }
-            var address = context.Addresses.FirstOrDefault(a => a.AddressId == request.Address.AddressId);
+
+            var address = user.Address;
             
             if(address==null)
             {
-                address = Address.Create(request.Address.Country, request.Address.City, request.Address.Street,
-                    request.Address.Number);
+                address = Address.Create(request.Country, request.City, request.Street, request.Number);
                 context.Addresses.Add(address);
                 await context.SaveChangesAsync(cancellationToken);
             }
             else
             {
-                address.Update(request.Address.Country, request.Address.City, request.Address.Street,
-                    request.Address.Number);
+                address.Update(request.Country, request.City, request.Street, request.Number);
                 await context.SaveChangesAsync(cancellationToken);
             }
 
-            user.Update(request.Email, request.Password, request.FirstName, request.LastName, request.Phone,
-                request.BirthDay, request.SocialClass, address, request.IsAdmin);
+            user.Update(request.FirstName, request.LastName, Shared.Utilities.sha256_hash(request.Password), address);
 
             await context.SaveChangesAsync(cancellationToken);
             return user;
