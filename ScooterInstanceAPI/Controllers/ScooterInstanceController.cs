@@ -39,6 +39,17 @@ namespace ScooterInstanceAPI.Controllers
 
             return Ok(scooterInstances);
         }
+        [HttpGet]
+        public async Task<ActionResult<List<ScooterInstance>>> GetAllScootersInstances()
+        {
+            var scooterInstances = await mediator.Send(new GetAllScooterInstances());
+            if (scooterInstances == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(scooterInstances);
+        }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<ScooterInstance>> GetById(Guid id)
