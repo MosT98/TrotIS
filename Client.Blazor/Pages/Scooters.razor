@@ -15,13 +15,13 @@
                     <option value="@adr.LocationID">@adr.Comment</option>
                 }
             </select>
-            @*<h1>SCooters available</h1>
-            <select @bind="selectedLocation.LocationID" class="form-control bg-white border-left-0 border-md" placeholder="Latitude">
-                @foreach (var adr in allOurLocations)
+            <h1>SCooters available</h1>
+            <select class="form-control bg-white border-left-0 border-md" placeholder="Latitude">
+                @foreach (var allScoote in allScootersGuid)
                 {
-                    <option value="@adr.LocationID">@adr.Comment</option>
+                    <option value="@allScoote">@allScoote</option>
                 }
-            </select>*@
+            </select>
         </div>
     </div>
 }
@@ -38,7 +38,7 @@ else
     private List<Guid> allScootersGuid = new List<Guid>();
     private Scooter selectedScooter = new Scooter();
     string URL = @"http://localhost:5009/api/locations";
-    string URLGuidScooter = @"http://localhost:5009/api/locations/scooters_ids_from_location";
+    string URLGuidScooter = @"http://localhost:5005/api/scooterinstance/get_all_scooters";
     private Guid location = Guid.Empty;
     public async void GetOurLocations()
     {
@@ -47,7 +47,10 @@ else
             var result = await Http.GetAsync(URL);
 
             allOurLocations = await result.Content.ReadAsAsync<List<Location>>();
-
+            foreach(Location location in allOurLocations)
+            {
+                await GetOurScootersGuid(location.LocationID);
+            }
             this.StateHasChanged();
         }
         catch
@@ -61,10 +64,7 @@ else
         {
             email = await sessionStorage.GetItemAsync<string>("hash");
             GetOurLocations();
-            foreach(Location location in allOurLocations)
-            {
-                await GetOurScootersGuid(location.LocationID);
-            }
+            
             this.StateHasChanged();
         }
         catch{}
@@ -73,24 +73,14 @@ else
     }
 
 
-    //private async Task CountryHasChanged(Guid value)
-    //{
-    //    location = value;
-
-
-    //    await LoadScooters(location);
-
-    //}
-
     private async Task GetOurScootersGuid(Guid locationId)
     {
         try
         {
-            var result = await Http.GetAsync(URLGuidScooter+"/"+locationId);
+            var result = await Http.PostAsJsonAsync<Guid>(URLGuidScooter,locationId);
 
             allScootersGuid = await result.Content.ReadAsAsync<List<Guid>>();
 
-            this.StateHasChanged();
         }
         catch
         { }
