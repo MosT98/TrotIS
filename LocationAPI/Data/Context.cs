@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
 namespace LocationAPI.Data
@@ -23,8 +24,8 @@ namespace LocationAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            List<string> scooters = new List<string>();
-            scooters.Add("65a1ecd5-5ac1-434b-8c35-1bedcee04dd4");
+            List<Guid> scooters = new List<Guid>();
+            scooters.Add(Guid.Parse("65a1ecd5-5ac1-434b-8c35-1bedcee04dd4"));
             Location location = Location.Create(27.5743639M, 47.1739724M, "TrotIS Center, Faculty of Computer Science");
             
             modelBuilder.Entity<Location>()
@@ -34,7 +35,7 @@ namespace LocationAPI.Data
                 .HasKey(a => new { a.LocationID, a.ScooterInstanceID });
 
             modelBuilder.Entity<LocationsToScooters>()
-                .HasData(LocationsToScooters.CreateMany(location.LocationID.ToString(), scooters));
+                .HasData(LocationsToScooters.CreateMany(location.LocationID, scooters));
         }
     }
 }

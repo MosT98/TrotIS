@@ -150,7 +150,8 @@
 							<EditForm Model="@selectedScooter" OnInvalidSubmit="@HandleInvalidSubmit" OnValidSubmit="@DeleteScooter">
 								<h2>Delete a scooter</h2>
 								<select @bind="selectedScooter.ScooterId" class="form-control bg-white border-left-0 border-md">
-									@if(allScooters.Count > 0)
+									<option value="">Select an item</option>
+									@if (allScooters.Count > 0)
 										@foreach (var scooter in allScooters)
 										{
 											<option value="@scooter.ScooterId">@scooter.Brand @scooter.Model</option>
@@ -214,6 +215,7 @@
 							</div>
 
 							<select @bind="@GuidNewScooterInstance" class="form-control bg-white border-left-0 border-md">
+								<option value="">Select an item</option>
 								@if (allScooters.Count > 0)
 								{
 									@foreach (var scooter in allScooters)
@@ -235,6 +237,7 @@
 							</div>
 
 							<select @bind="@GuidLocationForNewScooterInstance" class="form-control bg-white border-left-0 border-md">
+								<option value="">Select an item</option>
 								@if (allOurLocations.Count > 0)
 								{
 									@foreach (var loc in allOurLocations)
@@ -259,6 +262,7 @@
 					<EditForm Model="@selectedScooterInstance" OnInvalidSubmit="@HandleInvalidSubmit" OnValidSubmit="@DeleteScooterInstance">
 						<h2>Delete a scooter instance</h2>
 						<select @bind="@GuidSelectedScooterInstance" class="form-control bg-white border-left-0 border-md">
+							<option value="">Select an item</option>
 							@if (allScootersInstance.Count > 0)
 								@foreach (var scooter in allScootersInstance)
 								{
