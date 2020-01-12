@@ -1,12 +1,35 @@
 ﻿@page "/"
+@using BlazorAnimate
 
-<h1>TrotIS - Rent a scooter</h1>
+<header class="header">
+    <nav class="navbar navbar-expand-lg navbar-light py-3">
+        <div class="container">
+            <!-- Navbar Brand -->
+            <a href="#" class="navbar-brand">
+                <img src="Resources/logo.png" alt="logo" width="150" />
+            </a>
+        </div>
+    </nav>
+</header>
 
-<ul>
-	<li>Posibilitate închiriere trotinete electrice cu ajutorul unui card virtual/fizic</li>
-	<li>Diferite tipuri de abonamente (studenți, pensionari, standard, angajați ai companiilor partenere)</li>
-	<li>Trotinete disponibile la un moment dat (număr, detalii)</li>
-	<li>Status trotinetă închiriată (baterie, ore totale folosite...)</li>
-	<li>Confirmare închiriere prin sms sau email</li>
-	<li>Căutare locații trotinete în apropiere</li>
+
+<Animate Animation="Animations.FadeIn" Duration="TimeSpan.FromSeconds(10)">
+    <h1>
+        TrotIS - Rent a Scooter
+    </h1>
+</Animate>
+
+
+<Animate Animation="Animations.FadeIn" Duration="TimeSpan.FromSeconds(10)">
+    <h1>
+        Benefits
+    </h1>
+</Animate>
+
+<ul class="list-group">
+    <li class="list-group-item list-group-item-success">The possibility to rent a scooter only with a virtual card.</li>
+    <li class="list-group-item list-group-item-info">Different types of subscriptions(students, employees, etc.)</li>
+    <li class="list-group-item list-group-item-warning">The possibility to see informations about a scooter at a certain time(model, autonomy, etc.)</li>
+    <li class="list-group-item list-group-item-info">Current status of your rented scooter.</li>
+    <li class="list-group-item list-group-item-success">The possibility to see scooters stations near your location.</li>
 </ul>
