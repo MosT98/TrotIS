@@ -5,3 +5,4 @@
 .vs/*
 *.pdb
 *.dll
+Client.Blazor/bin/*
