@@ -29,7 +29,7 @@ namespace LocationAPI.Controllers
             return location;
         }
 
-        [Route("api/locations/scooter_instance")]
+        [Route("scooter_instance")]
         [HttpPost]
         public async Task<ActionResult<LocationsToScooters>> AddScooterInstance([FromBody]AddScooterInstance request)
         {
@@ -37,7 +37,7 @@ namespace LocationAPI.Controllers
             return link;
         }
 
-        [Route("api/locations/scooter_instances")]
+        [Route("scooter_instances")]
         [HttpPost]
         public async Task<ActionResult<List<LocationsToScooters>>> AddScooterInstance([FromBody]AddScooterInstances request)
         {
@@ -55,6 +55,18 @@ namespace LocationAPI.Controllers
             }
 
             return Ok(locations);
+        }
+
+        [Route("scooters_ids_from_location")]
+        [HttpGet]
+        public async Task<ActionResult<List<Guid>>> GetScooters([FromBody] Guid id)
+        {
+            var scooters = await mediator.Send(new GetScooterInstancesIDs(id));
+            if (scooters == null)
+            {
+                return NotFound();
+            }
+            return Ok(scooters);
         }
 
         [Route("delete")]
