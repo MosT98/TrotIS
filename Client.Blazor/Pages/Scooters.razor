@@ -7,6 +7,7 @@
 {
     <h1>Available scooters are at: </h1>
     <select @bind="@locationGuidDrop" class="form-control bg-white border-left-0 border-md" placeholder="location">
+        <option value="">Select a item</option>
         @foreach (var adr in allOurLocations)
         {
             <option value="@adr.LocationID">@adr.Comment</option>
@@ -85,8 +86,6 @@ else
         {
             email = await sessionStorage.GetItemAsync<string>("hash");
             GetOurLocations();
-
-            this.StateHasChanged();
         }
         catch { }
 
