@@ -60,11 +60,32 @@ namespace ScooterInstanceAPI.Controllers
         }
 
         [Route("/scooter")]
+        [HttpGet]
+        public async Task<ActionResult<Scooter>> Get()
+        {
+            var scooters = await mediator.Send(new GetScooters());
+            if (scooters == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(scooters);
+        }
+
+        [Route("/scooter")]
         [HttpPost]
         public async Task<ActionResult<Scooter>> Create([FromBody] CreateScooter request)
         {
             var newScooter = await mediator.Send(request);
             return newScooter;
+        }
+
+        [Route("/scooter")]
+        [HttpDelete]
+        public async Task<ActionResult<Scooter>> Delete([FromBody] DeleteScooter request)
+        {
+            await mediator.Send(request);
+            return NoContent();
         }
 
         [HttpDelete]
