@@ -1,5 +1,10 @@
 ﻿@page "/"
 @using BlazorAnimate
+@inject HttpClient Http
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+@inject IJSRuntime JSRuntime
+@inherits SiteMapperBase
+@inject NavigationManager NavigationManager
 
 <header class="header">
     <nav class="navbar navbar-expand-lg navbar-light py-3">
@@ -33,3 +38,56 @@
     <li class="list-group-item list-group-item-info">Current status of your rented scooter.</li>
     <li class="list-group-item list-group-item-success">The possibility to see scooters stations near your location.</li>
 </ul>
+
+@if (isLogged)
+{
+    <h1>
+        Current Rent
+    </h1>
+
+}
+
+@code{
+    public bool isLogged = false;
+    public Rent myRent;
+    protected async override void OnInitialized()
+    {
+        try
+        {
+            string hash = "";
+            hash = await sessionStorage.GetItemAsync<string>("hash");
+            if (hash != string.Empty)
+                isLogged = true;
+            if (isLogged)
+            {
+                LoadCurrentRent()
+            }
+            this.StateHasChanged();
+        }
+        catch
+        {
+
+        }
+    }
+
+    public async void LoadCurrentRent()
+    {
+        var userId = await sessionStorage.GetItemAsync<Guid>("userID");
+        string URL = "http://localhost:5007/api/rent/GetByIdUser/";
+        string URLfin = URL + userId.ToString();
+        var result = Http.GetAsync(URLfin);
+        var content = await result.Content.ReadAsAsync<Rent>()
+    }
+
+    private class Rent
+    {
+        public Guid RentId { get; set; }
+        public Guid LocationId { get; set; }
+        public Guid UserId { get; set; }
+        public Guid ScooterInstanceId { get; set; }
+        public DateTime OrderDate { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public bool IsCancelled { get; set; }
+    }
+}

@@ -45,9 +45,10 @@ namespace RentAPI.Controllers
 
         [Route("[action]/{idLocation}")]
         [HttpGet]
-        public async Task<ActionResult<Rent>> GetByIdLocation(Guid idLocation)
+        public async Task<ActionResult<Rent>> GetByIdLocation(string idLocation)
         {
-            var rent = await mediator.Send(new GetRentByIdLocation(idLocation));
+
+            var rent = await mediator.Send(new GetRentByIdLocation(Guid.Parse(idLocation)));
             if (rent == null)
             {
                 return NotFound();
