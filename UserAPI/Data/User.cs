@@ -32,7 +32,8 @@ namespace UserAPI.Data
                 BirthDay = birthDay,
                 SocialClass = socialClass,
                 IsAdmin = false,
-                DTE_CRE = DateTime.UtcNow
+                DTE_CRE = DateTime.UtcNow,
+                Address = null
             };
         }
 

@@ -44,7 +44,7 @@ namespace UserAPI.Migrations
                     b.HasData(
                         new
                         {
-                            AddressId = new Guid("547c4e07-405b-46f7-be47-78cda7519e02"),
+                            AddressId = new Guid("1e870629-83db-4661-b16e-d41ddaf8783c"),
                             City = "Iasi",
                             Country = "Romania",
                             Number = 35,
@@ -97,9 +97,9 @@ namespace UserAPI.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = new Guid("a027173a-4d1f-4fe1-aea6-f83961f3fbed"),
+                            UserId = new Guid("cd0d4451-14db-4cc6-8705-405fe79e7e8d"),
                             BirthDay = new DateTime(1999, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DTE_CRE = new DateTime(2020, 1, 10, 22, 6, 43, 51, DateTimeKind.Utc).AddTicks(1308),
+                            DTE_CRE = new DateTime(2020, 1, 12, 16, 10, 12, 853, DateTimeKind.Utc).AddTicks(8546),
                             Email = "catalinbelu21@gmail.com",
                             FirstName = "Catalin",
                             IsAdmin = false,

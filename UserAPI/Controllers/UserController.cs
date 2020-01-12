@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -63,7 +64,7 @@ namespace UserAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<User>> Get()
+        public async Task<ActionResult<List<User>>> GetUsers()
         {
             var users = await mediator.Send(new GetUsers());
             if (users == null)
