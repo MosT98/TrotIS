@@ -213,21 +213,41 @@
 								</span>
 							</div>
 
-							<select @bind="GuidNewScooterInstance" class="form-control bg-white border-left-0 border-md">
+							<select @bind="@GuidNewScooterInstance" class="form-control bg-white border-left-0 border-md">
 								@if (allScooters.Count > 0)
 								{
 									@foreach (var scooter in allScooters)
 									{
 										<option value="@scooter.ScooterId">@scooter.Brand @scooter.Model</option>
-										//GuidNewScooterInstance = scooter.ScooterId;
 									}
-									
+
+								}
+							</select>
+						</div>
+
+						@*Scooter Location*@
+						<label>Location of scooter</label><br />
+						<div class="input-group col-lg-12 mb-4">
+							<div class="input-group-prepend">
+								<span class="input-group-text bg-white px-4 border-md border-right-0">
+									<i class="fa fa-location-arrow"></i>
+								</span>
+							</div>
+
+							<select @bind="@GuidLocationForNewScooterInstance" class="form-control bg-white border-left-0 border-md">
+								@if (allOurLocations.Count > 0)
+								{
+									@foreach (var loc in allOurLocations)
+									{
+										<option value="@loc.LocationID">@loc.Comment</option>
+									}
+
 								}
 							</select>
 						</div>
 
 						<button type="submit" class="btn btn-primary btn-block py-2">Add new scooter</button>
-					</EditForm>					
+					</EditForm>
 
 					<!-- Line -->
 					<div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
@@ -238,7 +258,7 @@
 
 					<EditForm Model="@selectedScooterInstance" OnInvalidSubmit="@HandleInvalidSubmit" OnValidSubmit="@DeleteScooterInstance">
 						<h2>Delete a scooter instance</h2>
-						<select @bind="GuidSelectedScooterInstance" class="form-control bg-white border-left-0 border-md">
+						<select @bind="@GuidSelectedScooterInstance" class="form-control bg-white border-left-0 border-md">
 							@if (allScootersInstance.Count > 0)
 								@foreach (var scooter in allScootersInstance)
 								{
@@ -274,6 +294,7 @@ else
 	private List<ScooterInstanceObject> allScootersInstance = new List<ScooterInstanceObject>();
 
 	private Guid GuidNewScooterInstance;
+	private Guid GuidLocationForNewScooterInstance;
 	private Guid GuidSelectedScooterInstance;
 
 
@@ -286,6 +307,10 @@ else
 	string URLScooterInstance = @"http://localhost:5005/api/scooterinstance";
 
 	string URLLocations = @"http://localhost:5009/api/locations";
+
+	string URLScooterLocation = @"http://localhost:5009/api/locations/scooter_instance";
+
+
 
 	public async void GetOurLocations()
 	{
@@ -387,7 +412,29 @@ else
 	private async void AddScooterInstance()
 	{
 		newScooterInstance.Scooter = GuidNewScooterInstance;
+
 		var result = await Http.PostAsJsonAsync(URLScooterInstance, newScooterInstance);
+		var content = await result.Content.ReadAsStringAsync();
+		var myObj = await result.Content.ReadAsAsync<ScooterInstanceObject>();
+		if (content != string.Empty)
+		{
+			AddLocationScooterLeg(myObj.ScooterInstanceId);
+			this.StateHasChanged();
+		}
+		else
+		{
+			ToastContent = content;
+			Invalid(ToastContent);
+		}
+	}
+
+	private async void AddLocationScooterLeg(Guid scooterInstanceId)
+	{
+		AddScooterInstanceObject myObj = new AddScooterInstanceObject();
+		myObj.locationID = GuidLocationForNewScooterInstance;
+		myObj.scooterInstanceID = scooterInstanceId;
+
+		var result = await Http.PostAsJsonAsync(URLScooterLocation, myObj);
 		var content = await result.Content.ReadAsStringAsync();
 		if (content != string.Empty)
 		{
@@ -501,23 +548,29 @@ else
 		public ScooterInstance()
 		{
 			ScooterInstanceId = Guid.NewGuid();
-		}		
+		}
 	}
 
 	public class ScooterInstanceObject
+	{
+		public Guid ScooterInstanceId { get; set; }
+
+		public int ScooterAutonomy { get; set; } //km
+
+		public Scooter Scooter { get; set; }
+
+		public decimal Price { get; set; }
+
+		public ScooterInstanceObject()
+		{
+			ScooterInstanceId = Guid.NewGuid();
+		}
+	}
+
+	public class AddScooterInstanceObject
     {
-        public Guid ScooterInstanceId { get; set; }
-
-        public int ScooterAutonomy { get; set; } //km
-
-        public Scooter Scooter { get; set; }
-
-        public decimal Price { get; set; }
-
-        public ScooterInstanceObject()
-        {
-            ScooterInstanceId = Guid.NewGuid();
-        }       
+        public Guid locationID { get; set; }
+        public Guid scooterInstanceID { get; set; }
     }
 
 

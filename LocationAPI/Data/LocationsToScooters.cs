@@ -28,12 +28,12 @@ namespace LocationAPI.Data
             return finalList;
         }
 
-        public static LocationsToScooters Create(string locationID, string scooterInstanceID)
+        public static LocationsToScooters Create(Guid locationID, Guid scooterInstanceID)
         {
             return new LocationsToScooters()
             {
-                LocationID = Guid.Parse(locationID),
-                ScooterInstanceID = Guid.Parse(scooterInstanceID)
+                LocationID = locationID,
+                ScooterInstanceID = scooterInstanceID
             };
         }
     }
