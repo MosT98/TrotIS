@@ -5,120 +5,120 @@
 @inject Blazored.SessionStorage.ISessionStorageService sessionStorage
 @if (email != null)
 {
-<!-- Navbar-->
-<div class="container">
-    <h1>Edit Profile, @lname @fname</h1>
-    <hr>
-    <div class="row">
+    <!-- Navbar-->
+    <div class="container">
+        <h1>Edit Profile, @lname @fname</h1>
+        <hr>
+        <div class="row">
 
 
-        <!-- edit form column -->
-        <div class="col-md-9 personal-info">
-            <h3>Personal info</h3>
+            <!-- edit form column -->
+            <div class="col-md-9 personal-info">
+                <h3>Personal info</h3>
 
-            <EditForm Model="@user" OnInvalidSubmit="@HandleInvalidSubmit" OnValidSubmit="@EditInfoUser">
+                <EditForm Model="@user" OnInvalidSubmit="@HandleInvalidSubmit" OnValidSubmit="@EditInfoUser">
 
 
-                <div class="form-group">
+                    <div class="form-group">
 
-                </div>
-                @*Firstname*@
-                <div class="input-group col-lg-12 mb-4">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-white px-4 border-md border-right-0">
-                            <i class="fa fa-user-circle" aria-hidden="true"></i>
-                        </span>
                     </div>
-                    <InputText Id="firstName" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.FirstName" placeholder="@fname"></InputText>
+                    @*Firstname*@
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <InputText Id="firstName" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.FirstName" placeholder="@fname"></InputText>
 
-                </div>
-                @*LastName*@
-                <div class="input-group col-lg-12 mb-4">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-white px-4 border-md border-right-0">
-                            <i class="fa fa-user-circle"></i>
-                        </span>
                     </div>
-                    <InputText Id="lastName" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.LastName" placeholder="@lname"></InputText>
+                    @*LastName*@
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user-circle"></i>
+                            </span>
+                        </div>
+                        <InputText Id="lastName" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.LastName" placeholder="@lname"></InputText>
 
-                </div>
-                @*Password*@
-                <div class="input-group col-lg-12 mb-4">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-white px-4 border-md border-right-0">
-                            <i class="fa fa-key"></i>
-                        </span>
                     </div>
-                    <InputText type="password" placeholder="Password" Class="form-control" @bind-Value="@user.Password" />
-                    <ValidationMessage For="@(() => user.Password)" />
-                </div>
-                @*rety[e p[assowrd*@
-                <div class="input-group col-lg-12 mb-4">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-white px-4 border-md border-right-0">
-                            <i class="fa fa-key"></i>
-                        </span>
+                    @*Password*@
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-key"></i>
+                            </span>
+                        </div>
+                        <InputText type="password" placeholder="Password" Class="form-control" @bind-Value="@user.Password" />
+                        <ValidationMessage For="@(() => user.Password)" />
                     </div>
-                    <InputText type="password" placeholder="Confirm Password" Class="form-control" @bind-Value="@user.PasswordConfirmation" />
-                    <ValidationMessage For="@(() => user.PasswordConfirmation)" />
-                </div>
-                Adress settings:
-                @*Country*@
-                <div class="input-group col-lg-12 mb-4">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-white px-4 border-md border-right-0">
-                            <i class="fa fa-user-circle"></i>
-                        </span>
+                    @*rety[e p[assowrd*@
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-key"></i>
+                            </span>
+                        </div>
+                        <InputText type="password" placeholder="Confirm Password" Class="form-control" @bind-Value="@user.PasswordConfirmation" />
+                        <ValidationMessage For="@(() => user.PasswordConfirmation)" />
                     </div>
-                    <InputText Id="country" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Country" placeholder="Country..."></InputText>
+                    Adress settings:
+                    @*Country*@
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user-circle"></i>
+                            </span>
+                        </div>
+                        <InputText Id="country" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Country" placeholder="Country"></InputText>
 
-                </div>
-                @*City*@
-                <div class="input-group col-lg-12 mb-4">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-white px-4 border-md border-right-0">
-                            <i class="fa fa-user-circle"></i>
-                        </span>
                     </div>
-                    <InputText Id="city" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.City" placeholder="City"></InputText>
+                    @*City*@
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user-circle"></i>
+                            </span>
+                        </div>
+                        <InputText Id="city" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.City" placeholder="City"></InputText>
 
-                </div>
-                @*Street*@
-                <div class="input-group col-lg-12 mb-4">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-white px-4 border-md border-right-0">
-                            <i class="fa fa-user-circle"></i>
-                        </span>
                     </div>
-                    <InputText Id="street" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Street" placeholder="Street"></InputText>
+                    @*Street*@
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user-circle"></i>
+                            </span>
+                        </div>
+                        <InputText Id="street" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Street" placeholder="Street"></InputText>
 
-                </div>
-                @*Number*@
-                <div class="input-group col-lg-12 mb-4">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-white px-4 border-md border-right-0">
-                            <i class="fa fa-user-circle"></i>
-                        </span>
                     </div>
-                    <InputNumber Id="number" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Number" placeholder="Number"></InputNumber>
+                    @*Number*@
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user-circle"></i>
+                            </span>
+                        </div>
+                        <InputNumber Id="number" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Number" placeholder="Number"></InputNumber>
 
-                </div>
-                <div class="alert @StatusClass">@StatusMessage</div>
+                    </div>
+                    <div class="alert @StatusClass">@StatusMessage</div>
 
-                <DataAnnotationsValidator />
-                <ValidationSummary />
-                <button type="submit" class="btn btn-primary btn-block py-2">Update account</button>
-                <!-- Line -->
-                <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
-                    <div class="border-bottom w-100 ml-5"></div>
-                    @*<span class="px-2 small text-muted font-weight-bold text-muted">OR</span>*@
-                    <div class="border-bottom w-100 mr-5"></div>
-                </div>
-            </EditForm>
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+                    <button type="submit" class="btn btn-primary btn-block py-2">Update account</button>
+                    <!-- Line -->
+                    <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                        <div class="border-bottom w-100 ml-5"></div>
+                        @*<span class="px-2 small text-muted font-weight-bold text-muted">OR</span>*@
+                        <div class="border-bottom w-100 mr-5"></div>
+                    </div>
+                </EditForm>
+            </div>
         </div>
     </div>
-</div>
-<hr>
+    <hr>
 }
 else
 {
@@ -210,11 +210,17 @@ else
         response.Street = user.Street;
         response.Number = user.Number;
         var result = await Http.PutAsJsonAsync(apiUrl, response);
-        if (result.StatusCode.ToString()=="OK")
+        if (result.StatusCode.ToString() == "OK")
         {
-            NavigationManager.NavigateTo("/", true);
+            
+            await sessionStorage.SetItemAsync("firstname", response.FirstName);
+            await sessionStorage.SetItemAsync("lastname", response.LastName);
+            await sessionStorage.SetItemAsync("admin", isAdmin);
+            await sessionStorage.SetItemAsync("userID", response.UserId);
+            this.StateHasChanged();
+            NavigationManager.NavigateTo("/editprofile", true);
         }
-        this.StateHasChanged();
+
 
     }
 
