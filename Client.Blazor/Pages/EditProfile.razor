@@ -9,19 +9,27 @@
     <div class="container">
         <h1>Edit Profile, @lname @fname</h1>
         <hr>
+        @*VIEW DETAILS*@
         <div class="row">
+            <!-- edit form column -->
+            <div class="col-md-9 personal-info">
+                <h3>My details</h3>
+
+                <textarea id="details" cols="40" rows="5" readonly>
+                    ANDREI CHIPERI SEFU LA BANI
+                </textarea>
+
+            </div>
+        </div>
 
 
+        @*EDIT PROFILE*@
+        <div class="row">
             <!-- edit form column -->
             <div class="col-md-9 personal-info">
                 <h3>Personal info</h3>
 
                 <EditForm Model="@user" OnInvalidSubmit="@HandleInvalidSubmit" OnValidSubmit="@EditInfoUser">
-
-
-                    <div class="form-group">
-
-                    </div>
                     @*Firstname*@
                     <div class="input-group col-lg-12 mb-4">
                         <div class="input-group-prepend">
@@ -133,9 +141,6 @@ else
     public int isAdmin = 0;
 
     private string apiUrl = "http://localhost:5003/api/user";
-    private string getUserURL = "http://localhost:5003/api/user/";
-
-
 
     private string StatusMessage;
     private string StatusClass;
@@ -150,12 +155,12 @@ else
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "password is required.")]
-        [MinLength(8, ErrorMessage = "password must be atleast 8 characters")]
+        [MinLength(8, ErrorMessage = "password must be at least 8 characters")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "re-type password is required.")]
-        [Compare(nameof(Password), ErrorMessage = "password dosent match")]
+        [Compare(nameof(Password), ErrorMessage = "password doesn't match")]
         public string PasswordConfirmation { get; set; }
 
         public string City { get; set; }
