@@ -103,7 +103,7 @@ namespace ScooterInstanceAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteScooterInstance([FromBody] Guid id)
         {
-            await mediator.Send(new DeleteScooter(id));
+            await mediator.Send(new DeleteScooterInstance(id));
             return NoContent();
         }
 

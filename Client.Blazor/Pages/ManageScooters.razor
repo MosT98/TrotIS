@@ -54,7 +54,7 @@
 								<div class="input-group col-lg-12 mb-4">
 									<div class="input-group-prepend">
 										<span class="input-group-text bg-white px-4 border-md border-right-0">
-											<i class="fa fa-location-arrow" aria-hidden="true"></i>
+											<i class="fa fa-battery" aria-hidden="true"></i>
 										</span>
 									</div>
 									<input type="number" step="1" Id="batteryLife" Class="form-control bg-white border-left-0 border-md" @bind="@newScooter.BatteryLife" placeholder="Battery life" />
@@ -66,7 +66,7 @@
 								<div class="input-group col-lg-12 mb-4">
 									<div class="input-group-prepend">
 										<span class="input-group-text bg-white px-4 border-md border-right-0">
-											<i class="fa fa-location-arrow"></i>
+											<i class="fa fa-hashtag"></i>
 										</span>
 									</div>
 
@@ -79,7 +79,7 @@
 								<div class="input-group col-lg-12 mb-4">
 									<div class="input-group-prepend">
 										<span class="input-group-text bg-white px-4 border-md border-right-0">
-											<i class="fa fa-location-arrow"></i>
+											<i class="fa fa-hashtag"></i>
 										</span>
 									</div>
 
@@ -92,7 +92,7 @@
 								<div class="input-group col-lg-12 mb-4">
 									<div class="input-group-prepend">
 										<span class="input-group-text bg-white px-4 border-md border-right-0">
-											<i class="fa fa-location-arrow"></i>
+											<i class="fa fa-hashtag"></i>
 										</span>
 									</div>
 
@@ -105,7 +105,7 @@
 								<div class="input-group col-lg-12 mb-4">
 									<div class="input-group-prepend">
 										<span class="input-group-text bg-white px-4 border-md border-right-0">
-											<i class="fa fa-location-arrow"></i>
+											<i class="fa fa-hashtag"></i>
 										</span>
 									</div>
 
@@ -118,7 +118,7 @@
 								<div class="input-group col-lg-12 mb-4">
 									<div class="input-group-prepend">
 										<span class="input-group-text bg-white px-4 border-md border-right-0">
-											<i class="fa fa-location-arrow"></i>
+											<i class="fa fa-hashtag"></i>
 										</span>
 									</div>
 
@@ -131,7 +131,7 @@
 								<div class="input-group col-lg-12 mb-4">
 									<div class="input-group-prepend">
 										<span class="input-group-text bg-white px-4 border-md border-right-0">
-											<i class="fa fa-user-circle" aria-hidden="true"></i>
+											<i class="fa fa-file-image-o" aria-hidden="true"></i>
 										</span>
 									</div>
 									<input type="text" Id="imgLink" Class="form-control bg-white border-left-0 border-md" @bind="@newScooter.ImgName" placeholder="Link of image" />
@@ -184,7 +184,7 @@
 						<div class="input-group col-lg-12 mb-4">
 							<div class="input-group-prepend">
 								<span class="input-group-text bg-white px-4 border-md border-right-0">
-									<i class="fa fa-location-arrow" aria-hidden="true"></i>
+									<i class="fa fa-hashtag" aria-hidden="true"></i>
 								</span>
 							</div>
 							<input type="number" step="1" Id="Autonomy" Class="form-control bg-white border-left-0 border-md" @bind="@newScooterInstance.ScooterAutonomy" placeholder="Autonomy" />
@@ -196,7 +196,7 @@
 						<div class="input-group col-lg-12 mb-4">
 							<div class="input-group-prepend">
 								<span class="input-group-text bg-white px-4 border-md border-right-0">
-									<i class="fa fa-location-arrow"></i>
+									<i class="fa fa-hashtag"></i>
 								</span>
 							</div>
 
@@ -209,22 +209,25 @@
 						<div class="input-group col-lg-12 mb-4">
 							<div class="input-group-prepend">
 								<span class="input-group-text bg-white px-4 border-md border-right-0">
-									<i class="fa fa-location-arrow"></i>
+									<i class="fa fa-motorcycle"></i>
 								</span>
 							</div>
 
-							@*<select @bind="newScooterInstance.Scooter" class="form-control bg-white border-left-0 border-md">
+							<select @bind="GuidNewScooterInstance" class="form-control bg-white border-left-0 border-md">
 								@if (allScooters.Count > 0)
+								{
 									@foreach (var scooter in allScooters)
 									{
 										<option value="@scooter.ScooterId">@scooter.Brand @scooter.Model</option>
+										//GuidNewScooterInstance = scooter.ScooterId;
 									}
-							</select>*@
-							<ValidationMessage For="@(() => newScooterInstance.Scooter)" />
+									
+								}
+							</select>
 						</div>
 
 						<button type="submit" class="btn btn-primary btn-block py-2">Add new scooter</button>
-					</EditForm>
+					</EditForm>					
 
 					<!-- Line -->
 					<div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
@@ -235,13 +238,13 @@
 
 					<EditForm Model="@selectedScooterInstance" OnInvalidSubmit="@HandleInvalidSubmit" OnValidSubmit="@DeleteScooterInstance">
 						<h2>Delete a scooter instance</h2>
-						@*<select @bind="selectedScooterInstance.ScooterInstanceId" class="form-control bg-white border-left-0 border-md">
+						<select @bind="GuidSelectedScooterInstance" class="form-control bg-white border-left-0 border-md">
 							@if (allScootersInstance.Count > 0)
 								@foreach (var scooter in allScootersInstance)
 								{
 									<option value="@scooter.ScooterInstanceId">@scooter.ScooterAutonomy @scooter.Price</option>
 								}
-						</select>*@
+						</select>
 						<br />
 						<button type="submit" class="btn btn-primary btn-block py-2">Delete a scooter instance</button>
 					</EditForm>
@@ -268,7 +271,11 @@ else
 	private List<Location> allOurLocations = new List<Location>();
 
 	private List<Scooter> allScooters = new List<Scooter>();
-	private List<ScooterInstance> allScootersInstance = new List<ScooterInstance>();
+	private List<ScooterInstanceObject> allScootersInstance = new List<ScooterInstanceObject>();
+
+	private Guid GuidNewScooterInstance;
+	private Guid GuidSelectedScooterInstance;
+
 
 	private string StatusMessage;
 	private string StatusClass;
@@ -310,16 +317,16 @@ else
 
 	public async void GetScootersInstances()
 	{
-		//try
-		//{
-		//	var result = await Http.GetAsync(URLScooterInstance + "/get_all_scooters");
+		try
+		{
+			var result = await Http.GetAsync(URLScooterInstance);
 
-		//	allScootersInstance = await result.Content.ReadAsAsync<List<Scooter>>();
+			allScootersInstance = await result.Content.ReadAsAsync<List<ScooterInstanceObject>>();
 
-		//	this.StateHasChanged();
-		//}
-		//catch
-		//{ }
+			this.StateHasChanged();
+		}
+		catch
+		{ }
 	}
 
 	protected async override void OnInitialized()
@@ -333,6 +340,8 @@ else
 			if (isAdmin)
 			{
 				GetScooters();
+
+				GetScootersInstances();
 
 				GetOurLocations();
 			}
@@ -377,6 +386,7 @@ else
 
 	private async void AddScooterInstance()
 	{
+		newScooterInstance.Scooter = GuidNewScooterInstance;
 		var result = await Http.PostAsJsonAsync(URLScooterInstance, newScooterInstance);
 		var content = await result.Content.ReadAsStringAsync();
 		if (content != string.Empty)
@@ -393,7 +403,8 @@ else
 
 	private async void DeleteScooterInstance()
 	{
-		var result = await Http.PostAsJsonAsync(URLScooterInstance + "/delete", selectedScooterInstance.ScooterInstanceId);
+		selectedScooterInstance.ScooterInstanceId = GuidSelectedScooterInstance;
+		var result = await Http.PostAsJsonAsync("http://localhost:5005/scooterinstance/delete", selectedScooterInstance.ScooterInstanceId);
 		var content = await result.Content.ReadAsStringAsync();
 		if (content != string.Empty)
 		{
@@ -483,31 +494,31 @@ else
 
 		public int ScooterAutonomy { get; set; } //km
 
-		public Scooter Scooter { get; set; }
+		public Guid Scooter { get; set; }
 
 		public decimal Price { get; set; }
 
 		public ScooterInstance()
 		{
 			ScooterInstanceId = Guid.NewGuid();
-		}
-
-		public static ScooterInstance Create(int scooterAutonomy, decimal price, Scooter scooter)
-		{
-			return new ScooterInstance
-			{
-				ScooterInstanceId = Guid.NewGuid(),
-				ScooterAutonomy = scooterAutonomy,
-				Price = price,
-				Scooter = scooter
-			};
-		}
-
-		public void Update(int scooterAutonomy)
-		{
-			ScooterAutonomy = scooterAutonomy;
-		}
+		}		
 	}
+
+	public class ScooterInstanceObject
+    {
+        public Guid ScooterInstanceId { get; set; }
+
+        public int ScooterAutonomy { get; set; } //km
+
+        public Scooter Scooter { get; set; }
+
+        public decimal Price { get; set; }
+
+        public ScooterInstanceObject()
+        {
+            ScooterInstanceId = Guid.NewGuid();
+        }       
+    }
 
 
 	protected void HandleValidSubmit()
