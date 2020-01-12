@@ -9,7 +9,7 @@ using ScooterInstanceAPI.DTOs;
 
 namespace ScooterInstanceAPI.Business
 {
-    public class GetScooterInstanceHandler: IRequestHandler<GetScooterInstances, List<ScooterInstance>>
+    public class GetScooterInstanceHandler: IRequestHandler<GetScooterInstances, List<Scooter>>
     {
         private readonly Context context;
 
@@ -18,10 +18,12 @@ namespace ScooterInstanceAPI.Business
             this.context = context;
         }
 
-        public async Task<List<ScooterInstance>> Handle(GetScooterInstances request, CancellationToken cancellationToken)
+        public async Task<List<Scooter>> Handle(GetScooterInstances request, CancellationToken cancellationToken)
         {
             var scooterInstances = await context.ScooterInstances.ToListAsync();
-            var myScooters = scooterInstances.Where(a => request.ScooterList.Contains(a.ScooterInstanceId)).ToList();
+            var myScootersInstances = scooterInstances.Where(a => request.ScooterList.Contains(a.ScooterInstanceId)).Select(a=>a.Scooter).ToList();
+            var scooters = await context.Scooters.ToListAsync();
+            var myScooters = scooters.Where(a => scooters.Contains(a)).ToList();
             return myScooters;
         }
     }

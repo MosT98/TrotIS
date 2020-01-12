@@ -5,7 +5,7 @@ using ScooterInstanceAPI.Data;
 
 namespace ScooterInstanceAPI.DTOs
 {
-    public class GetScooterInstances : IRequest<List<ScooterInstance>>
+    public class GetScooterInstances : IRequest<List<Scooter>>
     {
         public List<Guid> ScooterList { get; set; }
         public GetScooterInstances(List<Guid> ids)
