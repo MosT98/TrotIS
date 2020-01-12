@@ -58,7 +58,7 @@ namespace LocationAPI.Controllers
         }
 
         [Route("scooters_ids_from_location")]
-        [HttpGet]
+        [HttpPost]
         public async Task<ActionResult<List<Guid>>> GetScooters([FromBody] Guid id)
         {
             var scooters = await mediator.Send(new GetScooterInstancesIDs(id));
