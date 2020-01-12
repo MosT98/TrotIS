@@ -78,8 +78,6 @@
     private string StatusClass;
     private async void LoginUser()
     {
-        //user.UserId = Guid.NewGuid();
-
         var result = await Http.PostAsJsonAsync(apiUrl, user);
 
         if (result.StatusCode.ToString() == "OK")

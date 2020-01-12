@@ -21,7 +21,6 @@
         </li>
         @if (email != null)
         {
-
             <li class="nav-item px-3">
                 <NavLink class="nav-link" href="editprofile">
                     <i class="fa fa-user fa-lg"></i> &nbsp;&nbsp;Edit profile
@@ -32,6 +31,14 @@
                     <i class="fa fa-motorcycle" aria-hidden="true"></i> &nbsp;Find a scooter
                 </NavLink>
             </li>
+            @if (isAdmin)
+            {
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="managescooters">
+                        <i class="fa fa-motorcycle" aria-hidden="true"></i> &nbsp;Manage scooters
+                    </NavLink>
+                </li>
+            }
             <li class="nav-item px-3">
                 <button @onclick="DeleteSession" class="nav-link" style="
                                                                         background: transparent;
@@ -70,6 +77,7 @@
     public string email = null;
     public string fname = null;
     public string lname = null;
+    public bool isAdmin = false;
 
     private void ToggleNavMenu()
     {
@@ -85,6 +93,7 @@
             fname = await sessionStorage.GetItemAsync<string>("firstname");
             email = await sessionStorage.GetItemAsync<string>("hash");
             lname = await sessionStorage.GetItemAsync<string>("lastname");
+            isAdmin = await sessionStorage.GetItemAsync<bool>("admin");
             this.StateHasChanged();
         }
         catch

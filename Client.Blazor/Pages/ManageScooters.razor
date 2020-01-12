@@ -1,0 +1,531 @@
+﻿@page "/managescooters"
+@using Client.Blazor.Data
+@inject HttpClient Http
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+@inject IJSRuntime JSRuntime
+@*@inherits SiteMapperBase*@
+@inject NavigationManager NavigationManager
+
+@if (isAdmin)
+{
+	<h1>Manage scooters</h1>
+
+	<div id="accordion">
+		@*Manage models of scooters*@
+		<div class="card">
+			<div class="card-header" id="headingOne">
+				<h5 class="mb-0">
+					<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						Manage models of scooters
+					</button>
+				</h5>
+			</div>
+
+			<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+				<div class="card-body">
+					<div class="input-group col-lg-12 mb-4">
+						<div class="col-md-12 col-lg-6">
+							<EditForm Model="@newScooter" OnInvalidSubmit="@HandleInvalidSubmit" OnValidSubmit="@AddScooterModel">
+								<h2>Add new model of scooter</h2><br />
+								@*Brand*@
+								<label>Name of brand</label><br />
+								<div class="input-group col-lg-12 mb-4">
+									<div class="input-group-prepend">
+										<span class="input-group-text bg-white px-4 border-md border-right-0">
+											<i class="fa fa-user-circle" aria-hidden="true"></i>
+										</span>
+									</div>
+									<input type="text" Id="brand" Class="form-control bg-white border-left-0 border-md" @bind="@newScooter.Brand" placeholder="Name of brand" />
+								</div>
+
+								@*Model*@
+								<label>Name of model</label><br />
+								<div class="input-group col-lg-12 mb-4">
+									<div class="input-group-prepend">
+										<span class="input-group-text bg-white px-4 border-md border-right-0">
+											<i class="fa fa-user-circle" aria-hidden="true"></i>
+										</span>
+									</div>
+									<input type="text" Id="model" Class="form-control bg-white border-left-0 border-md" @bind="@newScooter.Model" placeholder="Name of model" />
+								</div>
+
+								@*Battery life*@
+								<label>Battery life</label><br />
+								<div class="input-group col-lg-12 mb-4">
+									<div class="input-group-prepend">
+										<span class="input-group-text bg-white px-4 border-md border-right-0">
+											<i class="fa fa-location-arrow" aria-hidden="true"></i>
+										</span>
+									</div>
+									<input type="number" step="1" Id="batteryLife" Class="form-control bg-white border-left-0 border-md" @bind="@newScooter.BatteryLife" placeholder="Battery life" />
+									<ValidationMessage For="@(() => @newScooter.BatteryLife)" />
+								</div>
+
+								@*Age limit Min*@
+								<label>Minimum of limit age</label><br />
+								<div class="input-group col-lg-12 mb-4">
+									<div class="input-group-prepend">
+										<span class="input-group-text bg-white px-4 border-md border-right-0">
+											<i class="fa fa-location-arrow"></i>
+										</span>
+									</div>
+
+									<input type="number" step="1" Id="ageLimitMin" Class="form-control bg-white border-left-0 border-md" @bind="@newScooter.AgeLimitMin" placeholder="Minimum of limit age" />
+									<ValidationMessage For="@(() => @newScooter.AgeLimitMin)" />
+								</div>
+
+								@*Age limit Max*@
+								<label>Maximum of limit age</label><br />
+								<div class="input-group col-lg-12 mb-4">
+									<div class="input-group-prepend">
+										<span class="input-group-text bg-white px-4 border-md border-right-0">
+											<i class="fa fa-location-arrow"></i>
+										</span>
+									</div>
+
+									<input type="number" step="1" Id="ageLimitMax" Class="form-control bg-white border-left-0 border-md" @bind="@newScooter.AgeLimitMax" placeholder="Maximum of limit age" />
+									<ValidationMessage For="@(() => @newScooter.AgeLimitMax)" />
+								</div>
+
+								@*Weight Max*@
+								<label>Maximum of weight</label><br />
+								<div class="input-group col-lg-12 mb-4">
+									<div class="input-group-prepend">
+										<span class="input-group-text bg-white px-4 border-md border-right-0">
+											<i class="fa fa-location-arrow"></i>
+										</span>
+									</div>
+
+									<input type="number" step="10" Id="weightMax" Class="form-control bg-white border-left-0 border-md" @bind="@newScooter.WeightMax" placeholder="Maximum of weight" />
+									<ValidationMessage For="@(() => @newScooter.WeightMax)" />
+								</div>
+
+								@*Speed limit*@
+								<label>Speed limit</label><br />
+								<div class="input-group col-lg-12 mb-4">
+									<div class="input-group-prepend">
+										<span class="input-group-text bg-white px-4 border-md border-right-0">
+											<i class="fa fa-location-arrow"></i>
+										</span>
+									</div>
+
+									<input type="number" step="5" Id="speedLimit" Class="form-control bg-white border-left-0 border-md" @bind="@newScooter.SpeedLimit" placeholder="Speed limit" />
+									<ValidationMessage For="@(() => @newScooter.SpeedLimit)" />
+								</div>
+
+								@*Climb angle*@
+								<label>Climb angle</label><br />
+								<div class="input-group col-lg-12 mb-4">
+									<div class="input-group-prepend">
+										<span class="input-group-text bg-white px-4 border-md border-right-0">
+											<i class="fa fa-location-arrow"></i>
+										</span>
+									</div>
+
+									<input type="number" step="5" Id="speedLimit" Class="form-control bg-white border-left-0 border-md" @bind="@newScooter.ClimbAngle" placeholder="Climb angle" />
+									<ValidationMessage For="@(() => @newScooter.ClimbAngle)" />
+								</div>
+
+								@*imgName*@
+								<label>Link of image</label><br />
+								<div class="input-group col-lg-12 mb-4">
+									<div class="input-group-prepend">
+										<span class="input-group-text bg-white px-4 border-md border-right-0">
+											<i class="fa fa-user-circle" aria-hidden="true"></i>
+										</span>
+									</div>
+									<input type="text" Id="imgLink" Class="form-control bg-white border-left-0 border-md" @bind="@newScooter.ImgName" placeholder="Link of image" />
+								</div>
+
+								<button type="submit" class="btn btn-primary btn-block py-2">Add new model of scooter</button>
+							</EditForm>
+
+							<!-- Line -->
+							<div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+								<div class="border-bottom w-100 ml-5"></div>
+								@*<span class="px-2 small text-muted font-weight-bold text-muted">OR</span>*@
+								<div class="border-bottom w-100 mr-5"></div>
+							</div>
+
+							<EditForm Model="@selectedScooter" OnInvalidSubmit="@HandleInvalidSubmit" OnValidSubmit="@DeleteScooter">
+								<h2>Delete a scooter</h2>
+								<select @bind="selectedScooter.ScooterId" class="form-control bg-white border-left-0 border-md">
+									@if(allScooters.Count > 0)
+										@foreach (var scooter in allScooters)
+										{
+											<option value="@scooter.ScooterId">@scooter.Brand @scooter.Model</option>
+										}
+								</select>
+								<br />
+								<button type="submit" class="btn btn-primary btn-block py-2">Delete selected model of scooter</button>
+							</EditForm>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		@*Manage scooters instances*@
+		<div class="card">
+			<div class="card-header" id="headingTwo">
+				<h5 class="mb-0">
+					<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+						Manage scooters instances
+					</button>
+				</h5>
+			</div>
+			<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+				<div class="card-body">
+					<EditForm Model="@newScooterInstance" OnInvalidSubmit="@HandleInvalidSubmit" OnValidSubmit="@AddScooterInstance">
+						<h2>Add new instance of scooter</h2><br />
+
+						@*Autonomy*@
+						<label>Autonomy</label><br />
+						<div class="input-group col-lg-12 mb-4">
+							<div class="input-group-prepend">
+								<span class="input-group-text bg-white px-4 border-md border-right-0">
+									<i class="fa fa-location-arrow" aria-hidden="true"></i>
+								</span>
+							</div>
+							<input type="number" step="1" Id="Autonomy" Class="form-control bg-white border-left-0 border-md" @bind="@newScooterInstance.ScooterAutonomy" placeholder="Autonomy" />
+							<ValidationMessage For="@(() => newScooterInstance)" />
+						</div>
+
+						@*Price*@
+						<label>Price</label><br />
+						<div class="input-group col-lg-12 mb-4">
+							<div class="input-group-prepend">
+								<span class="input-group-text bg-white px-4 border-md border-right-0">
+									<i class="fa fa-location-arrow"></i>
+								</span>
+							</div>
+
+							<input type="number" step="1" Id="price" Class="form-control bg-white border-left-0 border-md" @bind="@newScooterInstance.Price" placeholder="Price" />
+							<ValidationMessage For="@(() => newScooterInstance.Price)" />
+						</div>
+
+						@*Scooter model*@
+						<label>Model of scooter</label><br />
+						<div class="input-group col-lg-12 mb-4">
+							<div class="input-group-prepend">
+								<span class="input-group-text bg-white px-4 border-md border-right-0">
+									<i class="fa fa-location-arrow"></i>
+								</span>
+							</div>
+
+							@*<select @bind="newScooterInstance.Scooter" class="form-control bg-white border-left-0 border-md">
+								@if (allScooters.Count > 0)
+									@foreach (var scooter in allScooters)
+									{
+										<option value="@scooter.ScooterId">@scooter.Brand @scooter.Model</option>
+									}
+							</select>*@
+							<ValidationMessage For="@(() => newScooterInstance.Scooter)" />
+						</div>
+
+						<button type="submit" class="btn btn-primary btn-block py-2">Add new scooter</button>
+					</EditForm>
+
+					<!-- Line -->
+					<div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+						<div class="border-bottom w-100 ml-5"></div>
+						@*<span class="px-2 small text-muted font-weight-bold text-muted">OR</span>*@
+						<div class="border-bottom w-100 mr-5"></div>
+					</div>
+
+					<EditForm Model="@selectedScooterInstance" OnInvalidSubmit="@HandleInvalidSubmit" OnValidSubmit="@DeleteScooterInstance">
+						<h2>Delete a scooter instance</h2>
+						@*<select @bind="selectedScooterInstance.ScooterInstanceId" class="form-control bg-white border-left-0 border-md">
+							@if (allScootersInstance.Count > 0)
+								@foreach (var scooter in allScootersInstance)
+								{
+									<option value="@scooter.ScooterInstanceId">@scooter.ScooterAutonomy @scooter.Price</option>
+								}
+						</select>*@
+						<br />
+						<button type="submit" class="btn btn-primary btn-block py-2">Delete a scooter instance</button>
+					</EditForm>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	
+}
+else
+{
+	<h1>You haven't rights !</h1>
+}
+
+@code{
+	public bool isAdmin = false;
+	private Scooter selectedScooter = new Scooter();
+	private Scooter newScooter = new Scooter();
+
+	private ScooterInstance selectedScooterInstance = new ScooterInstance();
+	private ScooterInstance newScooterInstance = new ScooterInstance();
+
+	private List<Location> allOurLocations = new List<Location>();
+
+	private List<Scooter> allScooters = new List<Scooter>();
+	private List<ScooterInstance> allScootersInstance = new List<ScooterInstance>();
+
+	private string StatusMessage;
+	private string StatusClass;
+	private string ToastContent { get; set; }
+
+	string URLScooter = @"http://localhost:5005/scooter";
+
+	string URLScooterInstance = @"http://localhost:5005/api/scooterinstance";
+
+	string URLLocations = @"http://localhost:5009/api/locations";
+
+	public async void GetOurLocations()
+	{
+		try
+		{
+			var result = await Http.GetAsync(URLLocations);
+
+			allOurLocations = await result.Content.ReadAsAsync<List<Location>>();
+
+			this.StateHasChanged();
+		}
+		catch
+		{ }
+	}
+
+	public async void GetScooters()
+	{
+		try
+		{
+			var result = await Http.GetAsync(URLScooter);
+
+			allScooters = await result.Content.ReadAsAsync<List<Scooter>>();
+
+			this.StateHasChanged();
+		}
+		catch
+		{ }
+	}
+
+	public async void GetScootersInstances()
+	{
+		//try
+		//{
+		//	var result = await Http.GetAsync(URLScooterInstance + "/get_all_scooters");
+
+		//	allScootersInstance = await result.Content.ReadAsAsync<List<Scooter>>();
+
+		//	this.StateHasChanged();
+		//}
+		//catch
+		//{ }
+	}
+
+	protected async override void OnInitialized()
+	{
+		try
+		{
+			isAdmin = await sessionStorage.GetItemAsync<bool>("admin");
+
+			this.StateHasChanged();
+
+			if (isAdmin)
+			{
+				GetScooters();
+
+				GetOurLocations();
+			}
+		}
+		catch
+		{
+
+		}
+	}
+
+	private async void AddScooterModel()
+	{
+		var result = await Http.PostAsJsonAsync(URLScooter, newScooter);
+		var content = await result.Content.ReadAsStringAsync();
+		if (content != string.Empty)
+		{
+			this.StateHasChanged();
+			NavigationManager.NavigateTo("/managescooters", true);
+		}
+		else
+		{
+			ToastContent = content;
+			Invalid(ToastContent);
+		}
+	}
+
+	private async void DeleteScooter()
+	{
+		var result = await Http.PostAsJsonAsync(URLScooter + "/delete", selectedScooter.ScooterId);
+		var content = await result.Content.ReadAsStringAsync();
+		if (content != string.Empty)
+		{
+			ToastContent = content;
+			Invalid(ToastContent);
+		}
+		else
+		{
+			this.StateHasChanged();
+			NavigationManager.NavigateTo("/managescooters", true);
+		}
+	}
+
+	private async void AddScooterInstance()
+	{
+		var result = await Http.PostAsJsonAsync(URLScooterInstance, newScooterInstance);
+		var content = await result.Content.ReadAsStringAsync();
+		if (content != string.Empty)
+		{
+			this.StateHasChanged();
+			NavigationManager.NavigateTo("/managescooters", true);
+		}
+		else
+		{
+			ToastContent = content;
+			Invalid(ToastContent);
+		}
+	}
+
+	private async void DeleteScooterInstance()
+	{
+		var result = await Http.PostAsJsonAsync(URLScooterInstance + "/delete", selectedScooterInstance.ScooterInstanceId);
+		var content = await result.Content.ReadAsStringAsync();
+		if (content != string.Empty)
+		{
+			ToastContent = content;
+			Invalid(ToastContent);
+		}
+		else
+		{
+			this.StateHasChanged();
+			NavigationManager.NavigateTo("/managescooters", true);
+		}
+	}
+
+
+	public class Location
+	{
+		public Guid LocationID { get; set; }
+
+		[Required(ErrorMessage = "Longitude is required.")]
+		public decimal Longitude { get; set; }
+
+		[Required(ErrorMessage = "Longitude is required.")]
+		public decimal Latitude { get; set; }
+
+
+		public string Comment { get; set; }
+
+		public Location()
+		{
+			LocationID = Guid.NewGuid();
+		}
+
+		public static Location Create(decimal longitude, decimal latitude, string comment)
+		{
+			return new Location
+			{
+				LocationID = Guid.NewGuid(),
+				Longitude = longitude,
+				Latitude = latitude,
+				Comment = comment
+			};
+		}
+	}
+
+	public class Scooter
+	{
+		public Guid ScooterId { get; set; }
+
+		public string Brand { get; set; }
+
+		public string Model { get; set; }
+
+		public int BatteryLife { get; set; } //km
+		public int AgeLimitMin { get; set; }
+		public int AgeLimitMax { get; set; }
+		public int WeightMax { get; set; } //kg
+		public int SpeedLimit { get; set; } //km/h
+		public int ClimbAngle { get; set; } //degree
+		public string ImgName { get; set; }
+
+		public Scooter()
+		{
+			ScooterId = Guid.NewGuid();
+		}
+
+		public static Scooter Create(string brand, string model, int batterylife, int agelimitmin, int agelimitmax, int weightmax, int speedlimit, int climbangle, string imgName)
+		{
+			return new Scooter
+			{
+				ScooterId = Guid.NewGuid(),
+				Brand = brand,
+				Model = model,
+				BatteryLife = batterylife,
+				AgeLimitMin = agelimitmin,
+				AgeLimitMax = agelimitmax,
+				WeightMax = weightmax,
+				SpeedLimit = speedlimit,
+				ClimbAngle = climbangle,
+				ImgName = imgName,
+			};
+		}
+	}
+
+	public class ScooterInstance
+	{
+		public Guid ScooterInstanceId { get; set; }
+
+		public int ScooterAutonomy { get; set; } //km
+
+		public Scooter Scooter { get; set; }
+
+		public decimal Price { get; set; }
+
+		public ScooterInstance()
+		{
+			ScooterInstanceId = Guid.NewGuid();
+		}
+
+		public static ScooterInstance Create(int scooterAutonomy, decimal price, Scooter scooter)
+		{
+			return new ScooterInstance
+			{
+				ScooterInstanceId = Guid.NewGuid(),
+				ScooterAutonomy = scooterAutonomy,
+				Price = price,
+				Scooter = scooter
+			};
+		}
+
+		public void Update(int scooterAutonomy)
+		{
+			ScooterAutonomy = scooterAutonomy;
+		}
+	}
+
+
+	protected void HandleValidSubmit()
+	{
+		StatusClass = "alert-info";
+		StatusMessage = "Scooter has been added!";
+	}
+
+	protected void HandleInvalidSubmit()
+	{
+		StatusClass = "alert-danger";
+		StatusMessage = DateTime.Now + " something went wrong";
+	}
+
+	protected void Invalid(string content)
+	{
+		StatusClass = "alert-danger";
+		StatusMessage = content;
+	}
+
+}
