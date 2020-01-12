@@ -14,14 +14,14 @@ namespace LocationAPI.Data
         {
         }
 
-        public static List<LocationsToScooters> CreateMany(string locationID, List<string> scooterInstanceID)
+        public static List<LocationsToScooters> CreateMany(Guid locationID, List<Guid> scooterInstanceID)
         {
             List<LocationsToScooters> finalList = new List<LocationsToScooters>();
             foreach (var scooterInstance in scooterInstanceID)
                 finalList.Add(new LocationsToScooters()
                 {
-                    LocationID = Guid.Parse(locationID),
-                    ScooterInstanceID = Guid.Parse(scooterInstance)
+                    LocationID = locationID,
+                    ScooterInstanceID = scooterInstance
 
                 }
             );
