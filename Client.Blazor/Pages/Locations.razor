@@ -80,6 +80,7 @@
 		</div>
 	</div>
 }
+
 @code{
 	public bool isAdmin = false;
 	private Location selectedLocation = new Location();
@@ -111,7 +112,7 @@
 	{
 		try
 		{
-			isAdmin = await sessionStorage.GetItemAsync<bool>("admin");			
+			isAdmin = await sessionStorage.GetItemAsync<bool>("admin");
 
 			this.StateHasChanged();
 
