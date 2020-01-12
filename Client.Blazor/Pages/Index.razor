@@ -3,7 +3,6 @@
 @inject HttpClient Http
 @inject Blazored.SessionStorage.ISessionStorageService sessionStorage
 @inject IJSRuntime JSRuntime
-@*@inherits SiteMapperBase*@
 @inject NavigationManager NavigationManager
 
 <header class="header">
@@ -41,27 +40,51 @@
 
 @if (isLogged)
 {
-    <h1>
-        Current Rent
-    </h1>
-
+    if (!empty)
+    {
+        <h1>
+            Current Rent
+        </h1>
+        <table id="rent" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Scooter Instance</th>
+                    <th>Rent Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td>@myRent.StartDate </td>
+                        <td>@myRent.EndDate</td>
+                        <td>@myRent.ScooterInstanceId</td>
+                        <td>@myRent.LocationId</td>
+                    </tr>
+            </tbody>
+        </table>
+    }
 }
 
 @code{
     public bool isLogged = false;
+    public bool empty = true;
+    public Rent myRent = new Rent();
+
     protected async override void OnInitialized()
     {
         try
         {
             string hash = "";
             hash = await sessionStorage.GetItemAsync<string>("hash");
-            if (hash != string.Empty)
+            if (hash != null)
                 isLogged = true;
+            this.StateHasChanged();
             if (isLogged)
             {
                 LoadCurrentRent();
-                }
-            //this.StateHasChanged();
+            }
+
         }
         catch
         {
@@ -74,11 +97,19 @@
         var userId = await sessionStorage.GetItemAsync<Guid>("userID");
         string URL = "http://localhost:5007/api/rent/GetByIdUser/";
         string URLfin = URL + userId.ToString();
-        var result = Http.GetAsync(URLfin);
-        //var content = await result.Content.ReadAsAsync<Rent>();
+        var result = await Http.GetAsync(URLfin);
+        if (result.StatusCode.ToString() != "NotFound")
+        {
+            myRent = await result.Content.ReadAsAsync<Rent>();
+            empty = false;
+        }
+        else
+            empty = true;
+        this.StateHasChanged();
+
     }
 
-    private class Rent
+    public class Rent
     {
         public Guid RentId { get; set; }
         public Guid LocationId { get; set; }
