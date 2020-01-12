@@ -50,17 +50,39 @@
                 <tr>
                     <th>Start Date</th>
                     <th>End Date</th>
-                    <th>Scooter Instance</th>
+                    <th>Scooter Battery</th>
                     <th>Rent Location</th>
                 </tr>
             </thead>
             <tbody>
-                    <tr>
-                        <td>@myRent.StartDate </td>
-                        <td>@myRent.EndDate</td>
-                        <td>@myRent.ScooterInstanceId</td>
-                        <td>@myRent.LocationId</td>
-                    </tr>
+                <tr>
+                    <td>@myRent.StartDate </td>
+                    <td>@myRent.EndDate</td>
+                    <td>@battery</td>
+                    <td>@comment</td>
+                </tr>
+            </tbody>
+        </table>
+    }
+    if (!emptyHist)
+    {
+        <h1>
+            Current Rent
+        </h1>
+        <table id="rent" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Rent Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@myRent.StartDate </td>
+                    <td>@myRent.EndDate</td>S
+                    <td>@comment</td>
+                </tr>
             </tbody>
         </table>
     }
@@ -73,7 +95,7 @@
     public Guid LocationId;
     public Guid ScooterInstanceID;
     public string comment = "";
-    public string scooter = "";
+    public int battery = 0;
 
     protected async override void OnInitialized()
     {
@@ -106,6 +128,21 @@
         {
             myRent = await result.Content.ReadAsAsync<Rent>();
             empty = false;
+            LocationId = myRent.LocationId;
+            string URLloc = "http://localhost:5009/api/locations/comment_from_id";
+            var resultLoc = await Http.PostAsJsonAsync(URLloc, LocationId);
+            if (resultLoc.StatusCode.ToString() != "NotFound")
+            {
+                comment = await resultLoc.Content.ReadAsStringAsync();
+            }
+            ScooterInstanceID = myRent.ScooterInstanceId;
+            string URLscooter = "http://localhost:5005/api/scooterinstance/autonomy_by_id";
+            var resultScooter = await Http.PostAsJsonAsync(URLscooter, ScooterInstanceID);
+            if (resultScooter.StatusCode.ToString() != "NotFound")
+            {
+                battery = await resultLoc.Content.ReadAsAsync<int>();
+            }
+
         }
         else
             empty = true;
