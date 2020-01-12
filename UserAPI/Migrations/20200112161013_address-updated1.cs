@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace UserAPI.Migrations
 {
-    public partial class adminanddte_cre : Migration
+    public partial class addressupdated1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -52,12 +52,12 @@ namespace UserAPI.Migrations
             migrationBuilder.InsertData(
                 table: "Addresses",
                 columns: new[] { "AddressId", "City", "Country", "Number", "Street" },
-                values: new object[] { new Guid("547c4e07-405b-46f7-be47-78cda7519e02"), "Iasi", "Romania", 35, "Moara de foc" });
+                values: new object[] { new Guid("1e870629-83db-4661-b16e-d41ddaf8783c"), "Iasi", "Romania", 35, "Moara de foc" });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "UserId", "AddressId", "BirthDay", "DTE_CRE", "Email", "FirstName", "IsAdmin", "LastName", "Password", "Phone", "SocialClass" },
-                values: new object[] { new Guid("a027173a-4d1f-4fe1-aea6-f83961f3fbed"), null, new DateTime(1999, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2020, 1, 10, 22, 6, 43, 51, DateTimeKind.Utc).AddTicks(1308), "catalinbelu21@gmail.com", "Catalin", false, "Belu", "parola", "0770796616", 1 });
+                values: new object[] { new Guid("cd0d4451-14db-4cc6-8705-405fe79e7e8d"), null, new DateTime(1999, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2020, 1, 12, 16, 10, 12, 853, DateTimeKind.Utc).AddTicks(8546), "catalinbelu21@gmail.com", "Catalin", false, "Belu", "parola", "0770796616", 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_AddressId",

@@ -27,9 +27,9 @@ namespace ScooterInstanceAPI.Controllers
             this.mediator = mediator;
         }
 
-
-        [HttpGet] 
-        public async Task<ActionResult<List<ScooterInstance>>> Get([FromBody] List<Guid> ids)
+        [Route("get_all_scooters")]
+        [HttpPost] 
+        public async Task<ActionResult<List<ScooterInstance>>> GetAllScooters([FromBody] List<Guid> ids)
         {
             var scooterInstances = await mediator.Send(new GetScooterInstances(ids));
             if (scooterInstances == null)
