@@ -33,10 +33,14 @@ namespace TrotIS.Shared
 
         public void Update(string country, string city, string street, int number)
         {
-            Country = country;
-            City = city;
-            Street = street;
-            Number = number;
+            if(country!=string.Empty)
+                Country = country;
+            if (city != string.Empty)
+                City = city;
+            if (street != string.Empty)
+                Street = street;
+            if (number!=0)
+                Number = number;
         }
     }
 }

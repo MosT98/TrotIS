@@ -41,18 +41,15 @@ namespace UserAPI.Data
             UserId = Guid.NewGuid();
         }
 
-        public void Update(string email, string password, string firstName, string lastName,
-            string phone, DateTime birthDay, EnumLists.SocialClass socialClass, Address address, bool isAdmin)
+        public void Update(string firstName, string lastName, string password, Address address)
         {
-            Email = email;
-            Password = password;
-            FirstName = firstName;
-            LastName = lastName;
-            Phone = phone;
-            BirthDay = birthDay;
-            SocialClass = socialClass;
+            if(firstName!=string.Empty)
+                FirstName = firstName;
+            if(lastName!=string.Empty)
+                LastName = lastName;
+            if(password!=string.Empty)
+                Password = password;
             Address = address;
-            IsAdmin = isAdmin;
         }
 
     }
