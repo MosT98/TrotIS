@@ -8,13 +8,20 @@
     <div class="input-group col-lg-12 mb-4">
         <div class="input-group-prepend">
             <h1>Available scooters are at: </h1>
-
+            <h1>Location</h1>
             <select @bind="selectedLocation.LocationID" class="form-control bg-white border-left-0 border-md" placeholder="Latitude">
                 @foreach (var adr in allOurLocations)
                 {
                     <option value="@adr.LocationID">@adr.Comment</option>
                 }
             </select>
+            @*<h1>SCooters available</h1>
+            <select @bind="selectedLocation.LocationID" class="form-control bg-white border-left-0 border-md" placeholder="Latitude">
+                @foreach (var adr in allOurLocations)
+                {
+                    <option value="@adr.LocationID">@adr.Comment</option>
+                }
+            </select>*@
         </div>
     </div>
 }
@@ -27,7 +34,12 @@ else
     public string email = null;
     private List<Location> allOurLocations = new List<Location>();
     private Location selectedLocation = new Location();
+    private List<Scooter> allOurScooters = new List<Scooter>();
+    private List<Guid> allScootersGuid = new List<Guid>();
+    private Scooter selectedScooter = new Scooter();
     string URL = @"http://localhost:5009/api/locations";
+    string URLGuidScooter = @"http://localhost:5009/api/locations/scooters_ids_from_location";
+    private Guid location = Guid.Empty;
     public async void GetOurLocations()
     {
         try
@@ -48,12 +60,42 @@ else
         try
         {
             email = await sessionStorage.GetItemAsync<string>("hash");
+            GetOurLocations();
+            foreach(Location location in allOurLocations)
+            {
+                await GetOurScootersGuid(location.LocationID);
+            }
             this.StateHasChanged();
         }
         catch{}
-            GetOurLocations();
-    
+
+
     }
+
+
+    //private async Task CountryHasChanged(Guid value)
+    //{
+    //    location = value;
+
+
+    //    await LoadScooters(location);
+
+    //}
+
+    private async Task GetOurScootersGuid(Guid locationId)
+    {
+        try
+        {
+            var result = await Http.GetAsync(URLGuidScooter+"/"+locationId);
+
+            allScootersGuid = await result.Content.ReadAsAsync<List<Guid>>();
+
+            this.StateHasChanged();
+        }
+        catch
+        { }
+    }
+
     private class Location
     {
         public Guid LocationID { get; set; }
@@ -84,6 +126,43 @@ else
         }
     }
 
+    private class Scooter
+    {
+        public Guid ScooterId { get; set; }
+        public string Brand { get; set; }
+        public string Model { get; set; }
+        public int BatteryLife { get; set; } //km
+        public int AgeLimitMin { get; set; }
+        public int AgeLimitMax { get; set; }
+        public int WeightMax { get; set; } //kg
+        public int SpeedLimit { get; set; } //km/h
+        public int ClimbAngle { get; set; } //degree
+        public string ImgName { get; set; }
 
+        //public ICollection<ScooterInstance> ScooterInstances { get; set; }
+
+        public Scooter()
+        {
+            ScooterId = Guid.NewGuid();
+        }
+
+        public static Scooter Create(string brand, string model, int batterylife, int agelimitmin, int agelimitmax, int weightmax, int speedlimit, int climbangle, string imgName)
+        {
+            return new Scooter
+            {
+                ScooterId = Guid.NewGuid(),
+                //ScooterInstances = new List<ScooterInstance>(),
+                Brand = brand,
+                Model = model,
+                BatteryLife = batterylife,
+                AgeLimitMin = agelimitmin,
+                AgeLimitMax = agelimitmax,
+                WeightMax = weightmax,
+                SpeedLimit = speedlimit,
+                ClimbAngle = climbangle,
+                ImgName = imgName,
+            };
+        }
+    }
 
 }
