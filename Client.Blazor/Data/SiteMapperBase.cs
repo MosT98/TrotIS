@@ -19,7 +19,7 @@ namespace Client.Blazor.Data
 
 		protected override async Task OnAfterRenderAsync(bool firstRender)
 		{
-			if(!firstRender)
+			if(firstRender)
 			{
 				GetLocations();
 
