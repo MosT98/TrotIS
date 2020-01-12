@@ -1,11 +1,11 @@
 ﻿@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
 @inject NavigationManager NavigationManager
-<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">TrotIS</a>
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-</div>
+    <div class="top-row pl-4 navbar navbar-dark">
+        <center><img src="Resources/logo.png" alt="logo" width="70" /></center>
+        <button class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
     <ul class="nav flex-column">
