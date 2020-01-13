@@ -42,6 +42,9 @@
 {
     if (!empty)
     {
+        <br />
+        <br />
+        <br />
         <h1>
             Current Rent
         </h1>
@@ -67,6 +70,7 @@
     if (!emptyHist)
     {
         <br />
+        <br />
         <h1>
             Rent History
         </h1>
@@ -81,12 +85,11 @@
             <tbody>
                 @foreach (var obj in myRentHistory.Reverse())
                 {
-                <tr>
-                    <td></td>
-                    <td>@obj.OrderDate </td>
-                    <td>@obj.StartDate </td>
-                    <td>@obj.EndDate</td>
-                </tr>
+                    <tr>
+                        <td>@obj.OrderDate </td>
+                        <td>@obj.StartDate </td>
+                        <td>@obj.EndDate</td>
+                    </tr>
                 }
             </tbody>
         </table>
@@ -102,7 +105,7 @@
     public Guid LocationId;
     public Guid ScooterInstanceID;
     public string comment = "";
-    public int battery = 0;
+    public string battery = "";
 
     protected async override void OnInitialized()
     {
@@ -148,7 +151,7 @@
             var resultScooter = await Http.PostAsJsonAsync(URLscooter, ScooterInstanceID);
             if (resultScooter.StatusCode.ToString() != "NotFound")
             {
-                battery = await resultLoc.Content.ReadAsAsync<int>();
+                battery = await resultScooter.Content.ReadAsStringAsync();
             }
 
         }
