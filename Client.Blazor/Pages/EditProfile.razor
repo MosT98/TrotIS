@@ -7,297 +7,297 @@
 
 @if (email != null && addLoaded == true)
 {
-    <!-- Navbar-->
-    <div class="container">
-        <h1>Edit Profile, @lname @fname</h1>
-        <hr>
-        @*VIEW DETAILS*@
-        <div class="row">
-            <!-- edit form column -->
-            <div class="col-md-9 personal-info">
-                <h3>My details</h3>
+	<!-- Navbar-->
+	<div class="container">
+		<h1>Edit Profile, @lname @fname</h1>
+		<hr>
+		@*VIEW DETAILS*@
+		<div class="row">
+			<!-- edit form column -->
+			<div class="col-md-9 personal-info">
+				<h3>My details</h3>
 
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        <textarea class="form-control" rows="10" readonly>
+				<div class="col-lg-12">
+					<div class="form-group">
+						<textarea class="form-control" rows="10" readonly>
                             First name: @myUser.FirstName &#10;
                             Last name: @myUser.LastName &#10;
                             Phone: @myUser.Phone &#10;
                             Email: @myUser.Email &#10;
                             Birthday: @myUser.BirthDay &#10;
                             Date of created account: @myUser.DTE_CRE &#10;
-                            Country: @myUser.Address.Country &#10;
-                            City: @myUser.Address.City &#10;
-                            Street: @myUser.Address.Street &#10;
-                            Number: @myUser.Address.Number &#10;
+                            Country: @if (myUser.Address != null) @myUser.Address.Country &#10;
+                            City: @if (myUser.Address != null) @myUser.Address.City &#10;
+                            Street: @if (myUser.Address != null) @myUser.Address.Street &#10;
+                            Number: @if (myUser.Address != null) @myUser.Address.Number &#10;
                         </textarea>
-                    </div>
-                </div>
+					</div>
+				</div>
 
-            </div>
-        </div>
+			</div>
+		</div>
 
 
-        @*EDIT PROFILE*@
-        <div class="row">
-            <!-- edit form column -->
-            <div class="col-md-9 personal-info">
-                <h3>Personal info</h3>
+		@*EDIT PROFILE*@
+		<div class="row">
+			<!-- edit form column -->
+			<div class="col-md-9 personal-info">
+				<h3>Personal info</h3>
 
-                <EditForm Model="@user" OnInvalidSubmit="@HandleInvalidSubmit" OnValidSubmit="@EditInfoUser">
-                    @*Firstname*@
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-user-circle" aria-hidden="true"></i>
-                            </span>
-                        </div>
-                        <InputText Id="firstName" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.FirstName" placeholder="@fname"></InputText>
+				<EditForm Model="@user" OnInvalidSubmit="@HandleInvalidSubmit" OnValidSubmit="@EditInfoUser">
+					@*Firstname*@
+					<div class="input-group col-lg-12 mb-4">
+						<div class="input-group-prepend">
+							<span class="input-group-text bg-white px-4 border-md border-right-0">
+								<i class="fa fa-user-circle" aria-hidden="true"></i>
+							</span>
+						</div>
+						<InputText Id="firstName" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.FirstName" placeholder="@fname"></InputText>
 
-                    </div>
-                    @*LastName*@
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-user-circle"></i>
-                            </span>
-                        </div>
-                        <InputText Id="lastName" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.LastName" placeholder="@lname"></InputText>
+					</div>
+					@*LastName*@
+					<div class="input-group col-lg-12 mb-4">
+						<div class="input-group-prepend">
+							<span class="input-group-text bg-white px-4 border-md border-right-0">
+								<i class="fa fa-user-circle"></i>
+							</span>
+						</div>
+						<InputText Id="lastName" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.LastName" placeholder="@lname"></InputText>
 
-                    </div>
-                    @*Password*@
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-key"></i>
-                            </span>
-                        </div>
-                        <InputText type="password" placeholder="Password" Class="form-control" @bind-Value="@user.Password" />
-                        <ValidationMessage For="@(() => user.Password)" />
-                    </div>
-                    @*rety[e p[assowrd*@
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-key"></i>
-                            </span>
-                        </div>
-                        <InputText type="password" placeholder="Confirm Password" Class="form-control" @bind-Value="@user.PasswordConfirmation" />
-                        <ValidationMessage For="@(() => user.PasswordConfirmation)" />
-                    </div>
-                    Adress settings:
-                    @*Country*@
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-user-circle"></i>
-                            </span>
-                        </div>
-                        <InputText Id="country" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Country" placeholder="Country"></InputText>
+					</div>
+					@*Password*@
+					<div class="input-group col-lg-12 mb-4">
+						<div class="input-group-prepend">
+							<span class="input-group-text bg-white px-4 border-md border-right-0">
+								<i class="fa fa-key"></i>
+							</span>
+						</div>
+						<InputText type="password" placeholder="Password" Class="form-control" @bind-Value="@user.Password" />
+						<ValidationMessage For="@(() => user.Password)" />
+					</div>
+					@*rety[e p[assowrd*@
+					<div class="input-group col-lg-12 mb-4">
+						<div class="input-group-prepend">
+							<span class="input-group-text bg-white px-4 border-md border-right-0">
+								<i class="fa fa-key"></i>
+							</span>
+						</div>
+						<InputText type="password" placeholder="Confirm Password" Class="form-control" @bind-Value="@user.PasswordConfirmation" />
+						<ValidationMessage For="@(() => user.PasswordConfirmation)" />
+					</div>
+					Adress settings:
+					@*Country*@
+					<div class="input-group col-lg-12 mb-4">
+						<div class="input-group-prepend">
+							<span class="input-group-text bg-white px-4 border-md border-right-0">
+								<i class="fa fa-user-circle"></i>
+							</span>
+						</div>
+						<InputText Id="country" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Country" placeholder="Country"></InputText>
 
-                    </div>
-                    @*City*@
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-user-circle"></i>
-                            </span>
-                        </div>
-                        <InputText Id="city" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.City" placeholder="City"></InputText>
+					</div>
+					@*City*@
+					<div class="input-group col-lg-12 mb-4">
+						<div class="input-group-prepend">
+							<span class="input-group-text bg-white px-4 border-md border-right-0">
+								<i class="fa fa-user-circle"></i>
+							</span>
+						</div>
+						<InputText Id="city" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.City" placeholder="City"></InputText>
 
-                    </div>
-                    @*Street*@
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-user-circle"></i>
-                            </span>
-                        </div>
-                        <InputText Id="street" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Street" placeholder="Street"></InputText>
+					</div>
+					@*Street*@
+					<div class="input-group col-lg-12 mb-4">
+						<div class="input-group-prepend">
+							<span class="input-group-text bg-white px-4 border-md border-right-0">
+								<i class="fa fa-user-circle"></i>
+							</span>
+						</div>
+						<InputText Id="street" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Street" placeholder="Street"></InputText>
 
-                    </div>
-                    @*Number*@
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-user-circle"></i>
-                            </span>
-                        </div>
-                        <InputNumber Id="number" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Number" placeholder="Number"></InputNumber>
+					</div>
+					@*Number*@
+					<div class="input-group col-lg-12 mb-4">
+						<div class="input-group-prepend">
+							<span class="input-group-text bg-white px-4 border-md border-right-0">
+								<i class="fa fa-user-circle"></i>
+							</span>
+						</div>
+						<InputNumber Id="number" Class="form-control bg-white border-left-0 border-md" @bind-Value="@user.Number" placeholder="Number"></InputNumber>
 
-                    </div>
-                    <div class="alert @StatusClass">@StatusMessage</div>
+					</div>
+					<div class="alert @StatusClass">@StatusMessage</div>
 
-                    <DataAnnotationsValidator />
-                    <ValidationSummary />
-                    <button type="submit" class="btn btn-primary btn-block py-2">Update account</button>
-                    <!-- Line -->
-                    <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
-                        <div class="border-bottom w-100 ml-5"></div>
-                        @*<span class="px-2 small text-muted font-weight-bold text-muted">OR</span>*@
-                        <div class="border-bottom w-100 mr-5"></div>
-                    </div>
-                </EditForm>
-            </div>
-        </div>
-    </div>
-    <hr>
+					<DataAnnotationsValidator />
+					<ValidationSummary />
+					<button type="submit" class="btn btn-primary btn-block py-2">Update account</button>
+					<!-- Line -->
+					<div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+						<div class="border-bottom w-100 ml-5"></div>
+						@*<span class="px-2 small text-muted font-weight-bold text-muted">OR</span>*@
+						<div class="border-bottom w-100 mr-5"></div>
+					</div>
+				</EditForm>
+			</div>
+		</div>
+	</div>
+	<hr>
 }
 else
 {
-    <h1>No usser logged in</h1>
+	<h1>No usser logged in</h1>
 }
 
 @code{
-    public string email = null;
-    public string fname = null;
-    public string lname = null;
-    public Guid userid = Guid.Empty;
-    public int isAdmin = 0;
-    public bool addLoaded = false;
+	public string email = null;
+	public string fname = null;
+	public string lname = null;
+	public Guid userid = Guid.Empty;
+	public int isAdmin = 0;
+	public bool addLoaded = false;
 
-    private string apiUrl = "http://localhost:5003/api/user";
+	private string apiUrl = "http://localhost:5003/api/user";
 
-    private string StatusMessage;
-    private string StatusClass;
-    public class User
-    {
+	private string StatusMessage;
+	private string StatusClass;
+	public class User
+	{
 
-        public Guid UserId { get; set; }
-        [Required(ErrorMessage = "Firstname is required.")]
-        public string FirstName { get; set; }
+		public Guid UserId { get; set; }
+		[Required(ErrorMessage = "Firstname is required.")]
+		public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "Lastname is required.")]
-        public string LastName { get; set; }
+		[Required(ErrorMessage = "Lastname is required.")]
+		public string LastName { get; set; }
 
-        [Required(ErrorMessage = "password is required.")]
-        [MinLength(8, ErrorMessage = "password must be at least 8 characters")]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
+		[Required(ErrorMessage = "password is required.")]
+		[MinLength(8, ErrorMessage = "password must be at least 8 characters")]
+		[DataType(DataType.Password)]
+		public string Password { get; set; }
 
-        [Required(ErrorMessage = "re-type password is required.")]
-        [Compare(nameof(Password), ErrorMessage = "password doesn't match")]
-        public string PasswordConfirmation { get; set; }
+		[Required(ErrorMessage = "re-type password is required.")]
+		[Compare(nameof(Password), ErrorMessage = "password doesn't match")]
+		public string PasswordConfirmation { get; set; }
 
-        public string City { get; set; }
-        public string Country { get; set; }
-        public string Street { get; set; }
-        public int Number { get; set; }
+		public string City { get; set; }
+		public string Country { get; set; }
+		public string Street { get; set; }
+		public int Number { get; set; }
 
-    }
-    public class ResponseObj
-    {
+	}
+	public class ResponseObj
+	{
 
-        public Guid UserId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Password { get; set; }
-        public string City { get; set; }
-        public string Country { get; set; }
-        public string Street { get; set; }
-        public int Number { get; set; }
+		public Guid UserId { get; set; }
+		public string FirstName { get; set; }
+		public string LastName { get; set; }
+		public string Password { get; set; }
+		public string City { get; set; }
+		public string Country { get; set; }
+		public string Street { get; set; }
+		public int Number { get; set; }
 
-    }
+	}
 
-    private User user = new User();
-    private UserDetails myUser = new UserDetails();
+	private User user = new User();
+	private UserDetails myUser = new UserDetails();
 
-    protected async override void OnInitialized()
-    {
-        try
-        {
-            fname = await sessionStorage.GetItemAsync<string>("firstname");
-            email = await sessionStorage.GetItemAsync<string>("hash");
-            lname = await sessionStorage.GetItemAsync<string>("lastname");
-            userid = await sessionStorage.GetItemAsync<Guid>("userID");
-            isAdmin = await sessionStorage.GetItemAsync<int>("isAdmin");
+	protected async override void OnInitialized()
+	{
+		try
+		{
+			fname = await sessionStorage.GetItemAsync<string>("firstname");
+			email = await sessionStorage.GetItemAsync<string>("hash");
+			lname = await sessionStorage.GetItemAsync<string>("lastname");
+			userid = await sessionStorage.GetItemAsync<Guid>("userID");
+			isAdmin = await sessionStorage.GetItemAsync<int>("isAdmin");
 
-            GetUserDetail();
+			GetUserDetail();
 
-            this.StateHasChanged();
-        }
-        catch
-        {
+			this.StateHasChanged();
+		}
+		catch
+		{
 
-        }
+		}
 
-    }
-
-
-    private async void EditInfoUser()
-    {
-        var response = new ResponseObj();
-        response.UserId = userid;
-        response.FirstName = user.FirstName;
-        response.LastName = user.LastName;
-        response.Password = user.Password;
-        response.Country = user.Country;
-        response.City = user.City;
-        response.Street = user.Street;
-        response.Number = user.Number;
-        var result = await Http.PutAsJsonAsync(apiUrl, response);
-        if (result.StatusCode.ToString() == "OK")
-        {
-
-            await sessionStorage.SetItemAsync("firstname", response.FirstName);
-            await sessionStorage.SetItemAsync("lastname", response.LastName);
-            await sessionStorage.SetItemAsync("admin", isAdmin);
-            await sessionStorage.SetItemAsync("userID", response.UserId);
-            this.StateHasChanged();
-            NavigationManager.NavigateTo("/editprofile", true);
-        }
+	}
 
 
-    }
+	private async void EditInfoUser()
+	{
+		var response = new ResponseObj();
+		response.UserId = userid;
+		response.FirstName = user.FirstName;
+		response.LastName = user.LastName;
+		response.Password = user.Password;
+		response.Country = user.Country;
+		response.City = user.City;
+		response.Street = user.Street;
+		response.Number = user.Number;
+		var result = await Http.PutAsJsonAsync(apiUrl, response);
+		if (result.StatusCode.ToString() == "OK")
+		{
+
+			await sessionStorage.SetItemAsync("firstname", response.FirstName);
+			await sessionStorage.SetItemAsync("lastname", response.LastName);
+			await sessionStorage.SetItemAsync("admin", isAdmin);
+			await sessionStorage.SetItemAsync("userID", response.UserId);
+			this.StateHasChanged();
+			NavigationManager.NavigateTo("/editprofile", true);
+		}
 
 
-    protected void HandleValidSubmit()
-    {
-        StatusClass = "alert-info";
-        StatusMessage = DateTime.Now + " Handle valid submit";
-    }
-
-    protected void HandleInvalidSubmit()
-    {
-        StatusClass = "alert-danger";
-        StatusMessage = DateTime.Now + " Handle invalid submit";
-    }
-
-    public async void GetUserDetail()
-    {
-        try
-        {
-            var result = await Http.GetAsync(apiUrl + "/" + userid);
-
-            var tempUSr = await result.Content.ReadAsStringAsync();
-            myUser = JsonConvert.DeserializeObject<UserDetails>(tempUSr);
-            addLoaded = true;
-            this.StateHasChanged();
-        }
-        catch
-        { }
-    }
+	}
 
 
-    public class UserDetails
-    {
-        public Guid UserId { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Phone { get; set; }
-        public DateTime BirthDay { get; set; }
-        public EnumLists.SocialClass SocialClass { get; set; }
-        public Address Address { get; set; }
-        public bool IsAdmin { get; set; }
-        public DateTime DTE_CRE { get; set; }
+	protected void HandleValidSubmit()
+	{
+		StatusClass = "alert-info";
+		StatusMessage = DateTime.Now + " Handle valid submit";
+	}
+
+	protected void HandleInvalidSubmit()
+	{
+		StatusClass = "alert-danger";
+		StatusMessage = DateTime.Now + " Handle invalid submit";
+	}
+
+	public async void GetUserDetail()
+	{
+		try
+		{
+			var result = await Http.GetAsync(apiUrl + "/" + userid);
+
+			var tempUSr = await result.Content.ReadAsStringAsync();
+			myUser = JsonConvert.DeserializeObject<UserDetails>(tempUSr);
+			addLoaded = true;
+			this.StateHasChanged();
+		}
+		catch
+		{ }
+	}
 
 
-        public UserDetails()
-        {
-            UserId = Guid.NewGuid();
-        }
+	public class UserDetails
+	{
+		public Guid UserId { get; set; }
+		public string Email { get; set; }
+		public string Password { get; set; }
+		public string FirstName { get; set; }
+		public string LastName { get; set; }
+		public string Phone { get; set; }
+		public DateTime BirthDay { get; set; }
+		public EnumLists.SocialClass SocialClass { get; set; }
+		public Address Address { get; set; }
+		public bool IsAdmin { get; set; }
+		public DateTime DTE_CRE { get; set; }
 
-    }
+
+		public UserDetails()
+		{
+			UserId = Guid.NewGuid();
+		}
+
+	}
 }
