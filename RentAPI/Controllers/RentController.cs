@@ -57,6 +57,19 @@ namespace RentAPI.Controllers
             return Ok(rent);
         }
 
+        [Route("[action]/{idUser}")]
+        [HttpGet]
+        public async Task<ActionResult<Rent>> GetByIdUserCancelled(Guid idUser)
+        {
+            var rent = await mediator.Send(new GetRentsByIdUser(idUser));
+            if (rent == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(rent);
+        }
+
 
         // POST: api/Locations
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
