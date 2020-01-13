@@ -21,7 +21,7 @@ namespace ScooterInstanceAPI.Business
 
         public async Task<List<ScooterInstance>> Handle(GetAllScooterInstances request, CancellationToken cancellationToken)
         {
-            var scooterInstances = await context.ScooterInstances.ToListAsync();
+            var scooterInstances = await context.ScooterInstances.Include(a=>a.Scooter).ToListAsync();
   
             return scooterInstances;
         }

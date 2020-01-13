@@ -266,7 +266,14 @@
 							@if (allScootersInstance.Count > 0)
 								@foreach (var scooter in allScootersInstance)
 								{
-									<option value="@scooter.ScooterInstanceId">@scooter.ScooterAutonomy @scooter.Price</option>
+									@if (loaded == true && scooter.Scooter!=null)
+									{
+										<option value="@scooter.ScooterInstanceId">@scooter.Scooter.Brand @scooter.Scooter.Model - @scooter.Price Lei (@scooter.ScooterAutonomy h)</option>
+									}
+									else
+									{
+										<option value="@scooter.ScooterInstanceId"> @scooter.Price Lei (@scooter.ScooterAutonomy h)</option>
+									}
 								}
 						</select>
 						<br />
@@ -314,7 +321,7 @@ else
 
 	string URLScooterLocation = @"http://localhost:5009/api/locations/scooter_instance";
 
-
+	public bool loaded = false;
 
 	public async void GetOurLocations()
 	{
@@ -351,6 +358,7 @@ else
 			var result = await Http.GetAsync(URLScooterInstance);
 
 			allScootersInstance = await result.Content.ReadAsAsync<List<ScooterInstanceObject>>();
+			loaded = true;
 
 			this.StateHasChanged();
 		}
