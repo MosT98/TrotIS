@@ -16,10 +16,12 @@
     </select>
     <button @onclick="@generateScooters" class="btn btn-primary btn-block py-2">Search</button>
 
-
+    <br />
+    <br />
     <table id="scooters" class="display" style="width:100%">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Price</th>
                 <th>Autonomy</th>
             </tr>
@@ -28,15 +30,66 @@
             @foreach (ScooterInstance scootean in allOurScootersInstance)
             {
                 <tr>
+
+                    <td>@scootean.ScooterInstanceId</td>
                     <td>@scootean.Price</td>
                     <td>@scootean.ScooterAutonomy</td>
+
                 </tr>
-               
+
             }
 
 
         </tbody>
     </table>
+    <br />
+    <br />
+
+    <h1>Rent a scooter </h1>
+
+
+
+
+    <EditForm Model="@rent" OnValidSubmit="@rentScooter">
+
+        <InputSelect id="rentid" @bind-Value="rent.ScooterInstanceId">
+            <option value="">Select an scooter</option>
+            @foreach (ScooterInstance scootea in allOurScootersInstance)
+                {
+                <option value="@scootea.ScooterInstanceId">Price : @scootea.Price autonomy : @scootea.ScooterAutonomy</option>
+
+                }
+        </InputSelect>
+
+
+        @*Startdate*@
+        <div class="input-group col-lg-12 mb-4">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                    <i class="fa fa-birthday-cake"></i>
+                </span>
+            </div>
+            <InputDate Id="sdate" Class="form-control bg-white border-left-0 border-md" @bind-Value="@rent.StartDate" placeholder="Start date"></InputDate>
+
+        </div>
+
+        <div class="input-group col-lg-12 mb-4">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                    <i class="fa fa-birthday-cake"></i>
+                </span>
+            </div>
+            <InputDate Id="edate" Class="form-control bg-white border-left-0 border-md" @bind-Value="@rent.EndDate" placeholder="End date"></InputDate>
+
+        </div>
+
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <button type="submit" class="btn btn-primary btn-block py-2">Rent</button>
+        <!-- Line -->
+
+
+    </EditForm>
 }
 else
 {
@@ -51,14 +104,22 @@ else
     private List<Guid> allScootersGuid = new List<Guid>();
     private List<Scooter> allScooters = new List<Scooter>();
     private Guid locationGuidDrop;
+    public Rent rent = new Rent();
 
 
     string URL = @"http://localhost:5009/api/locations";
+    string rentURL = @"http://localhost:5007/api/rent";
     string URLGuidScooter = @"http://localhost:5009/api/locations/scooters_ids_from_location";
     string URLScooters = @"http://localhost:5005/api/scooterinstance/get_all_scooters";
     string URLScooterInstances = @"http://localhost:5005/api/scooterinstance/get_all_scooterinstances";
     private Guid location = Guid.Empty;
+    private async void rentScooter()
+    {
+        rent.UserId = await sessionStorage.GetItemAsync<Guid>("userID");
+        var response = await Http.PostAsJsonAsync(rentURL, rent);
 
+
+    }
     public async void GetOurLocations()
     {
         try
@@ -85,6 +146,7 @@ else
         {
             email = await sessionStorage.GetItemAsync<string>("hash");
             GetOurLocations();
+            this.StateHasChanged();
         }
         catch { }
 
@@ -226,6 +288,19 @@ else
         {
             ScooterAutonomy = scooterAutonomy;
         }
+    }
+
+
+    public class Rent
+    {
+        public Guid RentId { get; set; }
+        public Guid LocationId { get; set; }
+        public Guid UserId { get; set; }
+        public Guid ScooterInstanceId { get; set; }
+        public DateTime OrderDate { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public bool IsCancelled { get; set; }
     }
 
 }
