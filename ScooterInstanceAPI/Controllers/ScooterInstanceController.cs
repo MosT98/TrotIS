@@ -77,6 +77,14 @@ namespace ScooterInstanceAPI.Controllers
             return Ok(scooterInstance);
         }
 
+        [Route("autonomy_by_id")]
+        [HttpPost]
+        public async Task<int> Create([FromBody] Guid id)
+        {
+            var autonomy = await mediator.Send(new GetAutonomyById(id));
+            return autonomy;
+        }
+
         [HttpPost]
         public async Task<ActionResult<ScooterInstance>> Create([FromBody] CreateScooterInstance request)
         {
