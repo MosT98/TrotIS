@@ -16,7 +16,7 @@ namespace UserAPI.Business
         }
         public async Task<User> Handle(GetUserDetail request, CancellationToken cancellationToken)
         {
-            var user = await context.Users.SingleOrDefaultAsync(u => u.UserId == request.UserId);
+            var user = await context.Users.Include(u=>u.Address).SingleOrDefaultAsync(u => u.UserId == request.UserId);
             return user;
         }
         

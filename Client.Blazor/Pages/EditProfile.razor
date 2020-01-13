@@ -3,7 +3,9 @@
 @using TrotIS.Shared
 @inject NavigationManager NavigationManager
 @inject Blazored.SessionStorage.ISessionStorageService sessionStorage
-@if (email != null)
+@using Newtonsoft.Json;
+
+@if (email != null && addLoaded == true)
 {
     <!-- Navbar-->
     <div class="container">
@@ -16,16 +18,20 @@
                 <h3>My details</h3>
 
                 <div class="col-lg-12">
-					<div class="form-group">
-						<textarea class="form-control" rows="10" readonly>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="10" readonly>
                             First name: @myUser.FirstName &#10;
                             Last name: @myUser.LastName &#10;
                             Phone: @myUser.Phone &#10;
                             Email: @myUser.Email &#10;
                             Birthday: @myUser.BirthDay &#10;
                             Date of created account: @myUser.DTE_CRE &#10;
+                            Country: @myUser.Address.Country &#10;
+                            City: @myUser.Address.City &#10;
+                            Street: @myUser.Address.Street &#10;
+                            Number: @myUser.Address.Number &#10;
                         </textarea>
-					</div>
+                    </div>
                 </div>
 
             </div>
@@ -148,6 +154,7 @@ else
     public string lname = null;
     public Guid userid = Guid.Empty;
     public int isAdmin = 0;
+    public bool addLoaded = false;
 
     private string apiUrl = "http://localhost:5003/api/user";
 
@@ -231,7 +238,7 @@ else
         var result = await Http.PutAsJsonAsync(apiUrl, response);
         if (result.StatusCode.ToString() == "OK")
         {
-            
+
             await sessionStorage.SetItemAsync("firstname", response.FirstName);
             await sessionStorage.SetItemAsync("lastname", response.LastName);
             await sessionStorage.SetItemAsync("admin", isAdmin);
@@ -257,18 +264,19 @@ else
     }
 
     public async void GetUserDetail()
-	{
-		try
-		{
-			var result = await Http.GetAsync(apiUrl + "/" + userid);
+    {
+        try
+        {
+            var result = await Http.GetAsync(apiUrl + "/" + userid);
 
-			myUser = await result.Content.ReadAsAsync<UserDetails>();
-			
-			this.StateHasChanged();
-		}
-		catch
-		{ }
-	}
+            var tempUSr = await result.Content.ReadAsStringAsync();
+            myUser = JsonConvert.DeserializeObject<UserDetails>(tempUSr);
+            addLoaded = true;
+            this.StateHasChanged();
+        }
+        catch
+        { }
+    }
 
 
     public class UserDetails
@@ -285,23 +293,6 @@ else
         public bool IsAdmin { get; set; }
         public DateTime DTE_CRE { get; set; }
 
-        public static UserDetails Create(string email, string password, string firstName, string lastName,
-            string phone, DateTime birthDay, EnumLists.SocialClass socialClass)
-        {
-            return new UserDetails
-            {
-                UserId = Guid.NewGuid(),
-                Email = email,
-                Password = password,
-                FirstName = firstName,
-                LastName = lastName,
-                Phone = phone,
-                BirthDay = birthDay,
-                SocialClass = socialClass,
-                IsAdmin = false,
-                DTE_CRE = DateTime.UtcNow
-            };
-        }
 
         public UserDetails()
         {

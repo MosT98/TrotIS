@@ -17,7 +17,7 @@ namespace UserAPI.Business
         }
         public async Task<List<User>> Handle(GetUsers request, CancellationToken cancellationToken)
         {
-            var users = await context.Users.ToListAsync();
+            var users = await context.Users.Include(u=>u.Address).ToListAsync();
             return users;
         }
     }

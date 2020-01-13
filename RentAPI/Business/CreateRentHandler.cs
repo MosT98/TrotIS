@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using RentAPI.Data;
 using RentAPI.DTOs;
 using System.Threading;
@@ -20,9 +21,13 @@ namespace RentAPI.Business
             var rent = Rent.Create(request.LocationId, request.UserId, request.ScooterInstanceId, request.StartDate, request.EndDate);
             if (rent != null)
             {
-                context.Rents.Add(rent);
-                await context.SaveChangesAsync(cancellationToken);
-                return rent;
+                var falseRent = await context.Rents.FirstOrDefaultAsync(a => a.UserId.ToString() == request.UserId && a.IsCancelled == false);
+                if (falseRent == default(Rent))
+                {
+                    context.Rents.Add(rent);
+                    await context.SaveChangesAsync(cancellationToken);
+                    return rent;
+                }
             }
             return null;
         }

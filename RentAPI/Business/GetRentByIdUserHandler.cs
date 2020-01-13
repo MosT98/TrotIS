@@ -18,8 +18,11 @@ namespace RentAPI.Business
 
         public async Task<Rent> Handle(GetRentByIdUser request, CancellationToken cancellationToken)
         {
-            var rent = await context.Rents.SingleOrDefaultAsync(r => r.UserId == request.UserId && r.IsCancelled==false);
-            return rent;
+            var rent = await context.Rents.FirstOrDefaultAsync(r => r.UserId == request.UserId && r.IsCancelled==false);
+            if (rent != default(Rent))
+                return rent;
+            else
+                return null;
         }
     }
 }

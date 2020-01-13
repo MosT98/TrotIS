@@ -135,21 +135,21 @@
         string URL = "http://localhost:5007/api/rent/GetByIdUser/";
         string URLfin = URL + userId.ToString();
         var result = await Http.GetAsync(URLfin);
-        if (result.StatusCode.ToString() != "NotFound")
+        if (result.StatusCode.ToString() == "OK")
         {
             myRent = await result.Content.ReadAsAsync<Rent>();
             empty = false;
             LocationId = myRent.LocationId;
             string URLloc = "http://localhost:5009/api/locations/comment_from_id";
             var resultLoc = await Http.PostAsJsonAsync(URLloc, LocationId);
-            if (resultLoc.StatusCode.ToString() != "NotFound")
+            if (resultLoc.StatusCode.ToString() == "OK")
             {
                 comment = await resultLoc.Content.ReadAsStringAsync();
             }
             ScooterInstanceID = myRent.ScooterInstanceId;
             string URLscooter = "http://localhost:5005/api/scooterinstance/autonomy_by_id";
             var resultScooter = await Http.PostAsJsonAsync(URLscooter, ScooterInstanceID);
-            if (resultScooter.StatusCode.ToString() != "NotFound")
+            if (resultScooter.StatusCode.ToString() == "OK")
             {
                 battery = await resultScooter.Content.ReadAsStringAsync();
             }

@@ -78,7 +78,9 @@ namespace RentAPI.Controllers
         public async Task<ActionResult<Rent>> Create([FromBody]CreateRent request)
         {
             var location = await mediator.Send(request);
-            return location;
+            if(location!=null)
+                return location;
+            return NotFound();
         }
 
     }
