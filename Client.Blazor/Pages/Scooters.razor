@@ -133,6 +133,12 @@ else
         StatusMessage = "You already have an active rent";
     }
 
+
+    protected void OnValidSubmit()
+    {
+        StatusClass = "alert-info";
+        StatusMessage = "Rent succesfully";
+    }
     private async void rentScooter()
     {
         rent.UserId = await sessionStorage.GetItemAsync<Guid>("userID");
@@ -141,7 +147,7 @@ else
         var response = await Http.PostAsJsonAsync(rentURL, rent);
         if (response.StatusCode.ToString() == "NotFound")
             OnInvalidSubmit();
-
+        OnValidSubmit();
         this.StateHasChanged();
     }
     public async void GetOurLocations()
