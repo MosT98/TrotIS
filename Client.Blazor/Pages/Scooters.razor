@@ -108,6 +108,7 @@ else
 
 
     string URL = @"http://localhost:5009/api/locations";
+    string rentURL = @"http://localhost:5007/api/rent";
     string URLGuidScooter = @"http://localhost:5009/api/locations/scooters_ids_from_location";
     string URLScooters = @"http://localhost:5005/api/scooterinstance/get_all_scooters";
     string URLScooterInstances = @"http://localhost:5005/api/scooterinstance/get_all_scooterinstances";
@@ -115,6 +116,8 @@ else
     private async void rentScooter()
     {
         rent.UserId = await sessionStorage.GetItemAsync<Guid>("userID");
+        var response = await Http.PostAsJsonAsync(rentURL, rent);
+
 
     }
     public async void GetOurLocations()
