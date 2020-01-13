@@ -66,23 +66,28 @@
     }
     if (!emptyHist)
     {
+        <br />
         <h1>
-            Current Rent
+            Rent History
         </h1>
-        <table id="rent" class="display" style="width:100%">
+        <table id="rent-history" class="display" style="width:100%">
             <thead>
                 <tr>
+                    <th>Order Date</th>
                     <th>Start Date</th>
                     <th>End Date</th>
-                    <th>Rent Location</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach (var obj in myRentHistory.Reverse())
+                {
                 <tr>
-                    <td>@myRent.StartDate </td>
-                    <td>@myRent.EndDate</td>S
-                    <td>@comment</td>
+                    <td></td>
+                    <td>@obj.OrderDate </td>
+                    <td>@obj.StartDate </td>
+                    <td>@obj.EndDate</td>
                 </tr>
+                }
             </tbody>
         </table>
     }
@@ -91,7 +96,9 @@
 @code{
     public bool isLogged = false;
     public bool empty = true;
+    public bool emptyHist = true;
     public Rent myRent = new Rent();
+    public IEnumerable<Rent> myRentHistory = new List<Rent>();
     public Guid LocationId;
     public Guid ScooterInstanceID;
     public string comment = "";
@@ -109,6 +116,7 @@
             if (isLogged)
             {
                 LoadCurrentRent();
+                LoadRentHistory();
             }
 
         }
@@ -149,6 +157,24 @@
         this.StateHasChanged();
 
     }
+    public async void LoadRentHistory()
+    {
+        var userId = await sessionStorage.GetItemAsync<Guid>("userID");
+        string URL = "http://localhost:5007/api/rent/GetByIdUserCancelled/";
+        string URLfin = URL + userId.ToString();
+        var result = await Http.GetAsync(URLfin);
+        if (result.StatusCode.ToString() != "NotFound")
+        {
+            myRentHistory = await result.Content.ReadAsAsync<List<Rent>>();
+            emptyHist = false;
+        }
+        else
+        {
+            emptyHist = true;
+        }
+        this.StateHasChanged();
+    }
+
 
     public class Rent
     {
